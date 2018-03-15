@@ -1,12 +1,24 @@
 
-
 ## Function defintions
+
+check_command() { hash $1 &> /dev/null; }
 
 check_package_installed(){
     if dpkg-query -l "$1" > /dev/null &> /dev/null; then
         return 0
     fi
     return 1
+}
+
+install_command_if_not_installed(){
+    if check_command "$1"; then
+        return 0;
+    fi
+    if [ "$2" != "" ]; then
+        yes | sudo add-apt-repository "$2"
+        yes | sudo apt update
+    fi
+    yes | sudo apt install "$1"
 }
 
 install_package_if_not_installed(){
@@ -27,9 +39,9 @@ check_in_file() {
     return 1
 }
 
-check_command() { hash $1 &> /dev/null; }
 
 ## End of functions
+
 
 if [ "$1" != "light" ] && [ "$1" != "complete" ]; then
     echo "The first argument should be either 'complete' or 'light'"
@@ -69,14 +81,15 @@ if [ "$TYPE" == 'complete' ]; then
 fi
 
 
-
+install_package_if_not_installed software-properties-common
+install_package_if_not_installed python-software-properties
 
 
 ## vim
-install_package_if_not_installed vim
+install_command_if_not_installed vim
 install_package_if_not_installed vim-gtk
-install_package_if_not_installed curl
-install_package_if_not_installed xclip
+install_command_if_not_installed curl
+install_command_if_not_installed xclip
 
 if [ $TYPE == "complete" ]; then
     if [ ! -e $HOME/.vim-anywhere ]; then
@@ -91,6 +104,8 @@ ln --symbolic --relative --force ./vim/.vimrc $HOME/.vimrc
 install_package_if_not_installed guake
 # TO DO: Configure
 
+## terminator
+install_package_if_not_installed terminator
 
 install_package_if_not_installed git
 ln --symbolic --relative --force ./git/.gitconfig $HOME/.gitconfig
@@ -224,8 +239,8 @@ install_package_if_not_installed "numix-icon-theme-circle" "ppa:numix/ppa"
 
 install_package_if_not_installed xfce4-whiskermenu-plugin
 
-ln --symbolic --relative --force ./xfce/.themes $HOME/.themes
-ln --symbolic --relative --force ./.config/xfce4 $HOME/.config/xfce4
+ln --symbolic --relative --force ./xfce/.themes $HOME/
+ln --symbolic --relative --force ./.config/xfce4 $HOME/.config/
 
 exit 0
 
