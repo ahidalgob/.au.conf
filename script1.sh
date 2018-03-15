@@ -14,10 +14,10 @@ install_package_if_not_installed(){
         return 0;
     fi
     if [ "$2" != "" ]; then
-        sudo add-apt-repository "$2"
-        sudo apt update
+        yes | sudo add-apt-repository "$2"
+        yes | sudo apt update
     fi
-    sudo apt install "$1"
+    yes | sudo apt install "$1"
 }
 
 check_in_file() {
@@ -114,7 +114,7 @@ if [ $TYPE == "complete" ]; then
 fi
 
 if check_command mousepad; then
-    sudo apt remove mousepad
+    yes | sudo apt remove mousepad
 fi
 
 if [ $TYPE == "complete" ]; then
@@ -141,9 +141,9 @@ fi
 # check if light
 if [ $TYPE == "complete" ] && [ $DISTRO == "ubuntu" ]; then
     if ! check_command wine; then
-        sudo add-apt-repository ppa:ubuntu-wine/ppa
+        yes | sudo add-apt-repository ppa:ubuntu-wine/ppa
         sudo apt update
-        sudo apt install wine1.8 winetricks
+        yes | sudo apt install wine1.8 winetricks
 
         echo "wine might require some configuration, enough to launch it"
         echo "a couple of times for it to configure"
@@ -161,9 +161,9 @@ install_package_if_not_installed icedtea-plugin
 
 if [ $TYPE == "complete" ]; then
     if ! check_package_installed texlive-latex-base; then
-        apt install texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-fonts-recommended
-        apt install texstudio
-        apt install texlive-lang-spanish
+        yes | sudo apt install texlive-latex-base texlive-latex-extra texlive-latex-recommended texlive-fonts-recommended
+        yes | sudo apt install texstudio
+        yes | apt install texlive-lang-spanish
     fi
 fi
 
