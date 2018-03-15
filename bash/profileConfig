@@ -1,0 +1,7 @@
+// Source from ~/.profile
+//
+// . ~/.au_conf/bash/profileConfig
+//
+// ....Maybe (Be careful)
+
+guake > /dev/null 2>&1 &

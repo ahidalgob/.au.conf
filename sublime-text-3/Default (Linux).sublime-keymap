@@ -1,0 +1,7 @@
+// Make a link to this in folder:
+// ~/.config/sublime-text3/Packages/User/
+
+[
+    { "keys": ["ctrl+tab"], "command": "next_view" },
+    { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
+]

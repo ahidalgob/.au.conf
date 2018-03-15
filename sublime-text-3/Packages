@@ -1,0 +1,8 @@
+
+
+chromebook
+    "installed_packages":
+    [
+        "Package Control",
+        "Theme - Spacegray"
+    ]

@@ -1,0 +1,81 @@
+################################################
+# PANELS
+################################################
+
+# Note: Uncommenting means to delete the "#" at the beginning of a line. Commenting out means to add a "#" at the beginning of a line. The "#" tells the theme wether to ignore the line or not.
+
+style "theme-panel"
+{
+	bg[SELECTED]	= shade (0.85, @selected_bg_color) # Makes selected items dark.
+	bg[NORMAL]	= "#333333" # Makes panel background dark.
+	bg[PRELIGHT]	= shade (0.85, @selected_bg_color) # Makes panel button prelight dark.
+	bg[ACTIVE]	= shade (0.60, @bg_color) # Makes active buttons dark.
+	bg[INSENSITIVE]	= "#333333"
+	fg[NORMAL]	= "#E6E6E6" # Makes panel text light.
+	fg[PRELIGHT]	= @selected_fg_color  # Makes prelighted text colored.
+	fg[SELECTED]	= @selected_fg_color  # Makes prelighted text colored.
+	fg[ACTIVE]	= @selected_fg_color  # Makes active text colored.
+	fg[INSENSITIVE]	= "#666666" # Color for insensitive text.
+	text[NORMAL]	= "#E6E6E6"
+	text[PRELIGHT]	= @selected_fg_color  # Makes prelighted text colored.
+	text[SELECTED]	= @selected_fg_color  # Makes prelighted text colored.
+	text[ACTIVE]	= @selected_fg_color  # Makes active text colored.
+	text[INSENSITIVE]	= "#666666"
+
+ engine "murrine"
+ {
+  animation            = FALSE
+  rgba		     	   = FALSE
+  gradient_shades      = {1.0,1.0,1.0,1.0}
+  contrast	           = .55
+  scrollbarstyle       = 0 # 0 to get rid of the handles. (2 default)
+  sliderstyle          = 0
+  stepperstyle         = 1
+  glazestyle           = 0
+  reliefstyle	       = 0
+  toolbarstyle	       = 0
+  progressbarstyle     = 0 # 1 to add stripes. (0 default)
+  roundness            = 0
+  highlight_shade      = 1.00
+  lightborder_shade    = 1.85
+  lightborderstyle     = 1
+  menuitemstyle        = 0 # 1 if you want borders around menu items. (0 default)
+  menubarstyle         = 2 # 3 if you want stripes. (2 default)
+  menubaritemstyle     = 0
+  listviewstyle        = 1 # 0 to turn off the dots. (1 default)
+  listviewheaderstyle  = 1
+ }
+}
+
+style "theme-panel-light"
+{
+	fg[NORMAL]	= @fg_color
+}
+
+# Panel settings. Do not change.
+widget "*PanelWidget*"		style "theme-panel"
+widget "*PanelApplet*"		style "theme-panel"
+widget "*fast-user-switch*"	style "theme-panel"
+widget "*gdm-user-switch*"	style "theme-panel"
+widget "*CPUFreq*Applet*"	style "theme-panel"
+widget "*indicator-applet*"	style "theme-panel"
+class "PanelApp*"		style "theme-panel"
+class "PanelToplevel*"		style "theme-panel"
+widget_class "*PanelToplevel*"	style "theme-panel"
+#widget_class "*Mail*"		style "theme-panel" # Disabled to fix Evolution bug.
+#class "*Panel*"		style "theme-panel" # Disabled to fix bug.
+widget_class "*notif*"		style "theme-panel"
+widget_class "*Notif*"		style "theme-panel"
+widget_class "*Tray*"		style "theme-panel" 
+widget_class "*tray*"		style "theme-panel"
+widget_class "*computertemp*"	style "theme-panel"
+widget_class "*Applet*Tomboy*"	style "theme-panel"
+widget_class "*Applet*Netstatus*"	style "theme-panel"
+
+# Fixes for tooltip text in some apps.
+widget_class "*Notif*Beagle*"	style "theme-panel-light"
+widget_class "*Notif*Brasero*"	style "theme-panel-light"
+
+# XFCE panel theming.
+widget "*Xfce*Panel*"		style "theme-panel"
+class "*Xfce*Panel*"		style "theme-panel"

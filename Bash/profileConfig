@@ -1,7 +1,0 @@
-// Source from ~/.profile
-//
-// . ~/Dropbox/Configs/Bash/profileConfig
-//
-// ....Maybe (Be careful)
-
-guake > /dev/null 2>&1 &

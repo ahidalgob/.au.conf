@@ -1,0 +1,96 @@
+# Misc.
+border.width: 2
+padding.width: 2
+window.handle.width: 0
+window.client.padding.width: 0
+window.label.text.justify: Right
+border.color: #191919
+menu.overlap: 0
+
+menu.border.width: 1
+
+# Menu
+menu.border.color: #333333
+
+menu.title.bg: Flat Soild
+menu.title.bg.color: #333333
+menu.title.bg.shadow: 0
+menu.title.text.color: #E6E6E6
+menu.title.text.justify: Center
+
+menu.items.bg: Flat Solid
+menu.items.bg.color: #333333
+menu.items.text.color: #E6E6E6
+menu.items.disabled.text.color: #666666
+
+menu.items.active.bg: Flat Solid
+menu.items.active.bg.color: #1E90FF
+menu.items.active.bg.border.color: #1E90FF
+menu.items.active.text.color: #FFFFFF
+
+
+# Window focused
+window.active.title.separator.color: #1E90FF
+
+window.active.title.bg: Flat Soild
+window.active.title.bg.color: #333333
+window.active.title.bg.shadow: 0
+
+window.active.label.bg: Parentrelative
+window.active.label.text.color: #E6E6E6
+
+window.active.handle.bg: Flat Solid
+window.active.handle.bg.color: #333333
+
+window.active.grip.bg: Flat Solid
+window.active.grip.bg.color: #1E90FF
+
+window.active.button.unpressed.bg: Parentrelative
+window.active.button.unpressed.image.color: #E6E6E6
+
+window.active.button.pressed.bg: Parentrelative
+window.active.button.pressed.image.color: #999999
+
+window.active.button.disabled.bg: Parentrelative
+window.active.button.disabled.image.color: #666666
+
+window.active.button.toggled.bg: Parentrelative
+window.active.button.toggled.image.color: #1E90FF
+
+
+# Window unfocused
+window.inactive.title.separator.color: #666666
+
+window.inactive.title.bg: Flat Soild
+window.inactive.title.bg.color: #333333
+window.inactive.title.bg.shadow: 0
+
+window.inactive.label.bg: Parentrelative
+window.inactive.label.text.color: #999999
+
+window.inactive.handle.bg: Flat Solid
+window.inactive.handle.bg.color: #666666
+
+window.inactive.grip.bg: Flat Solid
+window.inactive.grip.bg.color: #666666
+
+window.inactive.button.unpressed.bg: Parentrelative
+window.inactive.button.unpressed.image.color: #999999
+
+window.inactive.button.pressed.bg: Parentrelative
+window.inactive.button.pressed.image.color: #666666
+
+window.inactive.button.disabled.bg: Parentrelative
+window.inactive.button.disabled.image.color: #333333
+
+window.inactive.button.toggled.bg: Parentrelative
+window.inactive.button.toggled.image.color: #666666
+
+
+# OSD
+osd.bg: Flat Soild
+osd.bg.color: #333333
+osd.bg.shadow: 0
+
+osd.hilight.bg: Flat Solid
+osd.hilight.bg.color: #1E90FF
