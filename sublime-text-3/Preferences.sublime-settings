@@ -4,7 +4,7 @@
 	"auto_match_enabled": false,
 	"color_scheme": "Packages/Color Scheme - Default/Twilight.tmTheme",
 	"detect_indentation": true,
-	"font_size": 9,
+	"font_size": 10,
 	"ignored_packages":
 	[
 		"Package Control",
