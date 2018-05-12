@@ -64,6 +64,9 @@ nnoremap <leader>h :noh<CR>
 :set number relativenumber
 :colorscheme minimalist
 
+set guifont=Monospace\ 12
+
+
 autocmd filetype haskell set tabstop=2
 autocmd filetype haskell set softtabstop=2
 autocmd filetype haskell set shiftwidth=2
