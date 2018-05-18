@@ -15,6 +15,7 @@ Plugin 'itchyny/vim-haskell-indent'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'godlygeek/tabular'
 
 " Clone the repo into bundle
 " then run git submodule update --init --recursive
@@ -37,7 +38,7 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " Put the rest of your .vimrc file here
 
-let g:ycm_extra_conf_globlist = ['~/MEGA/Competitive_Programming/.ycm_extra_conf.py']
+let g:ycm_global_ycm_extra_conf = '~/.au_conf/ycm_global_ycm_extra_conf.py'
 set completeopt-=preview
 
 
