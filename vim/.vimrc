@@ -16,6 +16,7 @@ Plugin 'neovimhaskell/haskell-vim'
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'godlygeek/tabular'
+Plugin 'scrooloose/nerdtree'
 
 " Clone the repo into bundle
 " then run git submodule update --init --recursive
@@ -44,6 +45,9 @@ set completeopt-=preview
 
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
+
+
+map <C-n> :NERDTreeToggle<CR>
 
 
 autocmd filetype cpp nnoremap <leader>b :w <bar> !g++ -Wall -DLOCAL -std=c++11 % -o %:r <CR>
