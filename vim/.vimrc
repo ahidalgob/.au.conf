@@ -79,7 +79,5 @@ autocmd filetype haskell set shiftwidth=2
 :augroup END
 
 let g:haskell_indent_disable = 1
-au BufRead,BufNewFile *.x set filetype=haskell
-au BufRead,BufNewFile *.y set filetype=haskell
 
 inoremap {<CR>  {<CR>}<C-c>O
