@@ -64,19 +64,19 @@ nnoremap <leader>h :noh<CR>
 :set number relativenumber
 :colorscheme minimalist
 
-set guifont=Monospace\ 12
-
-
-autocmd filetype haskell set tabstop=2
-autocmd filetype haskell set softtabstop=2
-autocmd filetype haskell set shiftwidth=2
-
-
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
+
+set guifont=Monospace\ 12
+
+set clipboard=unnamedplus
+
+autocmd filetype haskell set tabstop=2
+autocmd filetype haskell set softtabstop=2
+autocmd filetype haskell set shiftwidth=2
 
 let g:haskell_indent_disable = 1
 au BufRead,BufNewFile *.x set filetype=haskell
