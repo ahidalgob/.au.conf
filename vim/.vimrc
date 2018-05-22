@@ -88,3 +88,13 @@ au BufRead,BufNewFile *.x set filetype=haskell
 au BufRead,BufNewFile *.y set filetype=haskell
 
 inoremap {<CR>  {<CR>}<C-c>O
+
+inoremap <c-l> <Right>
+inoremap <c-h> <Left>
+inoremap <c-j> <Down>
+inoremap <c-k> <Up>
+
+inoremap (_) ()<++><Esc>F)i
+inoremap {<bar>} {}<++><Esc>F}i
+inoremap [\] []<++><Esc>F]i
+inoremap <c-Space> <Esc>/<++><CR><Esc>cf>
