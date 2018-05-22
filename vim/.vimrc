@@ -15,6 +15,8 @@ Plugin 'itchyny/vim-haskell-indent'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'godlygeek/tabular'
+Plugin 'scrooloose/nerdtree'
 
 " Clone the repo into bundle
 " then run git submodule update --init --recursive
@@ -37,12 +39,15 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " Put the rest of your .vimrc file here
 
-let g:ycm_extra_conf_globlist = ['~/MEGA/Competitive_Programming/.ycm_extra_conf.py']
+let g:ycm_global_ycm_extra_conf = '~/.au_conf/ycm_global_ycm_extra_conf.py'
 set completeopt-=preview
 
 
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
+
+
+map <C-n> :NERDTreeToggle<CR>
 
 
 autocmd filetype cpp nnoremap <leader>b :w <bar> !g++ -Wall -DLOCAL -std=c++11 % -o %:r <CR>
