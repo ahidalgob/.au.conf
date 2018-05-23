@@ -80,6 +80,7 @@ nnoremap <leader>h :noh<CR>
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
+set guioptions-=T
 if small
     set guifont=Monospace\ 12
 endif
