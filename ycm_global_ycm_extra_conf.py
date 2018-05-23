@@ -1,4 +1,10 @@
+flags = [
+'-Wall',
+#'-stdlib=libc++',
+'-std=c++11',
+'-x', 'c++']
+
 def FlagsForFile( filename, **kwargs ):
   return {
-    'flags': [ '-x', 'c++', '-Wall', '-Wextra', '-Werror' ],
+    'flags': flags
   }
