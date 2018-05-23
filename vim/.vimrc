@@ -43,7 +43,7 @@ filetype plugin indent on    " required
 " let g:ycm_global_ycm_extra_conf = '~/.au_conf/ycm_global_ycm_extra_conf.py'
 "  :(
 
-let small = 0
+let small = 1
 
 set completeopt-=preview
 
