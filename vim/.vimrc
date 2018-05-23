@@ -43,6 +43,8 @@ filetype plugin indent on    " required
 " let g:ycm_global_ycm_extra_conf = '~/.au_conf/ycm_global_ycm_extra_conf.py'
 "  :(
 
+let small = 0
+
 set completeopt-=preview
 
 
@@ -72,20 +74,35 @@ nnoremap <leader>h :noh<CR>
 :set number relativenumber
 :colorscheme minimalist
 
-set clipboard=unnamedplus
-
-
-autocmd filetype haskell set tabstop=2
-autocmd filetype haskell set softtabstop=2
-autocmd filetype haskell set shiftwidth=2
-
-
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
+if small
+    set guifont=Monospace\ 12
+endif
+
+set clipboard=unnamedplus
+
+autocmd filetype haskell set tabstop=2
+autocmd filetype haskell set shiftwidth=0 " Follow 'tabstop'
+autocmd filetype haskell set softtabstop=-1 " Follow 'shiftwidth'
+
 let g:haskell_indent_disable = 1
+au BufRead,BufNewFile *.x set filetype=haskell
+au BufRead,BufNewFile *.y set filetype=haskell
+
+
+inoremap <c-l> <Right>
+inoremap <c-h> <Left>
+inoremap <c-j> <Down>
+inoremap <c-k> <Up>
+
+inoremap (_) ()<++><Esc>F)i
+inoremap {<bar>} {}<++><Esc>F}i
+inoremap [\] []<++><Esc>F]i
+inoremap <c-Space> <Esc>/<++><CR><Esc>:noh<CR>cf>
 
 inoremap {<CR>  {<CR>}<C-c>O
