@@ -103,6 +103,6 @@ inoremap <c-k> <Up>
 inoremap (_) ()<++><Esc>F)i
 inoremap {<bar>} {}<++><Esc>F}i
 inoremap [\] []<++><Esc>F]i
-inoremap <c-Space> <Esc>/<++><CR><Esc>:noh<CR>cf>
+inoremap <c-Space> <Esc>/<++><CR>:noh<CR>"_cf>
 
 inoremap {<CR>  {<CR>}<C-c>O
