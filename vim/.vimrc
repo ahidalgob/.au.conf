@@ -42,7 +42,7 @@ filetype plugin indent on    " required
 " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_global_ycm_extra_conf = '~/.au_conf/ycm_global_ycm_extra_conf.py'
 
-let small = 1
+let small = 0
 
 set completeopt-=preview
 
@@ -79,6 +79,7 @@ nnoremap <leader>h :noh<CR>
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
+set guioptions-=T
 if small
     set guifont=Monospace\ 12
 endif
