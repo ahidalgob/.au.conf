@@ -106,3 +106,6 @@ inoremap [\] []<++><Esc>F]i
 inoremap <c-Space> <Esc>/<++><CR>:noh<CR>"_cf>
 
 inoremap {<CR>  {<CR>}<C-c>O
+
+set hidden
+nnoremap <C-b> :bn<CR>
