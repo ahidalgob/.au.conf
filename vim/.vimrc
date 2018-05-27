@@ -107,10 +107,8 @@ inoremap <c-Space> <Esc>/<++><CR>:noh<CR>"_cf>
 
 inoremap {<CR>  {<CR>}<C-c>O
 
-nnoremap i gi
 nnoremap j gj
 nnoremap k gk
-nnoremap l gl
 
 " Buffers
 set hidden
