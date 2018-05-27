@@ -106,3 +106,16 @@ inoremap [\] []<++><Esc>F]i
 inoremap <c-Space> <Esc>/<++><CR>:noh<CR>"_cf>
 
 inoremap {<CR>  {<CR>}<C-c>O
+
+nnoremap i gi
+nnoremap j gj
+nnoremap k gk
+nnoremap l gl
+
+" Buffers
+set hidden
+nnoremap <C-b><C-b>  :buffers<CR>
+nnoremap <C-b><C-p>  :bprevious<CR>
+nnoremap <C-b><C-n>  :bnext<CR>
+nnoremap <C-b><C-d>  :bdelete<CR>
+:
