@@ -107,6 +107,14 @@ inoremap <c-Space> <Esc>/<++><CR>:noh<CR>"_cf>
 
 inoremap {<CR>  {<CR>}<C-c>O
 
-set hidden                  " Can change non-saved buffers
-nnoremap <C-b> :bn<CR>      " Next buffer
-set nostartofline           " Saves cursor position
+
+nnoremap j gj
+nnoremap k gk
+
+" Buffers
+set hidden
+set nostartofline                       " Saves cursor position
+nnoremap <C-b><C-l>  :buffers<CR>       " Lists all buffres
+nnoremap <C-b><C-p>  :bprevious<CR>     " Previous buffer
+nnoremap <C-b><C-b>  :bnext<CR>         " Next buffer
+nnoremap <C-b><C-d>  :bdelete<CR>       " Delete current buffer
