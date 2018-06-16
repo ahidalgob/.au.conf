@@ -17,6 +17,7 @@ Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
+Plugin 'sheerun/vim-polyglot'
 
 " Clone the repo into bundle
 " then run git submodule update --init --recursive
@@ -71,7 +72,7 @@ set hlsearch
 set incsearch
 nnoremap <leader>h :noh<CR>
 :set number relativenumber
-:colorscheme minimalist
+:colorscheme afterglow
 
 :augroup numbertoggle
 :  autocmd!
