@@ -1,3 +1,5 @@
+:source ~/.vim/local_specific.vim
+
 set nocompatible              " be iMproved, required
 filetype off                  " required <<========== We can turn it on later
 
@@ -10,7 +12,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Go into vim and do :PluginInstall
+" Run > vim +PluginInstall
 Plugin 'itchyny/vim-haskell-indent'
 Plugin 'neovimhaskell/haskell-vim'
 Plugin 'rafi/awesome-vim-colorschemes'
@@ -19,9 +21,9 @@ Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
 
-" Clone the repo into bundle
-" then run git submodule update --init --recursive
-Plugin 'Valloric/YouCompleteMe'
+if light==0
+    Plugin 'Valloric/YouCompleteMe'
+endif
 
 
 " All of your Plugins must be added before the following line
@@ -40,12 +42,11 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " Put the rest of your .vimrc file here
 
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf = '~/.au_conf/ycm_global_ycm_extra_conf.py'
-
-let small = 0
-
-set completeopt-=preview
+if light==0
+    " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+    let g:ycm_global_ycm_extra_conf = '~/.au_conf/ycm_global_ycm_extra_conf.py'
+    set completeopt-=preview
+endif
 
 
 let g:better_whitespace_enabled=1
@@ -54,8 +55,7 @@ let g:strip_whitespace_on_save=1
 
 map <C-n> :NERDTreeToggle<CR>
 
-
-autocmd filetype cpp nnoremap <leader>b :w <bar> !g++ -Wall -DLOCAL -std=c++11 % -o %:r <CR>
+autocmd filetype cpp nnoremap <leader>g++ :w <bar> !g++ -Wall -DLOCAL -std=c++11 % -o %:r <CR>
 autocmd filetype cpp nnoremap <leader>ri :!./%:r < in<CR>
 autocmd filetype cpp nnoremap <leader>rc :!./%:r<CR>
 autocmd filetype cpp nnoremap <leader>rr :!xclip -o > clipin && ./%:r < clipin <CR>
@@ -108,14 +108,29 @@ inoremap <c-Space> <Esc>/<++><CR>:noh<CR>"_cf>
 
 inoremap {<CR>  {<CR>}<C-c>O
 
-
 nnoremap j gj
 nnoremap k gk
 
-" Buffers
+
+set scrolloff=5
+
+"##############################
+"######################Buffers
+"##############################
+" We can leave a buffer with unsaved changes
 set hidden
-set nostartofline                       " Saves cursor position
-nnoremap <C-b><C-l>  :buffers<CR>       " Lists all buffres
-nnoremap <C-b><C-p>  :bprevious<CR>     " Previous buffer
-nnoremap <C-b><C-b>  :bnext<CR>         " Next buffer
-nnoremap <C-b><C-d>  :bdelete<CR>       " Delete current buffer
+
+" Saves cursor position
+set nostartofline
+
+" Lists all buffers
+nnoremap <leader>l       : buffers<CR>
+
+" Previous buffer
+nnoremap <leader><S-Tab> : bprevious<CR>
+
+" Next buffer
+nnoremap <leader><Tab>   : bnext<CR>
+
+" Delete current buffer
+nnoremap <leader>d       : bdelete<CR>
