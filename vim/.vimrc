@@ -17,6 +17,7 @@ Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
+Plugin 'sheerun/vim-polyglot'
 
 " Clone the repo into bundle
 " then run git submodule update --init --recursive
@@ -114,7 +115,7 @@ nnoremap k gk
 " Buffers
 set hidden
 set nostartofline                       " Saves cursor position
-nnoremap <C-b><C-l>  :buffers<CR>       " Lists all buffres
-nnoremap <C-b><C-p>  :bprevious<CR>     " Previous buffer
-nnoremap <C-b><C-b>  :bnext<CR>         " Next buffer
-nnoremap <C-b><C-d>  :bdelete<CR>       " Delete current buffer
+nnoremap <C-b><C-Space> : buffers<CR>   " Lists all buffres
+nnoremap <C-b>h         : bprevious<CR> " Previous buffer
+nnoremap <C-b>l         : bnext<CR>     " Next buffer
+nnoremap <C-b>dd        : bdelete<CR>   " Delete current buffer
