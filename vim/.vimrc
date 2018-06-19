@@ -111,6 +111,7 @@ inoremap {<CR>  {<CR>}<C-c>O
 nnoremap j gj
 nnoremap k gk
 
+set foldmethod=marker
 
 set scrolloff=5
 
