@@ -21,9 +21,13 @@ Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
 
+Plugin 'buftabs'
+
 if light==0
     Plugin 'Valloric/YouCompleteMe'
 endif
+
+" Plugin 'w0rp/ale'
 
 
 " All of your Plugins must be added before the following line
@@ -136,3 +140,5 @@ nnoremap <leader><Tab>   : bnext<CR>
 
 " Delete current buffer
 nnoremap <leader>d       : bdelete<CR>
+
+:let g:buftabs_only_basename=1
