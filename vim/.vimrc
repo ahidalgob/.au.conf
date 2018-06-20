@@ -70,6 +70,7 @@ set number
 set expandtab
 set hlsearch
 set incsearch
+set autoread              " When file changes outside of vim
 nnoremap <leader>h :noh<CR>
 :set number relativenumber
 :colorscheme afterglow
