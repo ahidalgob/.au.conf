@@ -11,6 +11,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
 set editing-mode vi
+set -o vi
 
 if [ -f ~/.au_conf/bash/aliases ]; then
     . ~/.au_conf/bash/aliases
