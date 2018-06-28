@@ -20,6 +20,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdtree'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'airblade/vim-gitgutter'
 
 Plugin 'buftabs'
 
