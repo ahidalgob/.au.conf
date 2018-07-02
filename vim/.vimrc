@@ -60,11 +60,6 @@ let g:strip_whitespace_on_save=1
 
 map <C-n> :NERDTreeToggle<CR>
 
-autocmd filetype cpp nnoremap <leader>g++ :w <bar> !g++ -Wall -DLOCAL -std=c++11 % -o %:r <CR>
-autocmd filetype cpp nnoremap <leader>ri :!./%:r < in<CR>
-autocmd filetype cpp nnoremap <leader>rc :!./%:r<CR>
-autocmd filetype cpp nnoremap <leader>rr :!xclip -o > clipin && ./%:r < clipin <CR>
-
 filetype on
 filetype indent on
 syntax enable
