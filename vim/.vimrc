@@ -17,8 +17,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Plugins {{{2
 
-" Run > vim +PluginInstall
-
 if light==0
     Plugin 'Valloric/YouCompleteMe'
 endif
@@ -30,6 +28,9 @@ Plugin 'sheerun/vim-polyglot'
 
 " graphic undo tree
 Plugin 'sjl/gundo.vim'
+
+" easy visual select
+Plugin 'terryma/vim-expand-region'
 
 " file system explorer
 Plugin 'scrooloose/nerdtree'
@@ -44,12 +45,14 @@ Plugin 'tpope/vim-repeat'
 " airline
 Plugin 'bling/vim-airline'
 
-" tabs-like list of buffers
-" what's the advantage over just airline?
+" tabs-like list of buffers, integrates nicely with airline
 Plugin 'bling/vim-bufferline'
 
 " easy lining up text
 Plugin 'godlygeek/tabular'
+
+" easy commenting lines
+Plugin 'scrooloose/nerdcommenter'
 
 " indent levels
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -86,6 +89,95 @@ filetype plugin indent on    " required
 
 
 " General {{{1
+
+
+filetype on
+filetype plugin indent on " Load indent and plugin files for filetype
+set autoread              " When file changes outside of vim
+set confirm               " Enable dialogs instead of annoying errors
+set autoread              " When file changes outside of vim
+syntax enable
+set number relativenumber
+set history=1500         " REMEMBER
+set lazyredraw            " Don't redraw on macros!
+set ttyfast               " Batch send characters to screen (way faster)
+set clipboard=unnamedplus
+
+set foldmethod=marker
+
+set scrolloff=5
+
+:colorscheme afterglow
+
+
+
+
+
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set number
+set expandtab
+set hlsearch
+set incsearch
+
+nnoremap <leader>h :noh<CR>
+
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+:augroup END
+
+
+inoremap (_) ()<++><Esc>F)i
+inoremap {<bar>} {}<++><Esc>F}i
+inoremap [\] []<++><Esc>F]i
+inoremap <c-Space> <Esc>/<++><CR>:noh<CR>"_cf>
+
+inoremap {<CR>  {<CR>}<C-c>O
+
+nnoremap j gj
+nnoremap k gk
+
+
+
+
+
+" Buffers
+
+set hidden        " We can leave a buffer with unsaved changes
+set nostartofline " Saves cursor position
+
+" Lists all buffers
+nnoremap <leader>l       : buffers<CR>
+
+" Previous buffer
+nnoremap <leader><S-Tab> : bprevious<CR>
+
+" Next buffer
+nnoremap <leader><Tab>   : bnext<CR>
+
+" Delete current buffer
+nnoremap <leader>d       : bdelete<CR>
+
+
+
+
+
+
+
+" TODO this should go to a file specific to gvim (.gvimrc ?)
+set guioptions-=T
+if small
+    set guifont=Monospace\ 12
+endif
+
+
+
+
+
 if light==0
     " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
     let g:ycm_global_ycm_extra_conf = '~/.au_conf/ycm_global_ycm_extra_conf.py'
@@ -109,34 +201,6 @@ let g:bufferline_echo = 0
 
 map <C-n> :NERDTreeToggle<CR>
 
-filetype on
-filetype indent on
-syntax enable
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set number
-set expandtab
-set hlsearch
-set incsearch
-set autoread              " When file changes outside of vim
-nnoremap <leader>h :noh<CR>
-:set number relativenumber
-:colorscheme afterglow
-
-:augroup numbertoggle
-:  autocmd!
-:  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-:  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-:augroup END
-
-" TODO this should go to a file specific to gvim (.gvimrc ?)
-set guioptions-=T
-if small
-    set guifont=Monospace\ 12
-endif
-
-set clipboard=unnamedplus
 
 autocmd filetype haskell set tabstop=2
 autocmd filetype haskell set shiftwidth=0 " Follow 'tabstop'
@@ -147,44 +211,5 @@ au BufRead,BufNewFile *.x set filetype=haskell
 au BufRead,BufNewFile *.y set filetype=haskell
 
 
-inoremap <c-l> <Right>
-inoremap <c-h> <Left>
-inoremap <c-j> <Down>
-inoremap <c-k> <Up>
 
-inoremap (_) ()<++><Esc>F)i
-inoremap {<bar>} {}<++><Esc>F}i
-inoremap [\] []<++><Esc>F]i
-inoremap <c-Space> <Esc>/<++><CR>:noh<CR>"_cf>
 
-inoremap {<CR>  {<CR>}<C-c>O
-
-nnoremap j gj
-nnoremap k gk
-
-set foldmethod=marker
-
-set scrolloff=5
-
-"##############################
-"######################Buffers
-"##############################
-" We can leave a buffer with unsaved changes
-set hidden
-
-" Saves cursor position
-set nostartofline
-
-" Lists all buffers
-nnoremap <leader>l       : buffers<CR>
-
-" Previous buffer
-nnoremap <leader><S-Tab> : bprevious<CR>
-
-" Next buffer
-nnoremap <leader><Tab>   : bnext<CR>
-
-" Delete current buffer
-nnoremap <leader>d       : bdelete<CR>
-
-:let g:buftabs_only_basename=1
