@@ -1,5 +1,8 @@
+" Sets some variables specific to each machine
 :source ~/.vim/local_specific.vim
 
+" Vundle {{{1
+" Vundle Internal {{{2
 set nocompatible              " be iMproved, required
 filetype off                  " required <<========== We can turn it on later
 
@@ -12,25 +15,58 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Run > vim +PluginInstall
-Plugin 'itchyny/vim-haskell-indent'
-Plugin 'neovimhaskell/haskell-vim'
-Plugin 'rafi/awesome-vim-colorschemes'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'godlygeek/tabular'
-Plugin 'scrooloose/nerdtree'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'airblade/vim-gitgutter'
+" Plugins {{{2
 
-Plugin 'buftabs'
+" Run > vim +PluginInstall
 
 if light==0
     Plugin 'Valloric/YouCompleteMe'
 endif
 
+" syntax and indentation support
+Plugin 'sheerun/vim-polyglot'
+
 " Plugin 'w0rp/ale'
 
+" graphic undo tree
+Plugin 'sjl/gundo.vim'
 
+" file system explorer
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+" git magic
+Plugin 'airblade/vim-gitgutter'
+
+" improves . command on some plugins actions
+Plugin 'tpope/vim-repeat'
+
+" airline
+Plugin 'bling/vim-airline'
+
+" tabs-like list of buffers
+" what's the advantage over just airline?
+Plugin 'bling/vim-bufferline'
+
+" easy lining up text
+Plugin 'godlygeek/tabular'
+
+" indent levels
+Plugin 'nathanaelkane/vim-indent-guides'
+
+" distraction-free writing
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+
+
+" Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'danilo-augusto/vim-afterglow'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'chriskempson/tomorrow-theme'
+
+Plugin 'ntpeters/vim-better-whitespace'
+
+" Vundle Internal {{{2
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -47,6 +83,9 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " Put the rest of your .vimrc file here
 
+
+
+" General {{{1
 if light==0
     " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
     let g:ycm_global_ycm_extra_conf = '~/.au_conf/ycm_global_ycm_extra_conf.py'
@@ -56,6 +95,16 @@ endif
 
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
+
+
+
+
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#bufferline#overwrite_variables = 1
+
+let g:bufferline_echo = 0
+
+"let g:indent_guides_enable_on_vim_startup = 1
 
 
 map <C-n> :NERDTreeToggle<CR>
@@ -81,6 +130,7 @@ nnoremap <leader>h :noh<CR>
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
+" TODO this should go to a file specific to gvim (.gvimrc ?)
 set guioptions-=T
 if small
     set guifont=Monospace\ 12
