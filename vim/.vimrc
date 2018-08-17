@@ -24,13 +24,26 @@ endif
 " syntax and indentation support
 Plugin 'sheerun/vim-polyglot'
 
-" Plugin 'w0rp/ale'
+" linting
+Plugin 'w0rp/ale'
+
+" sublime-like multiple cursors
+Plugin 'terryma/vim-multiple-cursors'
+
+" easy motion
+Plugin 'easymotion/vim-easymotion'
 
 " graphic undo tree
 Plugin 'sjl/gundo.vim'
 
 " easy visual select
 Plugin 'terryma/vim-expand-region'
+
+"
+Plugin 'tpope/vim-surround'
+
+"
+Plugin 'tpope/vim-unimpaired'
 
 " file system explorer
 Plugin 'scrooloose/nerdtree'
@@ -39,8 +52,14 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 " git magic
 Plugin 'airblade/vim-gitgutter'
 
+" visual representation of marks
+Plugin 'kshenoy/vim-signature'
+
 " improves . command on some plugins actions
 Plugin 'tpope/vim-repeat'
+
+" navigate seamlessly between vim and tmux splits
+Plugin 'christoomey/vim-tmux-navigator'
 
 " airline
 Plugin 'bling/vim-airline'
@@ -54,7 +73,7 @@ Plugin 'godlygeek/tabular'
 " easy commenting lines
 Plugin 'scrooloose/nerdcommenter'
 
-" indent levels
+" indent levels guides
 Plugin 'nathanaelkane/vim-indent-guides'
 
 " distraction-free writing
@@ -110,7 +129,17 @@ set scrolloff=5
 :colorscheme afterglow
 
 
-
+" TODO
+" Different cursors for different modes. Tmux-compatible
+"if empty($TMUX)
+  "let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  "let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  "let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+"else
+  "let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  "let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  "let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+"endif
 
 
 
@@ -142,7 +171,21 @@ nnoremap j gj
 nnoremap k gk
 
 
+inoremap jk <Esc>
+inoremap kj <Esc>
 
+
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 
 " Buffers
@@ -190,14 +233,19 @@ let g:strip_whitespace_on_save=1
 
 
 
+let g:airline#extensions#tabline#enabled = 1            " enable tabline
+let g:airline#extensions#tabline#tab_min_count = 2      " show tabline when there's more than 1 tab
+let g:airline#extensions#tabline#show_buffers = 0       " disable show buffers when there's only one tab (stronger that the latter)
 
-let g:airline#extensions#bufferline#enabled = 1
-let g:airline#extensions#bufferline#overwrite_variables = 1
+let g:airline#extensions#bufferline#enabled = 1                 " enable bufferline
+let g:airline#extensions#bufferline#overwrite_variables = 1     " pretty colors
 
 let g:bufferline_echo = 0
 
 "let g:indent_guides_enable_on_vim_startup = 1
 
+" Disable tmux navigator when zooming the Vim pane
+let g:tmux_navigator_disable_when_zoomed = 1
 
 map <C-n> :NERDTreeToggle<CR>
 
@@ -206,7 +254,7 @@ autocmd filetype haskell set tabstop=2
 autocmd filetype haskell set shiftwidth=0 " Follow 'tabstop'
 autocmd filetype haskell set softtabstop=-1 " Follow 'shiftwidth'
 
-let g:haskell_indent_disable = 1
+
 au BufRead,BufNewFile *.x set filetype=haskell
 au BufRead,BufNewFile *.y set filetype=haskell
 
