@@ -64,6 +64,9 @@ Plugin 'christoomey/vim-tmux-navigator'
 " airline
 Plugin 'bling/vim-airline'
 
+" generates tmux airline-like line
+Plugin 'edkolev/tmuxline.vim'
+
 " tabs-like list of buffers, integrates nicely with airline
 Plugin 'bling/vim-bufferline'
 
@@ -151,7 +154,7 @@ set expandtab
 set hlsearch
 set incsearch
 
-nnoremap <leader>h :noh<CR>
+nnoremap <silent> <leader>h :noh<CR>
 
 :augroup numbertoggle
 :  autocmd!
@@ -246,6 +249,18 @@ let g:bufferline_echo = 0
 
 " Disable tmux navigator when zooming the Vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
+
+
+" Don't use powerline separators
+let g:tmuxline_powerline_separators = 0
+
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W #F',
+      \'z'    : '#H'}
+
+
 
 map <C-n> :NERDTreeToggle<CR>
 
