@@ -25,7 +25,7 @@ endif
 Plugin 'sheerun/vim-polyglot'
 
 " linting
-Plugin 'w0rp/ale'
+"Plugin 'w0rp/ale'
 
 " sublime-like multiple cursors
 Plugin 'terryma/vim-multiple-cursors'
@@ -124,6 +124,7 @@ set history=1500         " REMEMBER
 set lazyredraw            " Don't redraw on macros!
 set ttyfast               " Batch send characters to screen (way faster)
 set clipboard=unnamedplus
+set mouse=a
 
 set foldmethod=marker
 
@@ -229,6 +230,8 @@ if light==0
     let g:ycm_global_ycm_extra_conf = '~/.au_conf/ycm_global_ycm_extra_conf.py'
     set completeopt-=preview
 endif
+
+nnoremap <leader>fi :YcmCompleter FixIt<CR>
 
 
 let g:better_whitespace_enabled=1
