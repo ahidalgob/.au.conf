@@ -57,9 +57,9 @@ URxvt.background: [92]#000000
 URxvt.iconFile: /usr/share/icons/Numix-Circle/48/apps/xfce-terminal.svg
 
 
-URxvt*font: xft:monospace:size=11:minspace=False, xft:DejaVu Sans:pixelsize=10
-URxvt*boldFont: xft:monospace:size=11:minspace=False, xft:DejaVu Sans:pixelsize=10
-URxvt.letterSpace: -2
+URxvt*font: xft:monospace:size=11:minspace=False, xft:DejaVu Sans:pixelsize=12
+URxvt*boldFont: xft:monospace:size=11:minspace=False, xft:DejaVu Sans:pixelsize=12
+URxvt.letterSpace: -1
 
 
 URxvt.perl-ext-common: ...,font-size
