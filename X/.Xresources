@@ -54,6 +54,7 @@ URxvt.scrollBar: false
 urxvt*depth: 32
 URxvt.background: [92]#000000
 
+URxvt.iconFile: /usr/share/icons/Numix-Circle/48/apps/xfce-terminal.svg
 
 
 URxvt*font: xft:monospace:size=11:minspace=False, xft:DejaVu Sans:pixelsize=10
