@@ -223,20 +223,44 @@ endif
 
 
 
+autocmd filetype haskell set tabstop=2
+autocmd filetype haskell set shiftwidth=0 " Follow 'tabstop'
+autocmd filetype haskell set softtabstop=-1 " Follow 'shiftwidth'
 
 
-if light==0
-    " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-    let g:ycm_global_ycm_extra_conf = '~/.au_conf/vim/ycm_global_ycm_extra_conf.py'
-    set completeopt-=preview
+au BufRead,BufNewFile *.x set filetype=haskell
+au BufRead,BufNewFile *.y set filetype=haskell
+
+
+
+" Plugins {{{1
+
+" Airline {{{2
+
+
+let g:airline_mode_map = {
+            \ '__' : '-',
+            \ 'n'  : 'N',
+            \ 'i'  : 'I',
+            \ 'R'  : 'R',
+            \ 'c'  : 'C',
+            \ 'v'  : 'V',
+            \ 'V'  : 'V',
+            \ '' : 'V',
+            \ 's'  : 'S',
+            \ 'S'  : 'S',
+            \ '' : 'S',
+            \ 't'  : 'T',
+            \ }
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
 endif
+let g:airline_symbols.maxlinenr = ''
 
-nnoremap <leader>fi :YcmCompleter FixIt<CR>
+" let g:airline#extensions#default#section_truncate_width = {}
 
-
-let g:better_whitespace_enabled=1
-let g:strip_whitespace_on_save=1
-
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 
 
 let g:airline#extensions#tabline#enabled = 1            " enable tabline
@@ -246,13 +270,12 @@ let g:airline#extensions#tabline#show_buffers = 0       " disable show buffers w
 let g:airline#extensions#bufferline#enabled = 1                 " enable bufferline
 let g:airline#extensions#bufferline#overwrite_variables = 1     " pretty colors
 
+
+
+" disable bufferline, just use it as an extension for airline
 let g:bufferline_echo = 0
 
-"let g:indent_guides_enable_on_vim_startup = 1
-
-" Disable tmux navigator when zooming the Vim pane
-let g:tmux_navigator_disable_when_zoomed = 1
-
+" Tmuxline {{{2
 
 " Don't use powerline separators
 let g:tmuxline_powerline_separators = 0
@@ -263,18 +286,36 @@ let g:tmuxline_preset = {
       \'cwin' : '#I #W #F',
       \'z'    : '#H'}
 
+" Tmux Navigator {{{2
+
+" Disable tmux navigator when zooming the Vim pane
+let g:tmux_navigator_disable_when_zoomed = 1
 
 
-map <C-n> :NERDTreeToggle<CR>
+
+" Indent Guides {{{2
+
+"let g:indent_guides_enable_on_vim_startup = 1
+
+" NERDTree {{{2
+
+map <leader>n :NERDTreeToggle<CR>
 
 
-autocmd filetype haskell set tabstop=2
-autocmd filetype haskell set shiftwidth=0 " Follow 'tabstop'
-autocmd filetype haskell set softtabstop=-1 " Follow 'shiftwidth'
 
+" YouCompleteMe {{{2
+if light==0
+    " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+    let g:ycm_global_ycm_extra_conf = '~/.au_conf/vim/ycm_global_ycm_extra_conf.py'
+    set completeopt-=preview
+endif
 
-au BufRead,BufNewFile *.x set filetype=haskell
-au BufRead,BufNewFile *.y set filetype=haskell
+nnoremap <leader>fi :YcmCompleter FixIt<CR>
+
+" Better Whitespace {{{2
+
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
 
 
 
