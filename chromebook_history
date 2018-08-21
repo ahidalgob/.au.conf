@@ -1,0 +1,224 @@
+    1  sudo add-apt-repository ppa:numix/ppa
+    3  sudo locale-gen "en_US.UTF-8"
+    4  sudo dpkg-reconfigure locales
+    5  locale
+    8  sudo apt install git
+   15  sh script2.sh 
+   16  yes | sh script2.sh 
+   18  yes | sh script2.sh 
+   19  sudo apt install xmonad libghc-xmonad-contrib-dev
+   21  sudo apt install xmobar
+   22  thunar
+   36  sudo locale-gen "en_US.UTF-8"
+   37  sudo locale-gen "en_US.UTF-8"
+   38  sudo dpkg-reconfigure locales
+   39  history
+   42  sudo apt install stalonetray
+   44  sudo mkdir .xmonad
+   47  ks
+   62  sudo rmdir .xmonad/
+   63  mkdir .xmonad
+   70   
+   71  ÊÌÊÎÌÊÌËÈÌË
+   73  =
+   74  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+   76  setxkbmap us_international
+   77  setxkbmap us_in
+   78  xset rate 250 50
+   79  xset r rate 250 50
+   80  xset r rate 250 200
+   81  xset r rate 250 50
+   82  xset r rate 250 60
+   83  xset r rate 500 60
+   84  xset r rate 300 60
+   85  OOO_FORCE_DESKTOP=gnome
+   87  for i in {1..200}; do mkdir dir$i; done
+   88  var
+   89  env
+   90  env | grep XDG
+  105  mkdir gtk-3.0
+  108  tmux
+  109  env
+  110  env | grep K
+  111  env | grep k
+  112  env | grep us
+  113  setxkbmap us -variant intl
+  114  Programs/Telegram/Telegram &
+  115  . Programs/Telegram/Telegram 
+  116  Programs/Telegram/Telegram 
+  117  Programs/Telegram/Telegram &
+  118  setxkbmap us
+  120  setxkbmap us -variant intl
+  121  xsetroot -cursor_name left_ptr
+  122  xsetroot -cursor_name left_side
+  123  xsetroot -cursor_name left_tree
+  124  xsetroot -cursor_name left_tee
+  125  xsetroot -cursor_name rtl_logo
+  126  xsetroot -cursor_name left_ptr
+  129  xmonad --recompile
+  131  xinit
+  134  xinit
+  136  cp .xsessionrc .xinitrc
+  137  xinit
+  139  cp .xsessionrc .xinitrc
+  140  xinit
+  153  setxkbmap us -variant intl
+  158  man setxkbmap 
+  159  history
+  160  xset r rate 300 60
+  168  tmux
+  169  sudo apt install tmux
+  171  sudo apt autoremove
+  172  tmux
+  178  xset r rate 300 60
+  182  mkdir tmp
+  184  CP M
+  187  python
+  188  xset r rate 300 60
+  189  xinit
+  190  clear
+  192  top
+  197  tmux
+  201  tmux
+  203  xset r rate 300 60
+  204  setxkbmap us --variant intl
+  205  setxkbmap us --var intl
+  206  setxkbmap us -variant intl
+  207  tmux
+  208  mkdir tmp
+  211  mv ~/Downloads/A.cpp 
+  212  mv ~/Downloads/A.cpp  .
+  214  mv A.cpp G.cpp
+  217  awk 'BEGIN{
+  218      s="/\\/\\/\\/\\/\\"; s=s s s s s s s s;
+  219      for (colnum = 0; colnum<77; colnum++) {
+  220          r = 255-(colnum*255/76);
+  221          g = (colnum*510/76);
+  222          b = (colnum*255/76);
+  223          if (g>255) g = 510-g;
+  224          printf "\033[48;2;%d;%d;%dm", r,g,b;
+  225          printf "\033[38;2;%d;%d;%dm", 255-r,255-g,255-b;
+  226          printf "%s\033[0m", substr(s,colnum+1,1);
+  227      }
+  228      printf "\n";
+  229  }'
+  231  tmux --version
+  232  tmux -version
+  233  tmux --ver
+  234  tmux
+  235  man tmux
+  236  tmux -V
+  237  xinit
+  238  xset r rate 300 60
+  239  sudo apt install ristretto
+  246  git checkout -- script2.sh
+  248  thunar 
+  249  sudo apt install maim
+  250  sudo apt update
+  251  sudo apt install maim
+  252  sudo apt-get install build-essential cmake
+  253  sudo apt-get install libimlib2-dev libxrandr-dev libxfixes-dev
+  257  cmake ./
+  262  tmux
+  265  tmux
+  272  tmux
+  273  setxkbmap us -var intl
+  274  setxkbmap us --var intl
+  275  setxkbmap us --variant intl
+  276  setxkbmap us -variant intl
+  277  setxkbmap us --variant intl
+  278  setxkbmap us -variant intl
+  279  scrot -e 'xclip $f && mv $f ~/tmp/shots/'
+  281  rm 2018-08-17-110739_1366x768_scrot.png 
+  284  mkdir shots
+  286  scrot -e 'xclip $f && mv $f ~/tmp/shots/'
+  290  thunar
+  292  man xclip
+  293  xclip 2018-08-17-110813_1366x768_scrot.png 
+  294  xclip -t image/png 2018-08-17-110813_1366x768_scrot.png 
+  295  xclip -selection clipboard -t image/png 2018-08-17-110813_1366x768_scrot.png 
+  296  man xclip
+  326  rm .xmonad/xmonad.hs.swp
+  332  rm .xmonad.hs.swp 
+  337  :q
+  338  tmu
+  339  tmux
+  340  sudo apt install rxvt-unicode
+  341  sudo update-alternatives --config x-terminal-emulator
+  342  xrdb .Xresources 
+  344  tmux
+  351  tmux
+  352  tmux -2
+  354  env
+  355  env | term
+  356  env | grep term
+  357  env | grep TERM
+  364  sudo apt-get install rxvt-unicode-256color
+  365  sudo update-alternatives --config x-terminal-emulator
+  368  tmux
+  371  tmux
+  372  xrdb .Xresources 
+  375  xrdb .Xresources 
+  377  xrdb .Xresources 
+  379  xrdb .Xresources 
+  381  xrdb .Xresources 
+  383  xrdb .Xresources 
+  385  xrdb .Xresources 
+  387  xrdb .Xresources 
+  389  crompton
+  390  compton
+  391  sudo apt install compton
+  393  man compton
+  394  xset r rate 300 60
+  395  man compton
+  396  compton -b
+  397  compton
+  399  top
+  403  man compton
+  406  xrdb .Xresources 
+  407  sudo apt install xcompmgr
+  409  xset r rate 300 60
+  411  xdomap
+  412  xmodmap
+  413  man xmodmap
+  417  xrdb -merge .Xresources 
+  420  fing -name xorg.conf
+  421  find -name xorg.conf
+  422  find -name .xorg.conf
+  423  find -name xorg.conf
+  426  xrdb -merge .Xresources 
+  428  history | grep apt
+  429  sudo apt install rxvt-unicode
+  431  history
+  432  sudo update-alternatives --config x-terminal-emulator
+  433  history | grep apt
+  434  sudo apt install rxvt-unicode-256color
+  435  sudo update-alternatives --config x-terminal-emulator
+  437  env
+  438  env | grep
+  439  env | grep TERM
+  440  :q
+  441  sudo update-alternatives --config x-terminal-emulator
+  442  env | grep TERM
+  444  tmux
+  445  sudo update-alternatives --config x-terminal-emulator
+  455  [A
+  459  xrdb -merge .Xresources 
+  462  xrdb -merge .Xresources 
+  479  urxvt
+  486  mkdir urxvt
+  488  mkdir .uxrvt/ext
+  489  man mkdir
+  490  mkdir -p .uxrvt/ext
+  493  thunar
+  495  mv font-size.txt font-size
+  497  urxvt
+  498  xrdb -merge .Xresources 
+  499  urxvtx
+  500  urxvt
+  507  ct .themes
+  511  urxvt
+  513  thunar
+  514  find -name ".urxvt"
+  515  urxvt
+  519  history

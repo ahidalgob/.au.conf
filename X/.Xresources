@@ -62,5 +62,5 @@ URxvt*boldFont: xft:monospace:size=11:minspace=False, xft:DejaVu Sans:pixelsize=
 URxvt.letterSpace: -1
 
 
-URxvt.perl-ext-common: ...,font-size
+URxvt.perl-ext-common: font-size
 
