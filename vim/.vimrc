@@ -25,7 +25,7 @@ endif
 Plugin 'sheerun/vim-polyglot'
 
 " linting
-"Plugin 'w0rp/ale'
+Plugin 'w0rp/ale'
 
 " sublime-like multiple cursors
 Plugin 'terryma/vim-multiple-cursors'
@@ -319,4 +319,8 @@ let g:strip_whitespace_on_save=1
 
 
 
+" Ale {{{2
 
+" still not configured
+let g:ale_enable=0
+map <leader>aa :ALEToggle<cr>
