@@ -147,6 +147,7 @@ set scrolloff=5
 
 
 
+set autoindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -155,7 +156,7 @@ set expandtab
 set hlsearch
 set incsearch
 
-nnoremap <silent> <leader>h :noh<CR>
+nnoremap <silent> <leader>hh :noh<CR>
 
 :augroup numbertoggle
 :  autocmd!
