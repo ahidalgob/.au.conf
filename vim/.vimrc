@@ -236,6 +236,22 @@ au BufRead,BufNewFile *.y set filetype=haskell
 
 " Plugins {{{1
 
+" Called once right before you start selecting multiple cursors
+function! Multiple_cursors_before()
+    let s:previous_folding=&foldmethod
+    set foldmethod=manual
+
+    let s:old_ycm_whitelist = g:ycm_filetype_whitelist
+    let g:ycm_filetype_whitelist = {}
+endfunction
+
+" Called once only when the multiple selection is canceled
+function! Multiple_cursors_after()
+    let &foldmethod = s:previous_folding
+
+    let g:ycm_filetype_whitelist = s:old_ycm_whitelist
+endfunction
+
 " Airline {{{2
 
 
