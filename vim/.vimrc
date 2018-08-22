@@ -246,7 +246,7 @@ au BufRead,BufNewFile *.y set filetype=haskell
 
 
 " Plugins {{{1
-
+" Multiple Cursors {{{2
 " Called once right before you start selecting multiple cursors
 function! Multiple_cursors_before()
     let s:previous_folding=&foldmethod
@@ -297,8 +297,6 @@ let g:airline#extensions#tabline#show_buffers = 0       " disable show buffers w
 
 let g:airline#extensions#bufferline#enabled = 1                 " enable bufferline
 let g:airline#extensions#bufferline#overwrite_variables = 1     " pretty colors
-
-
 
 " disable bufferline, just use it as an extension for airline
 let g:bufferline_echo = 0
