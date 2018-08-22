@@ -170,7 +170,7 @@ inoremap (_) ()…<Esc>F)i
 inoremap {<bar>} {}…<Esc>F}i
 inoremap [\] []…<Esc>F]i
 
-" Not very aesthetic, works with my maps in urxvt
+" Not very aesthetic, works with my urxvt maps
 inoremap (_^_) ()…<Esc>F)i
 inoremap [_^_] []…<Esc>F]i
 inoremap {_^_} {}…<Esc>F}i
@@ -179,6 +179,10 @@ inoremap "_^_" ""…<Esc>F"i
 
 inoremap <c-Space> <Esc>/…<CR>:noh<CR>"_c1l
 nnoremap <c-Space> /…<CR>:noh<CR>"_c1l
+
+" On some computers (or terminal?) C-Space sends ^@ (Nul)
+inoremap <Nul> <Esc>/…<CR>:noh<CR>"_c1l
+nnoremap <Nul> /…<CR>:noh<CR>"_c1l
 
 inoremap {<CR>  {<CR>}<Esc>O
 
