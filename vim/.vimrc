@@ -166,19 +166,21 @@ nnoremap <silent> <leader>hh :noh<CR>
 
 " Mappings {{{2
 
-inoremap (_) ()<++><C-c>F)i
-inoremap {<bar>} {}<++><C-c>F}i
-inoremap [\] []<++><C-c>F]i
+inoremap (_) ()…<Esc>F)i
+inoremap {<bar>} {}…<Esc>F}i
+inoremap [\] []…<Esc>F]i
 
 " Not very aesthetic, works with my maps in urxvt
-inoremap (_^_) ()…<C-c>F)i
-inoremap [_^_] []…<C-c>F]i
-inoremap {_^_} {}…<C-c>F}i
+inoremap (_^_) ()…<Esc>F)i
+inoremap [_^_] []…<Esc>F]i
+inoremap {_^_} {}…<Esc>F}i
+inoremap <_^_> <>…<Esc>F>i
+inoremap "_^_" ""…<Esc>F"i
 
 inoremap <c-Space> <Esc>/…<CR>:noh<CR>"_c1l
 nnoremap <c-Space> /…<CR>:noh<CR>"_c1l
 
-inoremap {<CR>  {<CR>}<C-c>O
+inoremap {<CR>  {<CR>}<Esc>O
 
 nnoremap j gj
 nnoremap k gk
