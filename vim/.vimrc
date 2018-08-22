@@ -111,7 +111,7 @@ filetype plugin indent on    " required
 
 
 " General {{{1
-
+" idk {{{2
 
 filetype on
 filetype plugin indent on " Load indent and plugin files for filetype
@@ -164,16 +164,25 @@ nnoremap <silent> <leader>hh :noh<CR>
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
+" Mappings {{{2
 
-inoremap (_) ()<++><Esc>F)i
-inoremap {<bar>} {}<++><Esc>F}i
-inoremap [\] []<++><Esc>F]i
-inoremap <c-Space> <Esc>/<++><CR>:noh<CR>"_cf>
+inoremap (_) ()<++><C-c>F)i
+inoremap {<bar>} {}<++><C-c>F}i
+inoremap [\] []<++><C-c>F]i
+
+" Not very aesthetic, works with my maps in urxvt
+inoremap (_^_) ()…<C-c>F)i
+inoremap [_^_] []…<C-c>F]i
+inoremap {_^_} {}…<C-c>F}i
+
+inoremap <c-Space> <Esc>/…<CR>:noh<CR>"_c1l
+nnoremap <c-Space> /…<CR>:noh<CR>"_c1l
 
 inoremap {<CR>  {<CR>}<C-c>O
 
 nnoremap j gj
 nnoremap k gk
+
 
 
 inoremap jk <Esc>
@@ -193,7 +202,7 @@ vnoremap <silent> # :<C-U>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 
-" Buffers
+" Buffers {{{2
 
 set hidden        " We can leave a buffer with unsaved changes
 set nostartofline " Saves cursor position
@@ -212,7 +221,7 @@ nnoremap <leader>d       : bdelete<CR>
 
 
 
-
+" idk {{{2
 
 
 

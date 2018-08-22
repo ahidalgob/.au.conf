@@ -1,4 +1,5 @@
-!
+! General colors {{{1
+! -----------------------------------------
 ! Generated with :
 ! XRDB2Xreources.py
 !
@@ -46,21 +47,35 @@
 
 
 
-! urxvt
-! -----------------------------------------
-
+! urxvt {{{1
+! appearance {{{2
 URxvt.scrollBar: false
 
 urxvt*depth: 32
 URxvt.background: [92]#000000
 
-URxvt.iconFile: /usr/share/icons/Numix-Circle/48/apps/xfce-terminal.svg
-
-
 URxvt*font: xft:monospace:size=11:minspace=False, xft:DejaVu Sans:pixelsize=12
 URxvt*boldFont: xft:monospace:size=11:minspace=False, xft:DejaVu Sans:pixelsize=12
 URxvt.letterSpace: -1
 
-
+! extensions {{{2
 URxvt.perl-ext-common: font-size
 
+! keyboard {{{2
+! might be useful, remaps C-Tab and C-S-Tab
+URxvt.keysym.Control-Tab: \033{
+URxvt.keysym.Control-Shift-ISO_Left_Tab: \033}
+
+!remaps C-(, C-[ and C-{ for easy use in vim
+!not very aesthetic, gona fix it "someday"
+URxvt.keysym.Control-0x28: (_^_)
+URxvt.keysym.Control-0x5B: [_^_]
+URxvt.keysym.Control-0x7b: {_^_}
+
+
+! disable ctrl-shit
+URxvt*iso14755: False
+URxvt*iso14755_52: False
+
+! just for a while
+URxvt.iconFile: /usr/share/icons/Numix-Circle/48/apps/xfce-terminal.svg
