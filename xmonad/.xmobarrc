@@ -1,11 +1,12 @@
 Config {
-        --font = "xft:Terminus-9"
-        font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
+        overrideRedirect = False -- when using a window manager, sometimes xmobar gets covered
+        , font = "xft:Terminus-10"
+        --font = "-*-Fixed-Bold-R-Normal-*-13-*-*-*-*-*-*-*"
         -- font = "xft:MesloLGM:size=8.5:bold:antialias=true"
-        , borderColor = "black"
-        , border = TopB
+
         , bgColor = "black"
         , fgColor = "grey"
+        , alpha = 20
         , position = TopW L 100
         , commands = [  Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
                       , Run Network "eth1" ["-L","0","-H","32","--normal","green","--high","red"] 10
