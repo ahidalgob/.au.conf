@@ -9,7 +9,7 @@ xrdb -merge .Xresources
 xsetroot -cursor_name left_ptr &
 
 # Set up an icon tray
-stalonetray &
+# stalonetray &
 
 # Fire up apps
 
@@ -24,5 +24,8 @@ xset r rate 300 60
 
 compton -b
 #xcompmgr &
+
+
+feh --bg-scale ~/Pictures/Wolfmother-logo-HD-wallpaper-1600x900.jpg
 
 exec xmonad
