@@ -28,7 +28,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'w0rp/ale'
 
 " sublime-like multiple cursors
-Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'terryma/vim-multiple-cursors'
 
 " easy motion
 Plugin 'easymotion/vim-easymotion'
@@ -146,6 +146,12 @@ set scrolloff=5
 "endif
 
 
+" set cursorline only in active window
+augroup CursorLineOnlyInActiveWindow
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup END
 
 set autoindent
 set tabstop=4
