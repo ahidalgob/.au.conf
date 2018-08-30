@@ -9,7 +9,7 @@ xrdb -merge .Xresources
 xsetroot -cursor_name left_ptr &
 
 # Set up an icon tray
-# stalonetray &
+stalonetray &
 
 # Fire up apps
 

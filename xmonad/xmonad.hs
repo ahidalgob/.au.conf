@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
+import XMonad.Hooks.ManageHelpers -- Full Screen
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
@@ -20,9 +21,8 @@ main = do
         , normalBorderColor  = "#cccccc"
         , focusedBorderColor = "#cd8b00"
 
-        , manageHook = manageDocks <+> manageHook defaultConfig
-        , layoutHook = --spacingRaw True (Border 0 10 10 10) True (Border 10 10 10 10) True $
-                       smartBorders $ avoidStruts  $  layoutHook defaultConfig
+        , manageHook = manageDocks <+> (isFullscreen --> doFullFloat) <+> manageHook defaultConfig
+        , layoutHook = smartBorders $ avoidStruts  $  layoutHook defaultConfig
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = hPutStrLn xmproc
                         , ppTitle = xmobarColor "green" "" . shorten 50
@@ -34,4 +34,5 @@ main = do
         , ((mod1Mask, xK_a     ), sendMessage NextLayout >> (curLayout >>= \d->spawn $"xmessage "++d))
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
+        , ((mod1Mask, xK_f), withFocused $ windows . (flip W.float $ W.RationalRect 0 0 1 1))
         ]
