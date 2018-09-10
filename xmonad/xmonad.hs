@@ -18,8 +18,8 @@ main = do
     xmonad $ defaultConfig
         { terminal           = "urxvt -e tmux"
         , borderWidth        = 3
-        , normalBorderColor  = "#cccccc"
-        , focusedBorderColor = "#cd8b00"
+        , normalBorderColor  = "#505050"
+        , focusedBorderColor = "#6c99bb"
 
         , manageHook = manageDocks <+> (isFullscreen --> doFullFloat) <+> manageHook defaultConfig
         , layoutHook = smartBorders $ avoidStruts  $  layoutHook defaultConfig
@@ -30,7 +30,7 @@ main = do
 
         --, modMask = mod4Mask     -- Rebind Mod to the Windows key
         } `additionalKeys`
-        [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock; xset dpms force off")
+        [ ((mod1Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock; xset dpms force off")
         , ((mod1Mask, xK_a     ), sendMessage NextLayout >> (curLayout >>= \d->spawn $"xmessage "++d))
         , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
         , ((0, xK_Print), spawn "scrot")
