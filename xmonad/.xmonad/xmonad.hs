@@ -15,6 +15,7 @@ import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Loggers
+import Graphics.X11.ExtraTypes.XF86
 import Control.Monad
 import System.IO
 import qualified XMonad.StackSet as W
@@ -97,8 +98,11 @@ myWorkspace = clickable $ [ " Net "
                             let n = i ]
 
 myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -b")
-        , ((mod1Mask, xK_f), withFocused $ windows . (flip W.float $ W.RationalRect 0 0 1 1))
-        , ((mod1Mask, xK_q), spawn "killall dzen2; xmonad --recompile; xmonad --restart")
+         , ((mod1Mask, xK_f), withFocused $ windows . (flip W.float $ W.RationalRect 0 0 1 1))
+         , ((mod1Mask, xK_q), spawn "killall dzen2; xmonad --recompile; xmonad --restart")
+         , ((0, xF86XK_AudioLowerVolume ), spawn "amixer set Master 2%-")
+         , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer set Master 2%+")
+         , ((0, xF86XK_AudioMute ), spawn "amixer set Master 2%+")
          ]
 
 myLayout = avoidStruts $ smartBorders (  sGrid ||| sSpiral ||| sCircle ||| sTall ||| Mirror sTall ||| Full )

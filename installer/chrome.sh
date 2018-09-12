@@ -4,4 +4,4 @@ sudo dpkg -i google-chrome*.deb
 
 #If error messages pop up after running the command sudo dpkg -i google-chrome*.deb then run the command
 
-sudo apt-get install -f
+#sudo apt-get install -f
