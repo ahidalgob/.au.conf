@@ -14,7 +14,7 @@ xsetroot -cursor_name left_ptr &
 # Fire up apps
 
 
-xscreensaver -no-splash &
+#xscreensaver -no-splash &
 
 if [ -x /usr/bin/nm-applet ] ; then
    nm-applet --sm-disable &

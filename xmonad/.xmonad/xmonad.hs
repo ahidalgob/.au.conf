@@ -120,13 +120,13 @@ main = do
     xmonad $ defaultConfig
       { manageHook = myApps <+> manageDocks <+> manageHook defaultConfig
       , layoutHook = myLayout
-      --, handleEventHook = mconcat [ docksEventHook, handleEventHook defaultConfig ]
+      , handleEventHook = docksEventHook <+> handleEventHook defaultConfig
       , modMask = mod1Mask
       , workspaces = myWorkspace
       , terminal  = "urxvt -e tmux"
       , focusedBorderColor = myblue2
       , normalBorderColor = "" ++ myblack2 ++ ""
-                                    , borderWidth = 3
-                                    , startupHook = startup <+> setWMName "LG3D"
+      , borderWidth = 3
+      , startupHook = startup <+> setWMName "LG3D" <+> docksStartupHook
       , logHook = myLogHook barAtas
       } `additionalKeys` myKeys
