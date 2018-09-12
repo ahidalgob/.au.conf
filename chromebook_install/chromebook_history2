@@ -1,0 +1,1000 @@
+  995  notify-send -help
+  996  notify-send -h
+  997  notify-send --help
+  998  notify-send -i battery-low "Hello! January"
+  999  notify-send -i battery-low
+ 1000  notify-send -i battery-low "battery low"
+ 1001  notify-send -i battery-low "low battery"
+ 1002  notify-send -i battery-caution "low battery"
+ 1003  notify-send -i battery-caution! "low battery"
+ 1004  notify-send -i battery-caution "low battery"
+ 1005  cd /sys/class/power_supply/BAT0/status
+ 1006  cat /sys/class/power_supply/BAT0/status
+ 1007  cat /sys/class/power_supply/BAT0/present
+ 1008  cat /sys/class/power_supply/BAT0/current_now 
+ 1009  acpi
+ 1010  sudo apt install apci
+ 1011  acpi
+ 1012  sudo apt install acpi
+ 1013  acpi -b | grep -P -o '[0-9]+(?=%)'
+ 1014  man crontab
+ 1015  crontab -e
+ 1016  cd .au_conf/
+ 1017  mkdir scripts
+ 1018  cd script
+ 1019  cd scripts/
+ 1020  ls
+ 1021  vim checkLowBattery
+ 1022  crontab -e
+ 1023  mv checkLowBattery checkLowBattery.sh
+ 1024  vim checkLowBattery.sh 
+ 1025  chmod +x checkLowBattery.sh 
+ 1026  man crontab
+ 1027  crontab -e
+ 1028  ls -l
+ 1029  cd ..
+ 1030  vim xmonad/xmonad.hs 
+ 1031  vim xmonad/.xmobarrc 
+ 1032  cd script
+ 1033  cd scripts/
+ 1034  ./checkLowBattery.sh 
+ 1035  vim checkLowBattery.sh 
+ 1036  ./checkLowBattery.sh 
+ 1037  vim checkLowBattery.sh 
+ 1038  ./checkLowBattery.sh 
+ 1039  who
+ 1040  w
+ 1041  wh
+ 1042  who
+ 1043  w
+ 1044  ./checkLowBattery.sh 
+ 1045  vim checkLowBattery.sh 
+ 1046  ./checkLowBattery.sh 
+ 1047  vim checkLowBattery.sh 
+ 1048  notify-send -i battery-caution! "low battery"
+ 1049  notify-send -i battery-caution "low battery"
+ 1050  vim checkLowBattery.sh 
+ 1051  notify-send -i battery-caution "low battery"
+ 1052  ./checkLowBattery.sh 
+ 1053  w
+ 1054  who
+ 1055  vim checkLowBattery.sh 
+ 1056  ./checkLowBattery.sh 
+ 1057  vim checkLowBattery.sh 
+ 1058  ./checkLowBattery.sh 
+ 1059  vim checkLowBattery.sh 
+ 1060  ./checkLowBattery.sh 
+ 1061  crontab -e
+ 1062  vim checkLowBattery.sh 
+ 1063  ./checkLowBattery.sh 
+ 1064  crontab -e
+ 1065  ls
+ 1066  crontab -e
+ 1067  cd
+ 1068  vim notify-send -i battery-caution 'Hello world!'
+ 1069  vim ~/.au_conf/scripts/checkLowBattery.sh 
+ 1070  crontab -e
+ 1071  .au_conf/scripts/checkLowBattery.sh 
+ 1072  crontab -e
+ 1073  . .au_conf/scripts/checkLowBattery.sh 
+ 1074  dropbox
+ 1075  dropbox status
+ 1076  dropbox start
+ 1077  dropbox start -i
+ 1078  .au_conf/scripts/checkLowBattery.sh 
+ 1079  crontab -e
+ 1080  ls
+ 1081  cat a.out 
+ 1082  rm a.out 
+ 1083  cat battery-caution 
+ 1084  rm battery-caution 
+ 1085  ls
+ 1086  crontab -e
+ 1087  ls
+ 1088  crontab -e
+ 1089  ls
+ 1090  pwd
+ 1091  ls
+ 1092  crontab -e
+ 1093  ls
+ 1094  pgrep cron
+ 1095  sudo service cron start
+ 1096  pgrep cron
+ 1097  ls
+ 1098  pgrep cron
+ 1099  cd .au_conf/
+ 1100  ls
+ 1101  cd script
+ 1102  cd scripts
+ 1103  ls
+ 1104  vim checkLowBattery.sh 
+ 1105  dropbox
+ 1106  cd Downloads/
+ 1107  ls
+ 1108  man gdebi
+ 1109  sudo gdebi-gtk dropbox_2015.10.28_amd64.deb 
+ 1110  vim .xinitrc 
+ 1111  dropbox status
+ 1112  dropbox 
+ 1113  dropbox start
+ 1114  ls
+ 1115  rm file
+ 1116  pgrep cron
+ 1117  vim .xmobarrc 
+ 1118  vim .stalonetrayrc 
+ 1119  dropbox 
+ 1120  dropbox start
+ 1121  vim .xmobarrc 
+ 1122  vim .stalonetrayrc 
+ 1123  vim .xmobarrc 
+ 1124  vim .stalonetrayrc 
+ 1125  cd .au_conf/xmonad/
+ 1126  ls
+ 1127  rm .*.swp
+ 1128  ls -la
+ 1129  vim .stalonetrayrc 
+ 1130  dropbox start
+ 1131  vim .xmobarrc 
+ 1132  vim .xmonad/xmonad.hs
+ 1133  pgrep cron
+ 1134  chkconfig
+ 1135  crontab -e
+ 1136  pgrep cron
+ 1137  ls
+ 1138  sudo crontab -e
+ 1139  crontab -e
+ 1140  sudo crontab -e
+ 1141  crontab -e
+ 1142  vim /etc/crontab 
+ 1143  sudo crontab -e
+ 1144  sudo vim /etc/rc.local 
+ 1145  vim /etc/init/cron.conf 
+ 1146  vim /etc/crontab 
+ 1147  sudo vim /etc/crontab 
+ 1148  crontab -e
+ 1149  sudo crontab -e
+ 1150  ls
+ 1151  rm file
+ 1152  ls
+ 1153  sudo crontab -e
+ 1154  env
+ 1155  pgrep cron
+ 1156  ls
+ 1157  ls | grep less
+ 1158  ls | less
+ 1159  ls
+ 1160  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+ 1161  vim .tmux.conf 
+ 1162  pgrep cron
+ 1163  ls
+ 1164  sleep 2; ls
+ 1165  sleep 10; ls
+ 1166  ls
+ 1167  crontab -e
+ 1168  sudo crontab -e
+ 1169  vim /etc/crontab 
+ 1170  ls
+ 1171  rm file
+ 1172  ls
+ 1173  rm file 
+ 1174  ls
+ 1175  vim .au_conf/scripts/checkLowBattery.sh 
+ 1176  crontab -e
+ 1177  crontab -e
+ 1178  man notify-send
+ 1179  vim .tmux.conf 
+ 1180  tmux source .tmux.conf 
+ 1181  history
+ 1182  history | less
+ 1183  vim .tmux
+ 1184  vim .tmux.conf 
+ 1185  tmux source .tmux.conf 
+ 1186  history | less
+ 1187  tmux source .tmux.conf 
+ 1188  vim .tmux.conf 
+ 1189  tmux source .tmux.conf 
+ 1190  history | less
+ 1191  vim .tmux.conf 
+ 1192  tmux source .tmux.conf 
+ 1193  history | less
+ 1194  vim .tmux.conf 
+ 1195  tmux source .tmux.conf 
+ 1196  history | less
+ 1197  tmux source .tmux.conf 
+ 1198  history | less
+ 1199  vim .tmux.conf 
+ 1200  tmux source .tmux.conf 
+ 1201  history | less
+ 1202  man vim
+ 1203  vim .tmux.conf 
+ 1204  history | less
+ 1205  man vim
+ 1206  cd .au_conf/
+ 1207  ls
+ 1208  git status
+ 1209  git diff tmux/
+ 1210  git add tmux/
+ 1211  git commit -m "added tpm and tmux-better-mouse-mode"
+ 1212  git status
+ 1213  git diff scripts/
+ 1214  ls scripts/
+ 1215  git add scritps
+ 1216  git add scripts/
+ 1217  git commit -m "added low battery script"
+ 1218  git status
+ 1219  git diff xmonad/
+ 1220  git add xmonad/
+ 1221  git status
+ 1222  git diff X/
+ 1223  git add X
+ 1224  git commit -m "stalonetray first fix"
+ 1225  dropbox start
+ 1226  vim .xmobarrc 
+ 1227  ranger
+ 1228  cd Dropbox/Fiverr2/Turing_Machine/
+ 1229  ls
+ 1230  ls tests
+ 1231  diff input_pub\ \(2\).txt tests/input_pub\ \(2\).txt 
+ 1232  rm input_pub\ \(2\).txt 
+ 1233  ls
+ 1234  mv ~/Downloads/turing_machine\ \(8\).c .
+ 1235  mv ~/Downloads/input_pub\ \(6\).txt 
+ 1236  mv ~/Downloads/input_pub\ \(6\).txt .
+ 1237  ls
+ 1238  cd Downloads/
+ 1239  ls
+ 1240  diff input_pub\ \(6\).txt input_pub\ \(6\)\ \(1\).txt 
+ 1241  rm input_pub\ \(6\)\ \(1\).txt 
+ 1242  diff turing_machine\ \(8\).c turing_machine\ \(8\)\ \(1\).c 
+ 1243  rm turing_machine\ \(8\)\ \(1\).c 
+ 1244  ls
+ 1245  rm matplotlib-2.2.3-cp35-cp35m-manylinux1_x86_64.whl.crdownload 
+ 1246  ls
+ 1247  vim readme.md.gz 
+ 1248  ls
+ 1249  ifconfig
+ 1250  ip addr
+ 1251  vim .tmux
+ 1252  vim .tmux.conf 
+ 1253  ls .tmux
+ 1254  ls .tmux/plugins/
+ 1255  vim .tmux.conf 
+ 1256  tmux source ~/.tmux
+ 1257  cd Downloads/
+ 1258  vim readme.md.gz 
+ 1259  cd 
+ 1260  cd Dropbox/Fiverr2/Turing_Machine/
+ 1261  ls
+ 1262  diff turing_machine\ \(8\).c correct_turing_machine.c 
+ 1263  vim turing_machine\ \(8\).c 
+ 1264  vimdiff turing_machine\ \(8\).c correct_turing_machine.c 
+ 1265  vim correct_turing_machine.c 
+ 1266  gcc correct_turing_machine.c -o correct_turing_machine
+ 1267  ./correct_turing_machine tests/input_pub\ \(2\).txt 
+ 1268  ./correct_turing_machine < tests/input_pub\ \(2\).txt 
+ 1269  vim correct_turing_machine.c 
+ 1270  cd Dropbox/Fiverr2/Turing_Machine/
+ 1271  gcc correct_turing_machine.c -o correct_turing_machine
+ 1272  ./correct_turing_machine tests/input_pub\ \(2\).txt 
+ 1273  ./correct_turing_machine < tests/input_pub\ \(2\).txt 
+ 1274  ./correct_turing_machine tests/input_pub\ \(2\).txt 
+ 1275  gcc correct_turing_machine.c -o correct_turing_machine
+ 1276  ./correct_turing_machine tests/input_pub\ \(2\).txt 
+ 1277  gcc correct_turing_machine.c -o correct_turing_machine
+ 1278  ./correct_turing_machine < tests/input_pub\ \(2\).txt 
+ 1279  gcc correct_turing_machine.c -o correct_turing_machine
+ 1280  ./correct_turing_machine < tests/input_pub\ \(2\).txt 
+ 1281  gcc correct_turing_machine.c -o correct_turing_machine
+ 1282  ./correct_turing_machine < tests/input_pub\ \(2\).txt 
+ 1283  gcc correct_turing_machine.c -o correct_turing_machine
+ 1284  ./correct_turing_machine < tests/input_pub\ \(2\).txt 
+ 1285  gcc correct_turing_machine.c -o correct_turing_machine
+ 1286  ./correct_turing_machine < tests/input_pub\ \(2\).txt 
+ 1287  gcc correct_turing_machine.c -o correct_turing_machine
+ 1288  ./correct_turing_machine < tests/input_pub\ \(2\).txt 
+ 1289  gcc correct_turing_machine.c -o correct_turing_machine
+ 1290  ./correct_turing_machine < tests/input_pub\ \(2\).txt 
+ 1291  cd .vim/bundle/YouCompleteMe/
+ 1292  history
+ 1293  ./install.py --clang-completer
+ 1294  :q
+ 1295  cd Projects/tensorflow2/
+ 1296  . venv/bin/activate
+ 1297  env
+ 1298  env | grep PWD
+ 1299  cd -
+ 1300  cd /root/
+ 1301  cd /etc
+ 1302  ls
+ 1303  cd ~/tmp
+ 1304  cd -
+ 1305  cd ..
+ 1306  pwd
+ 1307  env
+ 1308  env | grep PWD
+ 1309  echo $PWD
+ 1310  cd $(OLDPWD)
+ 1311  cd $OLDPWD
+ 1312  cd /etc
+ 1313  cd ~/tmp/
+ 1314  cd $OLDPWD
+ 1315  cd ~/Projects/tensorflow2/
+ 1316  vim regression.py 
+ 1317  cd Projects/tensorflow2/
+ 1318  cp ~/tmp/sara/regression.py .
+ 1319  pip freeze
+ 1320  . venv/bin/activate
+ 1321  pip freeze
+ 1322  python regression.py 
+ 1323  cd tmp/sara/
+ 1324  ls
+ 1325  cd ..
+ 1326  ls
+ 1327  cd ..
+ 1328  ls
+ 1329  cd tmp/
+ 1330  ls
+ 1331  ls sara/
+ 1332  ls
+ 1333  cd sara/
+ 1334  ls
+ 1335  vim regression.py
+ 1336  ls
+ 1337  ls -a
+ 1338  rm .*.swp
+ 1339  ls
+ 1340  cd
+ 1341  ls
+ 1342  cd Projects/tensorflow
+ 1343  ls
+ 1344  . venv/bin/activate
+ 1345  ls
+ 1346  pip freeze
+ 1347  cp ~/tmp/sara/regression.py .
+ 1348  ls
+ 1349  python regression.py 
+ 1350  vim regression.py 
+ 1351  cd Projects/tensorflow/
+ 1352  . venv/bin/activate
+ 1353  ls
+ 1354  python
+ 1355  python regression.py 
+ 1356  python
+ 1357  python regression.py 
+ 1358  vim .vimrc 
+ 1359  cd Projects/tensorflow
+ 1360  . venv/bin/activate
+ 1361  python regression.py 
+ 1362  ls
+ 1363  python regression.py 
+ 1364  ls
+ 1365  python range.py > eval.csv
+ 1366  mv eval.csv test.csv
+ 1367  ls
+ 1368  python regression.py 
+ 1369  :q
+ 1370  cd Projects/tensorflow2/
+ 1371  ls
+ 1372  . venv/bin/activate
+ 1373  ls
+ 1374  vim regression.py 
+ 1375  python regression.py 
+ 1376  vim regression.py 
+ 1377  python regression.py 
+ 1378  ls
+ 1379  vim regression.py 
+ 1380  cd Projects/tensorflow2/
+ 1381  . venv/bin/activate
+ 1382  ls
+ 1383  python regression.py 
+ 1384  ls
+ 1385  ls saragus/
+ 1386  man rm
+ 1387  ls
+ 1388  python range.py 
+ 1389  python range.py > data.cvs-1
+ 1390  python range.py > data.cvs-2
+ 1391  python range.py > data.cvs-3
+ 1392  python range.py
+ 1393  ls
+ 1394  for i in {1,3}; do echo $i; done 
+ 1395  for i in {1..3}; do echo $i; done 
+ 1396  for i in {1..3}; do mv data.cvs-$i data-$i.cvs; done 
+ 1397  ls
+ 1398  python regression.py 
+ 1399  ls
+ 1400  rmdir saragus/
+ 1401  rm -r saragus/
+ 1402  python regression.py 
+ 1403  ls
+ 1404  for i in {1..3}; do mv data-$i.cvs data-$i.csv; done 
+ 1405  python regression.py 
+ 1406  echo -n hola
+ 1407  echo -n hola 
+ 1408  echo -n "hola "
+ 1409  for n in {0..10}; do
+ 1410  for n in {0..10}; do echo -n "te amo"; for i in {1..$n}; do echo -n " mucho"; done; echo -n " mas"; done
+ 1411  for n in {0..10}; do echo -n "te amo"; for i in {1..$n}; do echo -n " mucho"; done; echo " mas"; done
+ 1412  for n in {0..10}; do echo -n "te amo"; for i in {1..2}; do echo -n " mucho"; done; echo " mas"; done
+ 1413  for n in {0..10}; do echo -n "te amo"; for i in {1..3}; do echo -n " mucho"; done; echo " mas"; done
+ 1414  for n in {0..10}; do echo -n "te amo"; for i in {1..$(n)}; do echo -n " mucho"; done; echo " mas"; done
+ 1415  for n in {0..10}; do echo -n "te amo"; for i in {1..$n}; do echo -n " mucho"; done; echo " mas"; done
+ 1416  for n in {0..10}; do echo -n "te amo"; for i in "{1..$n}"; do echo -n " mucho"; done; echo " mas"; done
+ 1417  for n in {0..10}; do echo -n "te amo"; for i in {1..$n}; do echo -n " mucho"; done; echo " mas"; done
+ 1418  for n in {0..10}; do echo -n "te amo"; for i in {1.."$n"}; do echo -n " mucho"; done; echo " mas"; done
+ 1419  for n in {0..10}; do echo -n "te amo"; for i in {1.."$n"}; do echo -n " mucho $i"; done; echo " mas"; done
+ 1420  for n in {0..10}; do echo -n "te amo"; for i in {1..$n}; do echo -n " mucho $i"; done; echo " mas"; done
+ 1421  for n in {0..10}; do echo -n "te amo"; for i in "{1..$n}"; do echo -n " mucho $i"; done; echo " mas"; done
+ 1422  for n in {0..10}; do echo -n "te amo"; for i in '{1..$n}'; do echo -n " mucho $i"; done; echo " mas"; done
+ 1423  for n in {0..10}; do echo -n "te amo"; for i in "{1..$n}"; do echo -n " mucho $i"; done; echo " mas"; done
+ 1424  for n in {0..10}; do echo -n "te amo"; for i in "1..$n"; do echo -n " mucho $i"; done; echo " mas"; done
+ 1425  for n in 0..10; do echo -n "te amo"; for i in "1..$n"; do echo -n " mucho $i"; done; echo " mas"; done
+ 1426  for n in {0..10}; do echo -n "te amo"; for i in {1..$n}; do echo -n " mucho $i"; done; echo " mas"; done
+ 1427  for n in {0..10}; do echo -n "te amo"; for i in ${1..$n}; do echo -n " mucho $i"; done; echo " mas"; done
+ 1428  for n in {0..10}; do echo -n "te amo"; for i in $(seq 1 $n); do echo -n " mucho $i"; done; echo " mas"; done
+ 1429  for n in {0..10}; do echo -n "te amo"; for i in $(seq 1 $n); do echo -n " mucho"; done; echo " mas"; done
+ 1430  for n in $(seq 0 10)\; do echo -n "te amo"; for i in $(seq 1 $n); do echo -n " mucho"; done; echo " mas"; done
+ 1431  for n in $(seq 0 10); do echo -n "te amo"; for i in $(seq 1 $n); do echo -n " mucho"; done; echo " mas"; done
+ 1432  scrot -s
+ 1433  ls
+ 1434  thunar
+ 1435  scrot -s
+ 1436  ls
+ 1437  rm 2018-08-31-110628_1129x277_scrot.png 
+ 1438  ls
+ 1439  cd Downloads/Telegram\ Desktop/
+ 1440  vim regression\ \(2\).py 
+ 1441  vim Downloads/Telegram\ Desktop/regression\ \(2\).py 
+ 1442  vim regression\ \(2\).py 
+ 1443  vim Downloads/Telegram\ Desktop/regression\ \(2\).py 
+ 1444  cd
+ 1445  vim Downloads/Telegram\ Desktop/regression\ \(2\).py 
+ 1446  tmux
+ 1447  vim Downloads/Telegram\ Desktop/regression\ \(2\).py 
+ 1448  vim Downloads/Telegram\ Desktop/regression\ \(2\).py 
+ 1449  tmux
+ 1450  cd Projects/tensorflow/
+ 1451  . venv/bin/activate
+ 1452  ls
+ 1453  rm 2018-08-31-12*
+ 1454  ls
+ 1455  vim regression2.py 
+ 1456  vim regression.py 
+ 1457  vim regression2.py 
+ 1458  ls -a
+ 1459  rm .*.swp
+ 1460  vim regression2.py 
+ 1461  cp ~/Downloads/Telegram\ Desktop/regression.py regression3.py
+ 1462  vim regression3.py 
+ 1463  rm ~/Downloads/Telegram\ Desktop/regression.py 
+ 1464  mv ~/Downloads/Telegram\ Desktop/regression\ \(2\).py regression3.py
+ 1465  ls
+ 1466  vim regression3.py 
+ 1467  python regression3.py 
+ 1468  scrot -s
+ 1469  vim regression3.py 
+ 1470  cd Projects/tensorflow
+ 1471  . venv/bin/activate
+ 1472  vim range.py 
+ 1473  vim data-1.csv 
+ 1474  python regression2.py 
+ 1475  rm -r saragus/
+ 1476  python regression2.py 
+ 1477  ls
+ 1478  ls regression_model/
+ 1479  python regression2.py 
+ 1480  ls regression_model/
+ 1481  rm -r regression_model/
+ 1482  python regression2.py 
+ 1483  ls regression_model/
+ 1484  python regression2.py 
+ 1485  ls regression_model/
+ 1486  python regression3.py 
+ 1487  scrot -s
+ 1488  urxvt
+ 1489  python regression3.py 
+ 1490  scrot -s
+ 1491  ls
+ 1492  cp test.csv predict.csv
+ 1493  python regression3.py 
+ 1494  scrot -s
+ 1495  python regression3.py 
+ 1496  vim predict.csv 
+ 1497  head -n 4 predict.csv 
+ 1498  head -n 4 test.csv 
+ 1499  cp test.csv predict.csv 
+ 1500  vim Projects/tensorflow/regression.py 
+ 1501  vim .tmux
+ 1502  vim .tmux.conf 
+ 1503  vim Projects/tensorflow/regression.py 
+ 1504  vim .tmux.conf 
+ 1505  history
+ 1506  vim .tmux.conf 
+ 1507  vim Projects/tensorflow/regression.py 
+ 1508  vim .tmux.conf 
+ 1509  vim Projects/tensorflow/regression3.py 
+ 1510  vim Projects/tensorflow/regression.py 
+ 1511  infocmp tmux
+ 1512  cat <<EOF|tic -x -
+ 1513  tmux|tmux terminal multiplexer,
+ 1514  ritm=\E[23m, rmso=\E[27m, sitm=\E[3m, smso=\E[7m, Ms@,
+ 1515  use=xterm+tmux, use=screen,
+ 1516  tmux-256color|tmux with 256 colors,
+ 1517  use=xterm+256setaf, use=tmux,
+ 1518  EOF
+ 1519  infocmp tmux
+ 1520  cat <<EOF|tic -x -
+ 1521  tmux|tmux terminal multiplexer,
+ 1522      ritm=\E[23m, rmso=\E[27m, sitm=\E[3m, smso=\E[7m, Ms@,
+ 1523      use=xterm+tmux, use=screen,
+ 1524  tmux-256color|tmux with 256 colors,
+ 1525      use=xterm+256setaf, use=tmux,
+ 1526  EOF
+ 1527  infocmp tmux
+ 1528  vim 
+ 1529  vim .tmux.conf 
+ 1530  export TERM="xterm-256color"
+ 1531  vim
+ 1532  export TERM="xterm-256color"
+ 1533  vim
+ 1534  vim .au_conf/bash/bashrcConfig 
+ 1535  cat <<EOF|tic -x -
+ 1536  tmux|tmux terminal multiplexer,
+ 1537      ritm=\E[23m, rmso=\E[27m, sitm=\E[3m, smso=\E[7m, Ms@,
+ 1538      use=xterm+tmux, use=screen,
+ 1539  tmux-256color|tmux with 256 colors,
+ 1540      use=xterm+256setaf, use=tmux,
+ 1541  EOF
+ 1542  infocmp tmux
+ 1543  ls
+ 1544  vim .tmux.conf 
+ 1545  vim
+ 1546  vim Projects/tensorflow/regression.py 
+ 1547  cd .au_conf/
+ 1548  git diff
+ 1549  git status
+ 1550  git add bash/bashrcConfig tmux/.tmux.conf 
+ 1551  git commit -m "italics and keep 256 colors (also navigator to plugin)"
+ 1552  git status
+ 1553  git diff
+ 1554  git add xmonad/.xmobarrc 
+ 1555  git commit -m "no ethernet status in xmobar for now"
+ 1556  git push
+ 1557  man xmobar
+ 1558  less  /usr/share/doc/xmobar/readme.md.gz
+ 1559  vim .xmobarrc 
+ 1560  ls
+ 1561  vim .xmobarrc 
+ 1562  cd .au_conf/
+ 1563  git diff
+ 1564  git checkout -- xmonad/.xmobarrc
+ 1565  mkdir -f MEGA/Competitive_Programming/Code2
+ 1566  man mkdir
+ 1567  mkdir -p MEGA/Competitive_Programming/Code2
+ 1568  cd MEGA/Competitive_Programming/Code2
+ 1569  vim template.cpp
+ 1570  cd Dropbox/tmp/
+ 1571  ls
+ 1572  mkdir 438
+ 1573  cd 438/
+ 1574  CP F
+ 1575  ls
+ 1576  CP F
+ 1577  vim F.cpp 
+ 1578  mkdir -p .mpv/config
+ 1579  cd .mpv/config/
+ 1580  ls
+ 1581  cd ..
+ 1582  rm -r config/
+ 1583  vim config
+ 1584  vo
+ 1585  volume set 100
+ 1586  sudo apt install rar
+ 1587  man urxvt
+ 1588  urxvt -kuake
+ 1589  cd Dropbox/tmp/
+ 1590  ls
+ 1591  mkdir codefest18
+ 1592  cd codefest18/
+ 1593  CP E
+ 1594  vim E
+ 1595  vim E.cpp 
+ 1596  vim .xmobarrc 
+ 1597  volume set 80
+ 1598  scrot -s
+ 1599  volume set 100
+ 1600  volume set 80
+ 1601  volume set 70
+ 1602  cd Downloads/Telegram\ Desktop/
+ 1603  ls
+ 1604  g++ e.cpp -o e
+ 1605  g++ -std=c++11 e.cpp -o e
+ 1606  ./e < in 
+ 1607  cd Downloads/Telegram\ Desktop/
+ 1608  ls
+ 1609  vim e.cpp 
+ 1610  ls
+ 1611  cd ..
+ 1612  ls
+ 1613  cd 
+ 1614  ls
+ 1615  ls Desktop/
+ 1616  cd Downloads/Telegram\ Desktop/
+ 1617  ls
+ 1618  vim e.cpp 
+ 1619  colorblock
+ 1620  sudo apt install colorblock
+ 1621  feh --bg-scale ~/Pictures/futuristic-city-wallpaper-10.jpg
+ 1622  man feh
+ 1623  vim .xmobarrc 
+ 1624  vim .stalonetrayrc 
+ 1625  man stalonetray
+ 1626  feh --bg-scale ~/Pictures/Wolfmother-logo-HD-wallpaper-1600x900.jpg
+ 1627  man xmobar
+ 1628  ls
+ 1629  ls Pictures/
+ 1630  vim .xinitrc 
+ 1631  vim .stalonetrayrc 
+ 1632  vim .xmobarrc 
+ 1633  thunar
+ 1634  scrot -s
+ 1635  ls
+ 1636  thunar
+ 1637  scrot -s
+ 1638  cd Dropbox/tmp/
+ 1639  ls
+ 1640  cd cd 438/
+ 1641  cd 438/
+ 1642  ls
+ 1643  vim F.cpp 
+ 1644  scrot -
+ 1645  scrot -s
+ 1646  vim F.cpp 
+ 1647  scrot -s
+ 1648  vim .xmonad/xmonad.hs
+ 1649  volume set 100
+ 1650  volume set 80
+ 1651  volume set 90
+ 1652  volume set 80
+ 1653  volume set 90
+ 1654  scrot -s
+ 1655  volume set 90
+ 1656  volume set 100
+ 1657  vim
+ 1658  volume set 70
+ 1659  volume set 100
+ 1660  git --ver
+ 1661  git --version 
+ 1662  vim .xmonad/xmonad.hs
+ 1663  scrotd
+ 1664  sudo apt install scrotd
+ 1665  sudo apt update
+ 1666  scrot -s
+ 1667  python
+ 1668  vim .tmux
+ 1669  vim .tmux.conf 
+ 1670  cd Dropbox/tmp/
+ 1671  ls
+ 1672  mkdir ed_50
+ 1673  cd ed_
+ 1674  cd ed_50/
+ 1675  CP A B C D E
+ 1676  vim A.cpp 
+ 1677  vim B.cpp 
+ 1678  vim C.cpp 
+ 1679  vim D.cpp 
+ 1680  cd Dropbox/tmp/ed_50
+ 1681  xprop
+ 1682  vim .tmux
+ 1683  vim .tmux.conf 
+ 1684  history
+ 1685  dzen2
+ 1686  sudo apt install dzen2
+ 1687  dzen2
+ 1688  dzen2 -x '1440' -y '0' -h '24' -w '640' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1689  dzen2
+ 1690  man dzen2
+ 1691  dzen2 -x '1440' -y '0' -h '24' -w '640' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1692  dzen2 -x '2440' -y '0' -h '24' -w '640' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1693  dzen2 -x '1440' -y '0' -h '24' -w '840' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1694  dzen2 -y '0' -h '24' -w '840' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1695  dzen2 -y '20' -h '24' -w '840' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1696  dzen2 -x '0' -y '0' -h '24' -w '840' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1697  dzen2 -x '2000' -y '0' -h '24' -w '840' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1698  man dzen2
+ 1699  dzen2 -x '2000' -y '0' -h '24' -w '840' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1700  dzen2 -x '2000' -y '20' -h '24' -w '840' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1701  dzen2 -x '2000' -y '40' -h '24' -w '840' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1702  dzen2 -x '2000' -y '40' -h '24' -w '840' -ta 'r' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1703  dzen2 -x '1440' -y '0' -h '24' -w '640' -ta 'l' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1704  dzen2 -x '1440' -y '0' -h '24' -w '640' -ta 'r' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1705  dzen2 -x '2440' -y '0' -h '24' -w '640' -ta 'r' -fg '#FFFFFF' -bg '#1B1D1E'
+ 1706  dzen2 -x '2440' -y '0' -h '24' -w '640' -ta 'r' -fg '#FFFFFF' -bg '#1B1D1E' &
+ 1707  kill dzen2
+ 1708  kill -9 8033
+ 1709  kill -9 8064
+ 1710  dzen2 -x '0' -y '0' -w '960' -h '16' -ta 'l'
+ 1711  dzen2 -x '960' -y '0' -w '960' -h '16' -ta 'r'
+ 1712  dzen2 -x '2440' -y '0' -h '24' -w '640' -ta 'r' 
+ 1713  dzen2 -x '960' -y '0' -h '24' -w '640' -ta 'r' 
+ 1714  dzen2 -x '1000' -y '0' -h '24' -w '640' -ta 'r' 
+ 1715  dzen2 -x '1200' -y '0' -h '24' -w '640' -ta 'r' 
+ 1716  dzen2 -x '1300' -y '0' -h '24' -w '640' -ta 'r' 
+ 1717  dzen2 -x '14]00' -y '0' -h '24' -w '640' -ta 'r' 
+ 1718  dzen2 -x '1400' -y '0' -h '24' -w '640' -ta 'r' 
+ 1719  dzen2 -x '1500' -y '0' -h '24' -w '640' -ta 'r' 
+ 1720  dzen2 -x '1900' -y '0' -h '24' -w '640' -ta 'r' 
+ 1721  vim .xinitrc 
+ 1722  feh --bg-scale ~/Dropbox/wallhaven-369261.jpg 
+ 1723  feh --bg-scale ~/Dropbox/wallhaven-311081.jpg 
+ 1724  feh --bg-scale ~/Dropbox/wallhaven-369261.jpg 
+ 1725  feh --bg-scale ~/Dropbox/wallhaven-599189.png 
+ 1726  feh --bg-scale ~/Dropbox/wallhaven-6
+ 1727  feh --bg-scale ~/Dropbox/wallhaven-651337.jpg 
+ 1728  feh --bg-scale ~/Dropbox/wallhaven-686572.png 
+ 1729  feh --bg-scale ~/Dropbox/wallhaven-674454.jpg 
+ 1730  man feh
+ 1731  feh --bg- ~/Dropbox/wallhaven-674454.jpg 
+ 1732  feh --bg-scale ~/Dropbox/wallhaven-674454.jpg 
+ 1733  feh --bg-scale ~/Dropbox/wallhaven-369261.jpg 
+ 1734  feh --bg-fill ~/Dropbox/wallhaven-369261.jpg 
+ 1735  feh --bg-scale ~/Dropbox/wallhaven-686572.png 
+ 1736  feh --bg-fill ~/Dropbox/wallhaven-686572.png 
+ 1737  feh --bg-fill ~/Dropbox/wallhaven-651337.jpg 
+ 1738  feh --bg-scale ~/Dropbox/wallhaven-651337.jpg 
+ 1739  feh --bg-fill ~/Dropbox/wallhaven-651337.jpg 
+ 1740  feh --bg-scale ~/Dropbox/wallhaven-686572.png 
+ 1741  feh --bg-fill ~/Dropbox/wallhaven-369261.jpg 
+ 1742  vim .xmonad/xmonad.hs 
+ 1743  vim .Xresources 
+ 1744  ls
+ 1745  cd .icons/
+ 1746  ls
+ 1747  rm *
+ 1748  ls
+ 1749  ls stlarch/
+ 1750  vim .xmonad/.conky_dzen
+ 1751  cd tmp/
+ 1752  git clone https://github.com/anantpaatra/hakasefal-xmonad-dotfiles
+ 1753  cd hakasefal-xmonad-dotfiles/
+ 1754  ls
+ 1755  cd colorNana/
+ 1756  ls
+ 1757  cd .xmonad/
+ 1758  ls
+ 1759  cp -r icons/ ~/.xmonad/
+ 1760  cp -r scripts/ ~/.xmonad/
+ 1761  ls ~/.xmonad/
+ 1762  cd .xmonad/
+ 1763  ls
+ 1764  cd scripts/
+ 1765  ls
+ 1766  vim
+ 1767  volume set 0
+ 1768  volume set 100
+ 1769  volume set 80
+ 1770  vim .Xresources 
+ 1771  scrot -s
+ 1772  man dzen
+ 1773  man dzen2
+ 1774  dropbox start
+ 1775  conky
+ 1776  sudo apt install conky
+ 1777  xdotool
+ 1778  sudo apt install xdotool
+ 1779  cd .xmonad/
+ 1780  vim xmonad2.hs
+ 1781  mv xmonad.hs back_xmonad.hs
+ 1782  mv xmonad2.hs xmonad.hs
+ 1783  vim xmonad.hs
+ 1784  mv xmonad.hs back_xmonad2.hs 
+ 1785  vim xmonad.hs
+ 1786  vim tmp/xmonad/src/
+ 1787  cd tmp/xmonad/src/
+ 1788  ls
+ 1789  cd XMonad
+ 1790  ls
+ 1791  vim StackSet.hs 
+ 1792  rm .StackSet.hs.swp 
+ 1793  vim StackSet.hs 
+ 1794  cd .xmonad/
+ 1795  ls
+ 1796  cd scripts/
+ 1797  ls
+ 1798  vim .
+ 1799  ls
+ 1800  cd ..
+ 1801  ls
+ 1802  mv xmonad.hs back_xmonad3.hs
+ 1803  cp back_xmonad.hs xmonad.hs
+ 1804  cp back_xmonad3.hs xmonad.hs
+ 1805  killall stalonetray
+ 1806  cd tmp/
+ 1807  git clone https://github.com/kniren/dotfiles
+ 1808  cd dotfiles/xmonad/dzen/icons/
+ 1809  ls
+ 1810  cp -r stlarch/ ~/.icons/
+ 1811  cp -r stlarch/ ~/.icons/stlarch
+ 1812  cd stlarch/
+ 1813  vim
+ 1814  cd
+ 1815  scrot
+ 1816  ls
+ 1817  scrot
+ 1818  vim .xinitrc 
+ 1819  vim .xmonad/xmonad.hs 
+ 1820  cd .xmonad/
+ 1821  vim xmonad.hs
+ 1822  ls
+ 1823  mv xmonad.hs back_xmonad3.hs 
+ 1824  cp back_xmonad2.hs xmonad.hs
+ 1825  cp back_xmonad1.hs xmonad.hs
+ 1826  cp back_xmonad.hs xmonad.hs
+ 1827  cp back_xmonad3.hs xmonad.hs
+ 1828  vim xmonad.hs 
+ 1829  vim .xmonad/xmonad.hs
+ 1830  man dzen
+ 1831  man dzen2
+ 1832  dzen -dock
+ 1833  dzen2 -dock
+ 1834  cd .xmonad/
+ 1835  vim xmonad.hs 
+ 1836  vim scripts/ 
+ 1837  vim xmonad.hs 
+ 1838  vim .xmonad/xmonad.hs 
+ 1839  cd .xmonad/
+ 1840  cd scripts/
+ 1841  vim .
+ 1842  cd .xmonad/
+ 1843  vim xmonad.hs
+ 1844  xsetroot -cursor_name left_ptr &
+ 1845  kill -9 11860
+ 1846  vim .xmonad
+ 1847  vim .xmonad/scripts/autostart.sh 
+ 1848  conky 
+ 1849  man strftime
+ 1850  man dmenu
+ 1851  dmenu -v
+ 1852  man dmenu
+ 1853  cd .xmonad/scripts/
+ 1854  vim dzenconky_
+ 1855  vim dzenconky_1 
+ 1856  man conky
+ 1857  man strftime
+ 1858  strftime
+ 1859  cd .au_conf/
+ 1860  ls
+ 1861  git diff
+ 1862  vim .xmonad/xmonad.hs
+ 1863  ls
+ 1864  cd .xmonad/scripts/
+ 1865  ls
+ 1866  vim dzenconky_1 
+ 1867  vim dzenconky_2 
+ 1868  vim dzen_info_1.sh 
+ 1869  vim dzen_info_2.sh 
+ 1870  ls
+ 1871  vim dzen_menu.sh 
+ 1872  vim dzen_info_2.sh 
+ 1873  vim dzenconky_2 
+ 1874  volume get
+ 1875  vim func_volume.sh 
+ 1876  cd ..
+ 1877  ls
+ 1878  vim xmonad.hs
+ 1879  scrot -s
+ 1880  cd tmp/
+ 1881  ls
+ 1882  thunar
+ 1883  scrot
+ 1884  cd tmp/
+ 1885  ls
+ 1886  vim G.cpp 
+ 1887  cd tmp/
+ 1888  python3 gen.py 
+ 1889  python3 gen.py > in
+ 1890  ls
+ 1891  mv ~/Downloads/Telegram\ Desktop/practice.cpp .
+ 1892  g++ practice.cpp -o prac
+ 1893  g++ practice.cpp -std=c++11 -o prac
+ 1894  ./prac < in 
+ 1895  cat in
+ 1896  ./prac < in 
+ 1897  g++ practice.cpp -std=c++11 -o prac
+ 1898  ./prac < in 
+ 1899  g++ practice.cpp -std=c++11 -o prac
+ 1900  ./prac < in 
+ 1901  g++ practice.cpp -std=c++11 -o prac
+ 1902  ./prac < in 
+ 1903  python3 gen.py > in
+ 1904  ./prac < in 
+ 1905  python3 gen.py > in
+ 1906  cat in
+ 1907  python3 gen.py > in
+ 1908  ./prac < in 
+ 1909  ./prac < in > out
+ 1910  less out
+ 1911  python3 gen.py > in
+ 1912  ./prac < in > out
+ 1913  less in
+ 1914  cd tmp/
+ 1915  vim gen.py
+ 1916  python3
+ 1917  cd tmp/
+ 1918  ls
+ 1919  python3 dic.py 
+ 1920  ls
+ 1921  python3 dic.py 
+ 1922  ls
+ 1923  cd
+ 1924  cd Downloads/
+ 1925  ls
+ 1926  cd Telegram\ Desktop/
+ 1927  ls
+ 1928  rm online_shopping_app.py 
+ 1929  ls
+ 1930  mv web_doc_downloader.py ~/tmp/
+ 1931  mv online_shopping_app.py ~/tmp/sara/
+ 1932  cd ~/tmp/s
+ 1933  cd ~/tmp/sara/
+ 1934  ls
+ 1935  vim online_shopping_app.py 
+ 1936  mv online_shopping_app.py online_shopping_app2.py 
+ 1937  mv ~/Downloads/Telegram\ Desktop/online_shopping_app.py .
+ 1938  vim online_shopping_app.py 
+ 1939  ls
+ 1940  diff online_shopping_app2.py online_shopping_app.py 
+ 1941  vim online_shopping_app.py 
+ 1942  cd tmp/
+ 1943  vim dic.py
+ 1944  ls
+ 1945  ls sara/
+ 1946  rm sara/regression.py 
+ 1947  mv web_doc_downloader.py sara/
+ 1948  cd sara/
+ 1949  ls
+ 1950  virtualenv -p python3 venv
+ 1951  ls
+ 1952  . venv/bin/activate
+ 1953  pip install tkinter
+ 1954  ls
+ 1955  python web_doc_downloader.py 
+ 1956  vim web_doc_downloader.py 
+ 1957  ls
+ 1958  rm mobileAccesories.xml web_doc_downloader.py 
+ 1959  python online_shopping_app.py 
+ 1960  sudo apt install python3-tk
+ 1961  python online_shopping_app.py 
+ 1962  mkdir images
+ 1963  mv doc_2018-09-10_17-59-26.gif images/intelliShop.gif
+ 1964  python online_shopping_app.py 
+ 1965  cd ~/Downloads/Telegram\ Desktop/mobileAccesories.xml .
+ 1966  python online_shopping_app.py 
+ 1967  ls
+ 1968  cd ~/Downloads/Telegram\ Desktop/mobileAccesories.xml .
+ 1969  mv ~/Downloads/Telegram\ Desktop/mobileAccesories.xml .
+ 1970  python online_shopping_app.py 
+ 1971  cd ..
+ 1972  ls
+ 1973  vim gen.py 
+ 1974  vim dic.py 
+ 1975  cd sara/
+ 1976  python online_shopping_app.py 
+ 1977  vim ../dic.py 
+ 1978  python online_shopping_app.py 
+ 1979  cd Downloads/Telegram\ Desktop/
+ 1980  ls
+ 1981  vim online_shopping_app.py 
+ 1982  cd Downloads/Telegram\ Desktop/
+ 1983  ls
+ 1984  vim gen.py 
+ 1985  ls
+ 1986  vim gen.py 
+ 1987  cd .au_conf/
+ 1988  ls
+ 1989  vim script1.sh 
+ 1990  ls
+ 1991  vim chromebook_history 
+ 1992  history | less
+ 1993  histor
+ 1994  history > file
