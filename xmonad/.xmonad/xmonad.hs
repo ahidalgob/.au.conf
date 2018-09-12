@@ -69,8 +69,8 @@ tryPP h = defaultPP
     , ppCurrent   = dzenColor mywhite1 myCurrentWS . pad
     , ppVisible   = dzenColor mywhite1 myOtherScreenWS . pad
     , ppHidden    = dzenColor mywhite1 myActiveWS . pad
-    , ppHiddenNoWindows = dzenColor mywhite1 myblack0 . pad
-    , ppWsSep   = ""
+    --, ppHiddenNoWindows = dzenColor mywhite1 myblack0 . pad
+    , ppWsSep   = " "
     , ppSep     = ""
 
     , ppTitle   = wrap vtitle vtitle_end . shorten 60
@@ -83,16 +83,13 @@ tryPP h = defaultPP
       "Mirror Spacing 5 Tall" -> "  " ++ cal_ic ++ "mptall.xbm)  ^ca()"
       "Full"                  -> "  " ++ cal_ic ++ "full.xbm)  ^ca()"
       )
-    , ppOrder   = \(ws:l:t:_) -> [l,ws,"    "++t]
+    , ppOrder   = \(ws:l:t:_) -> [l,ws," | "++t]
     }
 
 myWorkspace :: [String]
-myWorkspace = clickable $ [ " Net "
-    , " Term "
-    , " Web "
-    , " Edit "
-    , " Other "
-    ] ++ (map show [6..9])
+myWorkspace = clickable $ [ "1:TERM" , "2:WEB"] ++
+    (map show [3..7]) ++
+    [ "8:IM" , "9:ENT"]
     where clickable l = [ "^ca(1,xdotool key alt+" ++ show (n) ++ ")" ++ ws ++ "^ca()" |
                             (i,ws) <- zip [1..] l,
                             let n = i ]
