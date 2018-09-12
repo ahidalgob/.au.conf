@@ -26,8 +26,6 @@ compton -b
 #xcompmgr &
 
 
-feh --bg-fill ~/Dropbox/wallhaven-369261.jpg
-#feh --bg-fill ~/Pictures/Wolfmother-logo-HD-wallpaper-1600x900.jpg
-#feh --bg-scale ~/Pictures/futuristic-city-wallpaper-10.jpg
+feh --bg-fill ~/.au_conf/wp.jpg
 
 exec xmonad

@@ -78,6 +78,3 @@ URxvt.keysym.Control-0x22: "_^_"
 ! disable ctrl-shit
 URxvt*iso14755: False
 URxvt*iso14755_52: False
-
-! just for a while
-URxvt.iconFile: /usr/share/icons/Numix-Circle/48/apps/xfce-terminal.svg
