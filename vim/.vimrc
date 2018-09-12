@@ -1,5 +1,5 @@
 " Sets some variables specific to each machine
-:source ~/.vim/local_specific.vim
+":source ~/.vim/local_specific.vim
 
 " Vundle {{{1
 " Vundle Internal {{{2
@@ -17,9 +17,9 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Plugins {{{2
 
-if light==0
-    Plugin 'Valloric/YouCompleteMe'
-endif
+"if light==0
+Plugin 'Valloric/YouCompleteMe'
+"endif
 
 " syntax and indentation support
 Plugin 'sheerun/vim-polyglot'
@@ -239,9 +239,9 @@ nnoremap <leader>d       : bdelete<CR>
 
 " TODO this should go to a file specific to gvim (.gvimrc ?)
 set guioptions-=T
-if small
-    set guifont=Monospace\ 12
-endif
+"if small
+    "set guifont=Monospace\ 12
+"endif
 
 
 
@@ -340,11 +340,11 @@ map <leader>n :NERDTreeToggle<CR>
 
 
 " YouCompleteMe {{{2
-if light==0
-    " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-    let g:ycm_global_ycm_extra_conf = '~/.au_conf/vim/ycm_global_ycm_extra_conf.py'
-    set completeopt-=preview
-endif
+"if light==0
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.au_conf/vim/ycm_global_ycm_extra_conf.py'
+set completeopt-=preview
+"endif
 
 nnoremap <leader>fi :YcmCompleter FixIt<CR>
 
