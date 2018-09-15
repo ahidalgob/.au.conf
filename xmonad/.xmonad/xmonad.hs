@@ -11,11 +11,13 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Grid
 import XMonad.Layout.NoBorders
+
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.SpawnOnce
 import XMonad.Util.Loggers
 import Graphics.X11.ExtraTypes.XF86
+import Graphics.X11.Xinerama
 import Control.Monad
 import System.IO
 import qualified XMonad.StackSet as W
@@ -38,8 +40,8 @@ myblack3  = "#505050"
 myred     = "#ac2122"
 mygreen   = "#7e8e50"
 myyellow  = "#e5b567"
-myblue1    = "#4c799b"
-myblue2    = "#6c99bb"
+myblue1   = "#4c799b"
+myblue2   = "#6c99bb"
 mymagenta = "#9f4e85"
 mycyan    = "#7dd6cf"
 mywhite1  = "#d0d0d0"
@@ -96,28 +98,29 @@ myWorkspace = clickable $ [ "1:TERM" , "2:WEB"] ++
 
 myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -b")
          , ((mod1Mask, xK_f), withFocused $ windows . (flip W.float $ W.RationalRect 0 0 1 1))
-         , ((mod1Mask, xK_q), spawn "killall dzen2; xmonad --recompile; xmonad --restart")
+         , ((mod1Mask, xK_q), spawn "killall dzen2; killall stalonetray; xmonad --recompile; xmonad --restart")
+
          , ((0, xF86XK_AudioLowerVolume ), spawn "amixer set Master 2%-")
          , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer set Master 2%+")
          , ((0, xF86XK_AudioMute ), spawn "amixer set Master 2%+")
          ]
 
-myLayout = avoidStruts $ smartBorders (  sGrid ||| sSpiral ||| sCircle ||| sTall ||| Mirror sTall ||| Full )
+myLayout = avoidStruts $ smartBorders (  sGrid ||| sSpiral {--||| sCircle --}||| sTall ||| Mirror sTall ||| Full )
     where
       sTall = spacing 5 $ Tall 1 (1/2) (1/2)
       sGrid = spacing 5 $ Grid
-      sCircle = spacing 5 $ Circle
+      --sCircle = spacing 5 $ Circle
       sSpiral = spacing 5 $ spiral (toRational (2/(1+sqrt(5)::Double)))
 
 myApps = composeAll
     [ className =? "mpv" --> doFloat
-    , className =? "mplayer2" --> doFloat
-    , className =? "Oblogout" --> doFullFloat
-    , className =? "Viewnior" --> doFullFloat ]
+    ]
 
 main = do
-    barAtas <- spawnPipe bar1
-    barAtasKanan <- spawnPipe bar2
+    leftBar <- spawnPipe bar1
+    rightBar <- spawnPipe bar2
+    stalone <- spawn "sleep 0.5; stalonetray"
+
     xmonad $ defaultConfig
       { manageHook = myApps <+> manageDocks <+> manageHook defaultConfig
       , layoutHook = myLayout
@@ -129,5 +132,5 @@ main = do
       , normalBorderColor = "" ++ myblack2 ++ ""
       , borderWidth = 3
       , startupHook = startup <+> setWMName "LG3D" <+> docksStartupHook
-      , logHook = myLogHook barAtas
+      , logHook = myLogHook leftBar
       } `additionalKeys` myKeys

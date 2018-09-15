@@ -13,5 +13,4 @@ ${mem} (${memperc}%)   \
 ^bg(\#050505)   ^i(/home/augusto/.icons/stlarch/batt5full.xbm)  \
 $battery_short   \
 ^bg(\#151515)   ^i(/home/augusto/.xmonad/icons/clock.xbm)   \
-${time %a, %d %b %R }   \
-^ca(1,oblogout)^bg(\#9f4e85)^fg()   ^i(/home/augusto/.xmonad/icons/user.xbm)  Augusto   ^ca()
+${time %a, %d %b %R} \
