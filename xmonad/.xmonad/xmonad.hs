@@ -72,11 +72,11 @@ tryPP :: Handle -> PP
 tryPP h = def
     { ppOutput    = hPutStrLn h
 
-    , ppCurrent   = dzenColor mywhite1 myCurrentWS . pad
-    , ppVisible   = dzenColor mywhite1 myOtherScreenWS . pad
-    , ppHidden    = dzenColor mywhite1 myActiveWS . pad
+    , ppCurrent   = dzenColor mywhite1 myCurrentWS . clickableWS . pad
+    , ppVisible   = dzenColor mywhite1 myOtherScreenWS . clickableWS . pad
+    , ppHidden    = dzenColor mywhite1 myActiveWS . clickableWS . pad
     --, ppHiddenNoWindows = dzenColor mywhite1 myblack0 . pad
-    , ppWsSep   = " "
+    , ppWsSep   = ""
     , ppSep     = ""
 
     , ppTitle   = wrap vtitle vtitle_end . shorten 60
@@ -90,20 +90,22 @@ tryPP h = def
               "Full"                -> "  " ++ cal_ic ++ "full.xbm)  ^ca()"
               _                     -> " ? "
       )
-    , ppOrder   = \(ws:l:t:_) -> [l,"^ca(5,xdotool key alt+Page_Down)^ca(4,xdotool key alt+Page_Up)" ++ ws ++ "^ca()^ca()"," | "++t]
+    , ppOrder   = \(ws:l:t:_) -> [l, clickable "5" "alt+Page_Down" $ clickable "4" "alt+Page_Up" ws, " | " , t]
     }
+  where
+  clickable mouseKey action string = "^ca("++mouseKey++",xdotool key "++action++")" ++ string ++ "^ca()"
+  clickableWS ws = "^ca(1,xdotool key alt+" ++ [ws!!1] ++ ")" ++ ws ++ "^ca()" -- 2nd because of padding space
+
+
 
 myExtraWS = [("0", xK_0),("-", xK_minus),("=", xK_equal)]
 
-clickableWorkSpace ws key = "^ca(1,xdotool key alt+" ++ key ++ ")" ++ ws ++ "^ca()"
-
 myWorkspaces :: [String]
-myWorkspaces = zipWith clickableWorkSpace
-    ([ "1:TERM" , "2:WEB"] ++ map show [3..7] ++ ["8:IM" , "9:ENT"] ++ map fst myExtraWS)
-    (map show [1..9] ++ map fst myExtraWS)
+myWorkspaces =
+    [ "1:TERM" , "2:WEB"] ++ map show [3..7] ++ ["8:IM" , "9:ENT"] ++ map fst myExtraWS
 
 myKeys = [((mod1Mask, xK_p), spawn "dmenu_run -i") -- case insensitive
-         , ((mod1Mask, xK_f), withFocused $ windows . (flip W.float $ W.RationalRect 0 0 1 1))
+         , ((mod1Mask, xK_f), withFocused $ windows . flip W.float (W.RationalRect 0 0 1 1))
          , ((mod1Mask, xK_q), spawn "killall dzen2; killall stalonetray; xmonad --recompile; xmonad --restart")
          , ((0, xK_Print), spawn "scrot -s -e 'mv $f ~/Pictures/scrots/'")
 
@@ -120,12 +122,12 @@ myKeys = [((mod1Mask, xK_p), spawn "dmenu_run -i") -- case insensitive
          , ((0, xF86XK_AudioMute ), spawn "amixer set Master toggle")
          ]
          ++
-         [ ((mod1Mask, key), windows $ W.greedyView (clickableWorkSpace ws ws)) | (ws, key) <- myExtraWS ]
+         [ ((mod1Mask, key), windows $ W.greedyView ws) | (ws, key) <- myExtraWS ]
          ++
-         [ ((mod1Mask .|. shiftMask, key), windows $ W.shift (clickableWorkSpace ws ws)) | (ws, key) <- myExtraWS ]
+         [ ((mod1Mask .|. shiftMask, key), windows $ W.shift ws) | (ws, key) <- myExtraWS ]
 
 myLayout = avoidStruts $ smartBorders $
-    onWorkspace (clickableWorkSpace "0" "0") sGrid
+    onWorkspace "0" sGrid
     ( sTall ||| sGrid ||| Mirror sTall ||| Full )
     where
       sTall = spacingRaw True myBorder True myBorder True $ Tall 1 (5/100) (1/2)

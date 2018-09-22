@@ -2,5 +2,4 @@ General {{{1
 fix screensaver
 see what options we have with crompton
 
-XMonad {{{
-move clickableworkspaces to tryPP, so the rest of the configurations gets cleaner
+XMonad {{{1
