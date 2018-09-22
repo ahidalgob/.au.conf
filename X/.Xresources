@@ -54,9 +54,11 @@ URxvt.scrollBar: false
 urxvt*depth: 32
 URxvt.background: [92]#000000
 
-URxvt*font: xft:monospace:size=11:minspace=False, xft:DejaVu Sans:pixelsize=12
-URxvt*boldFont: xft:monospace:size=11:minspace=False, xft:DejaVu Sans:pixelsize=12
-URxvt.letterSpace: -1
+URxvt*font: xft:DejaVu Sans Mono:size=10:minspace=False, xft:DejaVu Sans:pixelsize=9
+URxvt*boldFont: xft:DejaVu Sans Mono:size=11:minspace=False, xft:DejaVu Sans:pixelsize=9
+!
+!-1 with normal font
+URxvt.letterSpace:-1
 
 ! extensions {{{2
 URxvt.perl-ext-common: font-size
@@ -66,7 +68,7 @@ URxvt.perl-ext-common: font-size
 URxvt.keysym.Control-Tab: \033{
 URxvt.keysym.Control-Shift-ISO_Left_Tab: \033}
 
-!remaps C-(, C-[ ,C-{, C-< and C-" for easy use in vim
+!remaps C-(, C-[ ,C-{, C-< and C-" for easy use in vim  "
 !not very aesthetic, gona fix it "someday"
 URxvt.keysym.Control-0x28: (_^_)
 URxvt.keysym.Control-0x5B: [_^_]

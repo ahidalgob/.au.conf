@@ -1,7 +1,7 @@
 # add
 
-#~  if [ -f ~/.au_conf/bash/bashrcConfig ]; then
-#~      . ~/.au_conf/bash/bashrcConfig
+#~  if [ -f ~/.au.conf/bash/bashrcConfig ]; then
+#~      . ~/.au.conf/bash/bashrcConfig
 #~  fi
 
 # to .bashrc
@@ -17,8 +17,8 @@ export LANGUAGE=en_US.UTF-8
 # set editing-mode vi
 # set -o vi
 
-if [ -f ~/.au_conf/bash/aliases ]; then
-    . ~/.au_conf/bash/aliases
+if [ -f ~/.au.conf/bash/aliases ]; then
+    . ~/.au.conf/bash/aliases
 fi
 
 # https://github.com/sickill/stderred
@@ -36,7 +36,7 @@ fi
 
 
 # Enable git tab completion
-source ~/.au_conf/git/git-completion.bash
+source ~/.au.conf/git/git-completion.bash
 
 
 # colors!
@@ -53,7 +53,7 @@ filled_heart=$'\u2665'
 filled_rotated_heart=$'\u2765'
 
 # Change command prompt
-source ~/.au_conf/git/git-prompt.sh
+source ~/.au.conf/git/git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1
 # '\u' adds the name of the current user to the prompt
 # '\$(__git_ps1)' adds git-related stuff

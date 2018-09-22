@@ -18,7 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugins {{{2
 
 "if light==0
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "endif
 
 " syntax and indentation support
@@ -336,15 +336,19 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " NERDTree {{{2
 
 map <leader>n :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.hi$', '\.o$']
 
 
 
 " YouCompleteMe {{{2
 "if light==0
 " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf = '~/.au_conf/vim/ycm_global_ycm_extra_conf.py'
-set completeopt-=preview
+let g:ycm_global_ycm_extra_conf = '~/.au.conf/vim/ycm_global_ycm_extra_conf.py'
 "endif
+"
+let g:ycm_server_python_interpreter = '/usr/bin/python2'
+set completeopt-=preview
+let g:ycm_show_diagnostics_ui = 0
 
 nnoremap <leader>fi :YcmCompleter FixIt<CR>
 
@@ -357,6 +361,18 @@ let g:strip_whitespace_on_save=1
 
 " Ale {{{2
 
-" still not configured
-let g:ale_enable=0
+"let g:ale_enable=0
+"let g:ale_lint_on_enter = 0
+"
 map <leader>aa :ALEToggle<cr>
+
+
+let g:ale_fixers = {'haskell': ['ghc']}
+
+let g:ale_haskell_ghc_options = '-W -dynamic'
+
+let g:ale_set_highlights = 0
+
+nmap <leader>ad :ALEDetail<cr>
+nmap <leader>an :ALENext<cr>
+nmap <leader>ap :ALEPrevious<cr>
