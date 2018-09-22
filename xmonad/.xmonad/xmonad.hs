@@ -13,6 +13,7 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.Fullscreen
 import XMonad.Layout.Grid
 import XMonad.Layout.NoBorders
+import XMonad.Layout.PerWorkspace
 
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys)
@@ -123,7 +124,9 @@ myKeys = [((mod1Mask, xK_p), spawn "dmenu_run -i") -- case insensitive
          ++
          [ ((mod1Mask .|. shiftMask, key), windows $ W.shift (clickableWorkSpace ws ws)) | (ws, key) <- myExtraWS ]
 
-myLayout = avoidStruts $ smartBorders ( sTall ||| sGrid ||| Mirror sTall ||| Full )
+myLayout = avoidStruts $ smartBorders $
+    onWorkspace (clickableWorkSpace "0" "0") sGrid
+    ( sTall ||| sGrid ||| Mirror sTall ||| Full )
     where
       sTall = spacingRaw True myBorder True myBorder True $ Tall 1 (5/100) (1/2)
       sGrid = spacingRaw True myBorder True myBorder True Grid

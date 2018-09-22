@@ -1,9 +1,6 @@
+General {{{1
 fix screensaver
+see what options we have with crompton
 
-where and how to call compton?
-
-other repo for vim
-
-installs
-
-installs!
+XMonad {{{
+move clickableworkspaces to tryPP, so the rest of the configurations gets cleaner
