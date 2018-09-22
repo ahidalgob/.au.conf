@@ -3,3 +3,4 @@ fix screensaver
 see what options we have with crompton
 
 XMonad {{{1
+gnome-screenshot --clipboard doesn't work, do it manually with xclip

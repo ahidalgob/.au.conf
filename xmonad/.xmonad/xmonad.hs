@@ -58,9 +58,10 @@ myActiveWS = myblack2
 
 bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'Deja Vu Mono 2-9' -fg '" ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 20 -w 750"
 bar2 = "sh /home/augusto/.xmonad/scripts/dzen_info_1.sh"
+
 cal_ic = "^ca(1,xdotool key alt+space)^i(/home/augusto/.xmonad/icons/"
-vtitle = "^bg(" ++ myblack3 ++ ")    "
-vtitle_end = "    ^bg()"
+vtitle = "^bg(" ++ myblack3 ++ ")  "
+vtitle_end = "  ^bg()"
 
 startup = do
     spawnOnce "sh /home/augusto/.xmonad/scripts/autostart.sh"
@@ -83,14 +84,14 @@ tryPP h = def
     , ppLayout    = dzenColor mywhite1 myblack1 . pad .
       (\t -> case t of
               "Spacing Grid"        -> "  " ++ cal_ic ++ "grid.xbm)  ^ca()"
-              "Spacing Spiral"      -> "  " ++ cal_ic ++ "spiral.xbm)  ^ca()"
+              --"Spacing Spiral"      -> "  " ++ cal_ic ++ "spiral.xbm)  ^ca()"
               --"Spacing Circle"      -> "  " ++ cal_ic ++ "circle.xbm)  ^ca()"
               "Spacing Tall"        -> "  " ++ cal_ic ++ "sptall.xbm)  ^ca()"
               "Mirror Spacing Tall" -> "  " ++ cal_ic ++ "mptall.xbm)  ^ca()"
               "Full"                -> "  " ++ cal_ic ++ "full.xbm)  ^ca()"
-              _                     -> " ? "
+              _                     -> "?"
       )
-    , ppOrder   = \(ws:l:t:_) -> [l, clickable "5" "alt+Page_Down" $ clickable "4" "alt+Page_Up" ws, " | " , t]
+    , ppOrder   = \(ws:l:t:_) -> [l, clickable "5" "alt+Page_Down" $ clickable "4" "alt+Page_Up" ws, dzenColor mywhite2 mywhite2 " " , t]
     }
   where
   clickable mouseKey action string = "^ca("++mouseKey++",xdotool key "++action++")" ++ string ++ "^ca()"
@@ -107,7 +108,11 @@ myWorkspaces =
 myKeys = [((mod1Mask, xK_p), spawn "dmenu_run -i") -- case insensitive
          , ((mod1Mask, xK_f), withFocused $ windows . flip W.float (W.RationalRect 0 0 1 1))
          , ((mod1Mask, xK_q), spawn "killall dzen2; killall stalonetray; xmonad --recompile; xmonad --restart")
-         , ((0, xK_Print), spawn "scrot -s -e 'mv $f ~/Pictures/scrots/'")
+
+         , ((0, xK_Print), spawn "gnome-screenshot; mv ~/Screenshot* ~/Pictures/Screenshots")
+         --, ((controlMask, xK_Print), spawn "gnome-screenshot --clipboard")
+         , ((shiftMask, xK_Print), spawn "sleep 0.3; gnome-screenshot --area")
+         --, ((controlMask, xK_Print), spawn "gnome-screenshot --area")
 
 
          , ((mod1Mask, xK_Page_Up), moveTo Prev NonEmptyWS)
