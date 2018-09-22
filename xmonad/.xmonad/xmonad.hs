@@ -128,13 +128,13 @@ myKeys = [((mod1Mask, xK_p), spawn "dmenu_run -i") -- case insensitive
 
 myLayout = avoidStruts $ smartBorders $
     onWorkspace "0" sGrid
-    ( sTall ||| sGrid ||| Mirror sTall ||| Full )
+    ( sTall ||| Full ||| Mirror sTall ||| sGrid )
     where
       sTall = spacingRaw True myBorder True myBorder True $ Tall 1 (5/100) (1/2)
       sGrid = spacingRaw True myBorder True myBorder True Grid
+      myBorder = Border 5 5 5 5
       --sCircle = spacing 5 $ Circle
       --sSpiral = spacingRaw True myBorder True myBorder True $ spiral (toRational (2/(1 + sqrt 5::Double)))
-      myBorder = Border 5 5 5 5
 
 myApps = composeAll
     [ className =? "mpv" --> doFloat
