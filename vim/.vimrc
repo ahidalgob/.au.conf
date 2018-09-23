@@ -183,6 +183,13 @@ inoremap {_^_} {}…<Esc>F}i
 inoremap <_^_> <>…<Esc>F>i
 inoremap "_^_" ""…<Esc>F"i
 
+" Maybe this is better
+inoremap ()\ ()…<Esc>F)i
+inoremap []\ []…<Esc>F]i
+inoremap {}\ {}…<Esc>F}i
+inoremap <>\ <>…<Esc>F>i
+inoremap ""\ ""…<Esc>F"i
+
 inoremap <c-Space> <Esc>/…<CR>:noh<CR>"_c1l
 nnoremap <c-Space> /…<CR>:noh<CR>"_c1l
 
@@ -367,7 +374,15 @@ let g:strip_whitespace_on_save=1
 map <leader>aa :ALEToggle<cr>
 
 
-let g:ale_fixers = {'haskell': ['ghc']}
+let g:ale_linters = {
+\ 'haskell': ['ghc', 'hlint'],
+\ 'cpp': ['gcc', 'clang'],
+\}
+
+let g:ale_fixers = {
+\ 'cpp' : ['clang-format'],
+\ 'haskell' : ['hlint'],
+\}
 
 let g:ale_haskell_ghc_options = '-W -dynamic'
 
