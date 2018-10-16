@@ -23,7 +23,7 @@ xsetroot -cursor_name left_ptr &
 
 xset r rate 300 60
 
-compton -b
+compton -bf -D 5
 #xcompmgr &
 
 
