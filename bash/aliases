@@ -1,29 +1,25 @@
-alias timus='echo 210812AA'
-alias opentrainslogin='echo campinas43; echo z8NPSGKm'
-alias kattislogin='echo augusto-hidalgo-5255; echo dx2bkTXC'
-alias argentinalogin='echo traitors; echo sangrecolombiana'
-alias cojlogin='echo ahidalgo; echo 5125320aA*'
-
-alias guake='myguake'
-
-alias CP='CPF'
-alias cleancache='sync;  sudo service postgresql stop; echo 1 > sudo /proc/sys/vm/drop_caches; sudo service postgresql start'
 
 alias tmux='tmux -2'
 
-function myguake {
-	if [ -z "$1" ]; then
-		\guake
-	else
-		if [ "$1" == "here" ]; then
-			shift
-			\guake -n $PWD "$@"
-		else
-			\guake "$@"
-		fi
-	fi
+# small alias so ranger exits to current directory
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+
+mybeep() {
+  ( \speaker-test --frequency 900 --test sine > /dev/null )&
+  pid=$!
+  \sleep 0.5s
+  \kill -9 $pid
 }
 
+
+# cp aliases {{{1
+alias logintimus='echo 210812AA'
+alias loginopentrains='echo campinas43; echo z8NPSGKm'
+alias loginkattis='echo augusto-hidalgo-5255; echo dx2bkTXC'
+alias loginargentina='echo traitors; echo sangrecolombiana'
+alias logincoj='echo ahidalgo; echo 5125320aA*'
+
+alias CP='CPF'
 function CPF {
     if [ -z "$1" ]; then
         echo "D:"
@@ -41,10 +37,20 @@ function CPF {
     fi
 }
 
-mybeep() {
-  ( \speaker-test --frequency 900 --test sine > /dev/null )&
-  pid=$!
-  \sleep 0.5s
-  \kill -9 $pid
-}
+
+# old {{{1
+# alias guake='myguake'
+# function myguake {
+# 	if [ -z "$1" ]; then
+# 		\guake
+# 	else
+# 		if [ "$1" == "here" ]; then
+# 			shift
+# 			\guake -n $PWD "$@"
+# 		else
+# 			\guake "$@"
+# 		fi
+# 	fi
+# }
+
 

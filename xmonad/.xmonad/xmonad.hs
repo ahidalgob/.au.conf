@@ -93,7 +93,7 @@ tryPP h = def
               "Mirror Spacing Tall" -> "  " ++ cal_ic ++ "mptall.xbm)  ^ca()"
               "Full"                -> "  " ++ cal_ic ++ "full.xbm)  ^ca()"
               "Spacing Grid"        -> "  " ++ cal_ic ++ "grid.xbm)  ^ca()"
-              _                     -> "  " ++ cal_ic ++ "grid.xbm)  ^ca()"
+              _                     -> "  " ++ cal_ic ++ "grid.xbm)  ^ca()" -- Need this because of WS 0
 
       )
     , ppOrder   = \(ws:l:t:_) -> [l, clickable "5" "alt+Page_Down" $ clickable "4" "alt+Page_Up" ws, dzenColor mywhite0 mywhite0 " " , t]
@@ -126,6 +126,8 @@ myKeys = [((mod1Mask, xK_p), spawn "dmenu_run -i") -- case insensitive
          , ((mod1Mask .|. shiftMask, xK_Page_Down), nextWS)
 
          --, ((mod1Mask .|. shiftMask, xK_space), sendMessage PrevLayout) TODO Is this impossible?
+         --
+         , ((controlMask .|. shiftMask, xK_space), spawn "~/.au.conf/scripts/toogleKeyboardLayout.sh")
 
          , ((0, xF86XK_AudioLowerVolume ), spawn "amixer set Master 2%-")
          , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer set Master 2%+")
@@ -149,9 +151,14 @@ myLayout = avoidStruts $ smartBorders $
 
 -- use xprop to get these properties
 myApps = composeAll
-    [ className =? "mpv" --> doFloat
+    [ isFullscreen                                                 --> doFullFloat
+    , className =? "mpv"                                           --> doFloat
     , className =? "TelegramDesktop"  <&&> title =? "Media viewer" --> doFloat
-    , title =? "Open File" --> doCenterFloat
+    , title =? "Open File"                                         --> doCenterFloat
+    , title =? "File Operation Progress"                           --> doCenterFloat
+    --, resource =? "Dialog"                                         --> doFloat
+    , title =? "CSSE101Queue"                                  --> doFloat
+    , title =? "tk"                                            --> doFloat
     ]
 
 main = do

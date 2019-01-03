@@ -236,7 +236,7 @@ nnoremap <leader><S-Tab> : bprevious<CR>
 nnoremap <leader><Tab>   : bnext<CR>
 
 " Delete current buffer
-nnoremap <leader>d       : bdelete<CR>
+nnoremap <leader>d       : bp\|bd #<CR>
 
 
 
@@ -353,7 +353,7 @@ let NERDTreeIgnore=['\.hi$', '\.o$']
 let g:ycm_global_ycm_extra_conf = '~/.au.conf/vim/ycm_global_ycm_extra_conf.py'
 "endif
 "
-let g:ycm_server_python_interpreter = '/usr/bin/python2'
+"let g:ycm_server_python_interpreter = '/usr/bin/python3'
 set completeopt-=preview
 let g:ycm_show_diagnostics_ui = 0
 

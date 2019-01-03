@@ -1,0 +1,769 @@
+    1  man apt
+    2  sudo apt install vim
+    3  sudo apt install git
+    4  :q
+    5  ln --backup --symbolic ~/.au_conf/tmux/.tmux.conf ~/.tmux.conf
+    6  vim ~/.tmux.conf 
+    7  vim 1_tmux.sh 
+    8  cd ..
+    9  ls
+   10  cd .au_conf/
+   11  ls
+   12  ls tmux/
+   13  git clone https://github.com/ahidalgob/.au_conf
+   14  man apt
+   15  apt list --installed
+   16  apt list --installed | less
+   17  history
+   18  mkdir installs
+   19  cd installs/
+   20  man apt isntall
+   21  man apt-install
+   22  man install
+   23  man apt
+   24  man apt-get
+   25  ls
+   26  vim 0.sh
+   27  vim 1_tmux.sh
+   28  ls
+   29  cd
+   30  ls
+   31  cd
+   32  ls
+   33  ls -a
+   34  rm -r .au_conf/
+   35  ls
+   36  ls -a
+   37  vim installs/0.sh 
+   38  ls -l
+   39  cd installs/
+   40  ls -l
+   41  chmod +ux *
+   42  chmod u+x *
+   43  ls
+   44  ls -l
+   45  ./0.sh 
+   46  vim 0.sh 
+   47  man apt-get
+   48  ./0.sh 
+   49  ls
+   50  ls -a
+   51  vim 0.sh 
+   52  ./0.sh 
+   53  cd 
+   54  ls
+   55  ls -a
+   56  cd .au_conf/
+   57  ls -a
+   58  cd
+   59  cd installs/
+   60  ./0.sh 
+   61  vim 0.sh 
+   62  man ln
+   63  vim 0.sh 
+   64  man ln
+   65  vim 0.sh 
+   66  vim ~/.au_conf/vim/.vimrc 
+   67  ls
+   68  vim 0.sh 
+   69  ./0.sh 
+   70  vim 0.sh 
+   71  ./0.sh 
+   72  vim 0.sh 
+   73  man ln
+   74  ./0.sh 
+   75  vim 0.sh 
+   76  cd ..
+   77  ls
+   78  ls -a
+   79  ls -la
+   80  rm .vimrc*
+   81  rm -r .vim
+   82  ls 0a
+   83  rm -r .au_conf/
+   84  ls -la
+   85  cd installs/
+   86  ls
+   87  ./0.sh 
+   88  vim ~/.au_conf/vim/.vimrc 
+   89  ./0.sh 
+   90  sudo apt install python python3
+   91  vim 0.sh 
+   92  ./0.sh 
+   93  vim ~/.vimrc
+   94  vim 0.sh 
+   95  ./0.sh 
+   96  vim 0.sh 
+   97  vim a.cpp
+   98  l
+   99  ls
+  100  vim 1_tmux.sh 
+  101  ./1_tmux.sh 
+  102  tmux
+  103  tmux -V
+  104  ls
+  105  tmux
+  106  cd
+  107  vim .tmux.conf 
+  108  tmux
+  109  cd .au_conf/vim/
+  110  ls
+  111  ls ftplugin/
+  112  man mkdir
+  113  ls
+  114  cd installs/
+  115  ls
+  116  vim 0.sh 
+  117  vim
+  118  history
+  119  history
+  120  ls
+  121  cd 
+  122  ls -a
+  123  diff .vimrc .vimrc~
+  124  ls -la
+  125  rm .vimrc~
+  126  ls -la
+  127  vim .bashrc 
+  128  bash
+  129  tmux
+  130  cd installs/
+  131  ls
+  132  vim 0.sh 
+  133  vim 1_tmux.sh 
+  134  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  135  tmux
+  136  vim ~/.tmux.conf 
+  137  tmux
+  138  vim ~/.tmux.conf 
+  139  sudo apt install xorg xinit
+  140  ls
+  141  vim 1_tmux.sh 
+  142  tmux
+  143  history
+  144  history | vim
+  145  vim
+  146  history | tail
+  147  history | tail -n 20
+  148  history | tail -n 20 >> 1_tmux.sh 
+  149  vim 1_tmux.sh 
+  150  history | tail -n 25 | grep tmux >> 1_tmux.sh 
+  151  vim 1_tmux.sh 
+  152  tmux
+  153  vim
+  154  vim
+  155  vim .bashrc 
+  156  tmux
+  157  vim .bashrc 
+  158  vim .au_conf/bash/bashrcConfig 
+  159  tmux
+  160  vim .bashrc 
+  161  vim .au_conf/bash/bashrcConfig 
+  162  ivm
+  163  vim
+  164  vim .bashrc 
+  165  vim
+  166  vim .bashrc 
+  167  vim
+  168  vim
+  169  tmux
+  170  cd .au_conf/
+  171  cd ~/installs/
+  172  cd -
+  173  cat installs/0.sh 
+  174  ln --backup --symbolic ~/.au_conf/git/.gitconfig ~/.gitconfig
+  175  ls -la
+  176  vim 
+  177  vim
+  178  vim .au_conf/bash/bashrcConfig 
+  179  cd .au_conf/
+  180  ls
+  181  git status
+  182  git diff vim/ftplugin/ftplugin
+  183  ls
+  184  cd vim/
+  185  ls
+  186  vim ~/installs/
+  187  cd ftplugin/ftplugin
+  188  ls
+  189  ls -a
+  190  ls -la
+  191  cd ,,
+  192  cd ..
+  193  ls
+  194  rm ftplugin
+  195  ls
+  196  ls 0a
+  197  ls -a
+  198  ls
+  199  ls -la
+  200  vim ftplugin~
+  201  cd ftplugin~
+  202  ls
+  203  cd ftplugin~
+  204  ls
+  205  cd 
+  206  cd .au_conf/vim/
+  207  ls
+  208  cd ftplugin/
+  209  ls
+  210  rm ftplugin~
+  211  cd ..
+  212  ls
+  213  cd ..
+  214  ls
+  215  cd vim/
+  216  ls -la
+  217  cd ..
+  218  git diff
+  219  git status
+  220  git diff vim/
+  221  git checkout new_one
+  222  git checkout -b new_one
+  223  git status
+  224  git add vim/
+  225  git commit -m "vim: just install everything"
+  226  cd ..
+  227  ls
+  228  ls .au_conf/
+  229  ls .au_conf/git/
+  230  ls -a .au_conf/git/
+  231  vim installs/0.sh 
+  232  cd .au_conf/
+  233  git status
+  234  git commit -m "vim: just install everything"
+  235  git diff tmux/
+  236  git add tmux/.tmux.conf 
+  237  git commit -m "tmux: def-term tmux breaks on tty :( need fix"
+  238  git push
+  239  git push origin new_one 
+  240  cd ~/installs/
+  241  setxkbmap us
+  242  man loadkeys 
+  243  loadkeys --help
+  244  cd ~/.au_conf/
+  245  git fetch
+  246  git checkout master 
+  247  git pull
+  248  git checkout new_one 
+  249  git merge master 
+  250  git lg --all
+  251  history
+  252  history | grep install
+  253  cd installs/
+  254  vim .swp 
+  255  vim 2_x.sh
+  256  cd installs/
+  257  ls
+  258  chmod u+x 2_x.sh 
+  259  vim 3_xmonad.sh
+  260  ls
+  261  chmod u+x 3_xmonad.sh 
+  262  ./3_xmonad.sh 
+  263  vim 3_xmonad.sh 
+  264  ./3_xmonad.sh 
+  265  vim 3_xmonad.sh 
+  266  ./3_xmonad.sh 
+  267  vim 3_xmonad.sh 
+  268  xinit 
+  269  man apt
+  270  apt search xmonad
+  271  apt search xmonad | less
+  272  apt search dmenu | less
+  273  cd .au_conf/
+  274  ls
+  275  cat X
+  276  ls X
+  277  cd X
+  278  ls
+  279  ls -a
+  280  ln --symbolic .xinitrc ~/.xinitrc
+  281  vim 
+  282  tmux
+  283  history
+  284  history | grep install
+  285  tmux
+  286  xinit
+  287  sudo apt updat
+  288  sudo apt update
+  289  apt list --upgradeable
+  290  sudo apt upgrade
+  291  xinit
+  292  sudo apt remove xserver-xorg-legacy 
+  293  xinit
+  294  sudo xinit
+  295  vim .xinitrc 
+  296  ls
+  297  ls -a
+  298  ls -la
+  299  cd .au_conf/vim/
+  300  ls -la
+  301  vim .vimrc 
+  302  cd
+  303  vim .vimrc 
+  304  vim .xinitrc 
+  305  ls
+  306  ls -la
+  307  rm .xinitrc 
+  308  ln --symbolic ~/.au_conf/X/.xinitrc ~/.xinitrc
+  309  ls -la
+  310  vim .xinitrc 
+  311  xinit
+  312  ls
+  313  sudo xinit
+  314  vim .xinitrc 
+  315  ls
+  316  cd .au_conf/
+  317  ls
+  318  cd backup/
+  319  ls
+  320  apt search rxvt
+  321  apt search rxvt | less
+  322  sudo apt install rxvt-unicode
+  323  sudo apt install rxvt-unicode256color
+  324  sudo apt install rxvt-unicode-256color
+  325  ls
+  326  cd ..
+  327  ls
+  328  cd urxvt/
+  329  ls
+  330  ls -a
+  331  ls .urxvt/
+  332  ln .urxvt/ ~/
+  333  ln --symbolic .urxvt/ ~/
+  334  cd
+  335  ls -la
+  336  rm .urxvt 
+  337  cd .au_conf/
+  338  ls
+  339  cd urxvt/
+  340  ls
+  341  ln --symbolic ~/.au_conf/urxvt/.urxvt/ ~/
+  342  ls -la ~
+  343  ls
+  344  cd .
+  345  cd ..
+  346  ls
+  347  ls ~/.xmonad/
+  348  ls -la ~/.xmonad/
+  349  sudo rm ~/.xmonad/
+  350  sudo rm -r ~/.xmonad/
+  351  ln --symbolic ~/.au_conf/xmonad/.xmonad/ ~/
+  352  ls -la ~/
+  353  ls
+  354  ls -la
+  355  ln --symbolic ~/.au_conf/.icons/ ~/
+  356  cd X/
+  357  ls
+  358  ls -la
+  359  ln --symbolic ~/.au_conf/X/.Xresources ~/
+  360  cd 
+  361  cd .au_conf/
+  362  ls -la
+  363  ls -la ~/
+  364  xinit
+  365  cd
+  366  vim .local/share/xorg/Xorg.0.log
+  367  startx
+  368  sudo xinit
+  369  cd .xmonad/
+  370  ls
+  371  cd 
+  372  ls -la
+  373  sudo apt install conky
+  374  apt search dzen
+  375  sudo apt install dzen2
+  376  sudo xinit
+  377  sudo apt install compton xscreensaver feh
+  378  ls .xmonad/scripts/
+  379  vim .xmonad/xmonad.hs
+  380  ls .xmonad/scripts/
+  381  startx
+  382  sudo xinit
+  383  vim .Xresources 
+  384  vim .xinitrc 
+  385  cd .au_conf/
+  386  git status
+  387  git diff
+  388  vim ~/.xmonad/xmonad.state 
+  389  ls
+  390  cd .xm
+  391  cd xmonad/
+  392  ls
+  393  vim .gitignore 
+  394  git status
+  395  git add .gitignore 
+  396  git add X
+  397  cd ..
+  398  git add X
+  399  git commit -m "small fixes"
+  400  git push origin new_one 
+  401  git checkout master 
+  402  git pull
+  403  git checkout new_one 
+  404  git merge master 
+  405  dzen2 -dock -p -ta l -e 'burron3=' -h 20 -w 750
+  406  vim .xmonad/xmonad.hs
+  407  vim .xinitrc 
+  408  dzen2 -v
+  409  vim .xmonad/xmonad.hs
+  410  vim .xmonad/scripts/dzen1
+  411  vim .xmonad/scripts/dzenconky_1 
+  412  vim .xmonad/scripts/dzen_info_1.sh 
+  413  ls
+  414  vim .tmux
+  415  vim .tmux.conf 
+  416  sudo apt install xclip 
+  417  history
+  418  git status
+  419  vim .xinitrc 
+  420  man feh
+  421  feh --bg-center ~/.au_conf/wp.jpg 
+  422  vim .xmonad/xmonad.hs 
+  423  vim .xmonad/scripts/dzen_info_1.sh 
+  424  man dzen2
+  425  vim .xmonad/xmonad.hs 
+  426  cd .au_conf/
+  427  ls
+  428  git diff
+  429  git add TODO X/.xinitrc xmonad/
+  430  git commit -m "fix docks"
+  431  git pull
+  432  git pull origin new_one 
+  433  git lg --all
+  434  git pull origin master
+  435  git lg --all
+  436  git checkout master
+  437  git pull
+  438  git checkout new_one 
+  439  ls
+  440  cd installer/
+  441  ls
+  442  chmod u+x chrome.sh 
+  443  vim chrome.sh 
+  444  vim .tmux.conf 
+  445  vim .au_conf/installer/chrome.sh 
+  446  vim .xmonad/xmonad.hs
+  447  sudo apt install xdotool
+  448  vim .xmonad/xmonad.hs
+  449  vim .xmonad/xmonad.hs
+  450  vim .xmonad/scripts/autostart.sh 
+  451  vim .xinitrc 
+  452  vim .au_conf/TODO 
+  453  ls
+  454  man apt install
+  455  man apt 
+  456  cat .au_conf/installer/chrome.sh 
+  457  sudo apt-get install libxss1 libappindicator1 libindicator7
+  458  vim --version | grep clipboard
+  459  sudo apt install vim-gtk
+  460  vim .au_conf/installer/chrome.sh 
+  461  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+  462  ls
+  463  sudo dpkg -i google-chrome*.deb
+  464  sudo apt install -f
+  465  sudo dpkg -i google-chrome*.deb
+  466  alsactl init
+  467  sudo apt install alsa
+  468  alsactl init
+  469  man alsa
+  470  man 7 alsa
+  471  amixer
+  472  vim .xmonad/xmonad.hs
+  473  sudo apt install xmonad-extras
+  474  amixer set Master 2-
+  475  amixer set Master 2+
+  476  amixer set Master 2-
+  477  amixer set Master 2%-
+  478  amixer set Master 2%+
+  479  amixer set Master 2%-
+  480  vim .xmonad/xmonad.hs
+  481  sudo add-apt-repository ppa:jonathonf/vim
+  482  sudo apt install software-properties-common python-software-properties
+  483  sudo apt install software-properties-common
+  484  sudo add-apt-repository ppa:jonathonf/vim
+  485  sudo apt update
+  486  sudo apt list --upgradable 
+  487  sudo apt upgrade
+  488  history
+  489  vim .xmonad/xmonad.hs
+  490  history |less
+  491  cd .au_conf/
+  492  nv
+  493  env
+  494  env | PWD
+  495  env | gre pPWD
+  496  env | grep PWD
+  497  vim tmux/.tmux.conf 
+  498  cd .au_conf/
+  499  git status
+  500  vim TODO
+  501  git diff
+  502  git add tmux/.tmux.conf TODO 
+  503  git status
+  504  git commit -m "tmux: open in same folder :D"
+  505  git diff installer/
+  506  git add installer/ xmonad/
+  507  git commit -m "audio keys :D"
+  508  git push origin new_one 
+  509  vim xmonad/.xmonad/xmonad.hs 
+  510  history | less
+  511  sudo apt install thunar
+  512  cd .au_conf/
+  513  ls
+  514  git status
+  515  git diff xmonad/
+  516  git add xmonad/.xmonad/xmonad.hs 
+  517  git commit -m "xmonad: pp eye candy"
+  518  git pull
+  519  git pull master
+  520  git pull origin master
+  521  git lg --all
+  522  [ -d ~/.config ]
+  523  [ -d ~/installs ]
+  524  echo [ -d ~/installs ]
+  525  echo $[ -d ~/installs ]
+  526  echo $([ -d ~/installs ])
+  527  echo ${[ -d ~/installs ]}
+  528  echo $([ -d ~/installs ])
+  529  echo $([ -d ~/asd ])
+  530  echo $( -d ~/asd )
+  531  ls
+  532  vim chromebook_install/chromebook_history
+  533  ls
+  534  ls gtk-3.0/
+  535  ls -la
+  536  vim gtk-3.0/settings.ini 
+  537  s
+  538  ls
+  539  cd 
+  540  cd .config/gtk-3.0
+  541  ls
+  542  vim settings.ini 
+  543  vim installs/4_gtk.sh
+  544  vim installs/1_tmux.sh 
+  545  chmod u+x installs/4_gtk.sh 
+  546  cd installs/
+  547  ./4_gtk.sh 
+  548  cd
+  549  ls
+  550  vim .themes
+  551  vim .xmonad/xmonad.hs
+  552  vim .xmonad/scripts/dzenconky_1 
+  553  vim .xmonad/xmonad.hs 
+  554  cd installs/
+  555  ls
+  556  ./4_gtk.sh 
+  557  vim ~/.config/gtk-3.0/settings.ini 
+  558  cd 
+  559  cd .au_conf/
+  560  ls
+  561  vim chromebook_install/chromebook_history
+  562  apt list --upgradeable
+  563  sudo apt upgrade
+  564  git pull origin master 
+  565  cd 
+  566  ls
+  567  rm -r .config/gtk-3.0*
+  568  cd installs/
+  569  mv 4_gtk.sh 5_gtk.sh 
+  570  vim 5_gtk.sh 
+  571  ls -la ~
+  572  rm -r ~/.themes*
+  573  ./5_gtk.sh 
+  574  history
+  575  cd
+  576  sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
+  577  sudo apt update && sudo apt install qbittorren
+  578  vim .themes/Adwaita-Xfce\ Dark/
+  579  cd .au_conf/
+  580  ls
+  581  git status
+  582  git lg --all
+  583  git push origin new_one 
+  584  startx
+  585  vim .xinitrc 
+  586  cd .au_conf/
+  587  ls
+  588  vim TODO
+  589  cd
+  590  startx
+  591  xinit
+  592  dzen2 -v
+  593  startx
+  594  poweroff
+  595  ls
+  596  rm google-chrome-stable_current_amd64.deb 
+  597  ls
+  598  ls -la
+  599  ping 8.8.8.8
+  600  sudo apt install network-manager network-manager-gnome gnome-power-manager hibernate
+  601  sudo vim /etc/network/interfaces
+  602  sudo dhclient wlan0
+  603  sudo vim /etc/network/interfaces
+  604  sudo dhclient wlan0
+  605  sudo iwconfig
+  606  sudo vim /etc/network/interfaces
+  607  vim /etc/netplan/01-netcfg.yaml 
+  608  sudo vim /etc/netplan/01-netcfg.yaml 
+  609  vim /etc/netplan
+  610  cd /etc/netplan/
+  611  ls
+  612  sudo apt install ifupdown
+  613  ifconfig
+  614  man netplan 
+  615  ping 8.8.8.8
+  616  ifconfig -a
+  617  ip -a
+  618  ip a
+  619  as
+  620  setxkbmap us
+  621  netplan generate 
+  622  sudo netplan generate
+  623  sudo netplan apply
+  624  cd /etc/netplan/
+  625  ls
+  626  vim 01-netcfg.yaml 
+  627  startx
+  628  sudo reboot
+  629  sudo apt install mpv
+  630  ping 8.8.8.8
+  631  network-manager
+  632  sudo apt install network-manager
+  633  ping 8.8.8.8
+  634  vim .xinitrc 
+  635  setxkbmap us
+  636  ln --symbolic ~/.au_conf/xmonad/.xmobarrc ~/
+  637  cal
+  638  nmcli device wifi list
+  639  cd .au_conf/xmonad/
+  640  ls
+  641  cd .xmonad/scripts/
+  642  ls
+  643  vim dzen_calendar.sh
+  644  sh dzen_calendar.sh 
+  645  vim dzen_calendar.sh
+  646  rm dzen_calendar.sh 
+  647  vim dzen_calendar.sh
+  648  bash dzen_calendar.sh 
+  649  vim dzen_calendar.sh
+  650  bash dzen_calendar.sh 
+  651  vim dzen_calendar.sh
+  652  bash dzen_calendar.sh 
+  653  cal
+  654  rm dzen_calendar.sh 
+  655  git status
+  656  stalonetray 
+  657  stalonetray
+  658  vim .xinitrc 
+  659  sudo apt install alonetray
+  660  vim .xinitrc 
+  661  man apt
+  662  apt search stalonetray
+  663  sudo apt install stalonetray
+  664  stalonetray 
+  665  ls -la
+  666  rm .xmobarrc 
+  667  ln ~/.au_conf/xmonad/.stalonetrayrc ~/.stalonetrayrc
+  668  stalonetray 
+  669  vim .stalonetrayrc 
+  670  stalonetray 
+  671  vim .xmonad/xmonad.hs
+  672  cd .au_conf/
+  673  git status
+  674  ls
+  675  git status
+  676  vim .stalonetrayrc 
+  677  conky 
+  678  sudo apt install rar
+  679  cd Downloads/
+  680  unrar l 541545.rar 
+  681  sudo apt install unrar
+  682  unrar l 541545.rar 
+  683  unrar  541545.rar 
+  684  man unrar
+  685  unrar e 541545.rar 
+  686  rm 541545.rar 
+  687  mv Hereditary\ 2018\ * Torrents/Hereditary\ \(2018\)\ \[WEBRip\]\ \[1080p\]\ \[YTS.AM\]/
+  688  cd Downloads/Torrents/Hereditary\ \(2018\)\ \[WEBRip\]\ \[1080p\]\ \[YTS.AM\]/
+  689  diff Hereditary\ 2018\ 720p\ AMZN\ WEBRip\ DDP5.1\ x264-NTG.srt Hereditary\ 2018\ 1080p\ WEB-DL\ DD5.1\ H264-FGT.srt 
+  690  apt search xinerama
+  691  xinerama
+  692  xrandr 
+  693  xrandr --current
+  694  xrandr -q
+  695  man xrandr 
+  696  apt search pavucontrol
+  697  sudo apt install pavucontrol
+  698  startx
+  699  poweroff
+  700  cd /media/augusto/SAM/series/AoT/
+  701  ls
+  702  for i in {01..25}; do mv Shingeki_no_Kyojin_Cap_$i.srt AoTS01E$i.mkv; done
+  703  vim .stalonetrayrc 
+  704  cd /media/augusto/SAM/series/AoT/
+  705  for i in {02..25}; do mv AoTS01E$i.mkv AoTS01E$i.srt; done
+  706  for i in {02..06}; do mv \[pseudo\]\ Attack\ on\ Titan\ S01E0$i* AoTS01E$i.mkv; done
+  707  for i in {02..06}; do mv \[pseudo\]\ Attack\ on\ Titan\ S01E$i* AoTS01E$i.mkv; done
+  708  cd /media/augusto/SAM/series/AoT/
+  709  for i in {07..12}; do mv \[pseudo\]\ Attack\ on\ Titan\ S01E$i* AoTS01E$i.mkv; done
+  710  sudo apt install amarok
+  711  sudo apt install youtube-dl 
+  712  youtube-dl -F https://www.youtube.com/watch?v=hi4pzKvuEQM
+  713  youtube-dl -f https://www.youtube.com/watch?v=hi4pzKvuEQM
+  714  youtube-dl -F https://www.youtube.com/watch?v=hi4pzKvuEQM
+  715  youtube-dl --version
+  716  youtube-dl -F https://www.youtube.com/watch?v=JN7qaeiRq8U
+  717  youtube-dl -f 278 https://www.youtube.com/watch?v=JN7qaeiRq8U
+  718  youtube-dl -f 140 https://www.youtube.com/watch?v=JN7qaeiRq8U
+  719  mv H3H3\ BALL\ RIDER-JN7qaeiRq8U.m4a Music/
+  720  rm H3H3\ BALL\ RIDER-JN7qaeiRq8U.webm 
+  721  ifuse
+  722  sudo apt install ifuse
+  723  sudo amarok
+  724  ps -e
+  725  ps -e | grep amarok
+  726  killall amarok
+  727  ps -e | grep amarok
+  728  kill -9 27678
+  729  sudo kill -9 27678
+  730  lsusb
+  731  lsblk
+  732  cd /dev/
+  733  ls
+  734  lsusb
+  735  fdisk -l
+  736  sudo fdisk -l
+  737  startx
+  738  augusto
+  739  startx
+  740  poweroff
+  741  poweroff
+  742  sudo apt install banshee
+  743  vim xmonad/.xmonad/xmonad.hs
+  744  cd .au_conf/
+  745  git status
+  746  git diff xmonad/.xmonad/xmonad.hs
+  747  git status
+  748  git diff xmonad/.xmonad/xmonad.hs
+  749  git status
+  750  git add .
+  751  git status
+  752  git rm xmonad/.xmonad/.xmonad.hs.swo 
+  753  git rm --cached xmonad/.xmonad/.xmonad.hs.swo 
+  754  git status
+  755  vim X/.xinitrc 
+  756  git commit -m "better bars"
+  757  git push
+  758  git push origin new_one 
+  759  startx
+  760  sudo apt list
+  761  apt list
+  762  apt list | less
+  763  history | grep install
+  764  vim installs/3_xmonad.sh 
+  765  apt search libghc-xmonad
+  766  startx
+  767  poweroff
+  768  cd installs/
+  769  history > history

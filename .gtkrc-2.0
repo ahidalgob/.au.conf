@@ -1,4 +1,4 @@
-gtk-icon-theme-name = "Numix-Circle"
+#gtk-icon-theme-name = "Numix-Circle"
 
-gtk-theme-name = "Adwaita-Xfce Dark"
+gtk-theme-name = Adwaita
 

@@ -7,12 +7,12 @@ xrdb -merge .Xresources
 
 # Nice cursor
 xsetroot -cursor_name left_ptr &
-#xset -b
+xset -b
+xset r rate 300 60
 
-# Set up an icon tray
-#stalonetray &
-
-# Fire up apps
+nm-applet &
+dropbox &
+megasync &
 
 
 #xscreensaver -no-splash &
@@ -21,7 +21,8 @@ xsetroot -cursor_name left_ptr &
    #nm-applet --sm-disable &
 #fi
 
-xset r rate 300 60
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
 
 compton -b
 #xcompmgr &

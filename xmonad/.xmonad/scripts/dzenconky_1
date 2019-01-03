@@ -5,8 +5,11 @@ update_interval 0.5
 total_run_times 0
 use_spacer none
 
+# ^bg(\#151515)   ^i(/home/augusto/.xmonad/icons/clock.xbm)   \
+# ${time %a, %d %b %R} \
+
 TEXT
-^bg(\#050505)   ^i(/home/augusto/.xmonad/icons/cpu.xbm)   \
+^bg(\#a50505)   ^i(/home/augusto/.xmonad/icons/cpu.xbm)   \
 ${cpu cpu0}%   \
 ^bg(\#151515)   ^i(/home/augusto/.xmonad/icons/mem.xbm)   \
 ${mem} (${memperc}%)   \
