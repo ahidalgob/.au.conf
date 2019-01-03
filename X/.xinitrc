@@ -24,7 +24,7 @@ megasync &
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
-compton -b
+compton -bf -D 5
 #xcompmgr &
 
 
