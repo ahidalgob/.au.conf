@@ -18,7 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugins {{{2
 
 "if light==0
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 "endif
 
 " syntax and indentation support

@@ -60,15 +60,15 @@ myOtherScreenWS = myblack3
 myActiveWS = myblack2
 
 
-bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'Deja Vu Mono 2-9' -fg '" ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 20 -w 750"
-bar2 = "sh /home/augusto/.xmonad/scripts/dzen_info_1.sh"
+bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'Deja Vu Mono 2-9' -fg '" ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 1300"
+bar2 = "sh /home/ahidalgob/.xmonad/scripts/dzen_info_1.sh"
 
-cal_ic = "^ca(1,xdotool key alt+space)^i(/home/augusto/.xmonad/icons/"
+cal_ic = "^ca(1,xdotool key alt+space)^i(/home/ahidalgob/.xmonad/icons/"
 vtitle = "^bg(" ++ myblack3 ++ ")  "
 vtitle_end = "  ^bg()"
 
 startup =
-    spawnOnce "sh /home/augusto/.xmonad/scripts/autostart.sh"
+    spawnOnce "sh /home/ahidalgob/.xmonad/xmonad-session-rc"
 
 myLogHook h =
     dynamicLogWithPP $ tryPP h
@@ -167,12 +167,13 @@ main = do
     _ <- spawn "sleep 0.5; stalonetray" --stalone
 
     xmonad $ def
-      { manageHook = myApps <+> manageDocks <+> manageHook def
+      {  manageHook = myApps <+> manageDocks <+> manageHook def
       , layoutHook = myLayout
       , handleEventHook = docksEventHook <+> handleEventHook def
       , modMask = mod1Mask
       , workspaces = myWorkspaces
-      , terminal  = "urxvt -e tmux"
+      --, terminal  = "urxvt -e tmux"
+      , terminal  = "gnome-terminal"
       , focusedBorderColor = myblue2
       , normalBorderColor = "" ++ myblack2 ++ ""
       , borderWidth = 2
