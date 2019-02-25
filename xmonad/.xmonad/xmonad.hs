@@ -140,10 +140,10 @@ myKeys = [((mod1Mask, xK_p), spawn "dmenu_run -i") -- case insensitive
 
 myLayout = avoidStruts $ smartBorders $
     onWorkspace "0" sGrid $
-    reflectHoriz $ withIM (35%128) (ClassName "TelegramDesktop") $ reflectHoriz
+    reflectHoriz $ withIM (28%128) (ClassName "TelegramDesktop") $ reflectHoriz
     ( sTall ||| Full ||| Mirror sTall ||| sGrid )
     where
-      sTall = spacingRaw True myBorder True myBorder True $ Tall 1 (5/100) (1/2)
+      sTall = spacingRaw True myBorder True myBorder True $ Tall 1 (2/100) (1/2)
       sGrid = spacingRaw True myBorder True myBorder True Grid
       myBorder = Border 5 5 5 5
       --sCircle = spacing 5 $ Circle
