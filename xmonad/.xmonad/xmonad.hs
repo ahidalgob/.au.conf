@@ -178,5 +178,5 @@ main = do
       , normalBorderColor = "" ++ myblack2 ++ ""
       , borderWidth = 2
       , startupHook = startup <+> setWMName "LG3D" <+> docksStartupHook
-      , logHook = fadeInactiveLogHook 0.8 <+> myLogHook leftBar
+      , logHook = fadeInactiveLogHook 0.9 <+> myLogHook leftBar
       } `additionalKeys` myKeys
