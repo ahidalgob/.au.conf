@@ -60,8 +60,11 @@ myOtherScreenWS = myblack3
 myActiveWS = myblack2
 
 
-bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'Deja Vu Mono 2-9' -fg '" ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 1300"
+bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'Deja Vu Mono 2-9' -fg '" ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 1910"
+--bar1' = "dzen2 -dock -p -ta l -e 'button3=' -fn 'Deja Vu Mono 2-9' -fg '" ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 1910 -y 1600"
+
 bar2 = "sh /home/ahidalgob/.xmonad/scripts/dzen_info_1.sh"
+--bar2' = "sh /home/ahidalgob/.xmonad/scripts/dzen_info_1.1.sh"
 
 cal_ic = "^ca(1,xdotool key alt+space)^i(/home/ahidalgob/.xmonad/icons/"
 vtitle = "^bg(" ++ myblack3 ++ ")  "
@@ -163,7 +166,9 @@ myApps = composeAll
 
 main = do
     leftBar <- spawnPipe bar1
+    --leftBarScreen2 <- spawnPipe bar1'
     _ <- spawnPipe bar2 -- rightbar
+    --_ <- spawnPipe bar2' -- rightbar
     _ <- spawn "sleep 0.5; stalonetray" --stalone
 
     xmonad $ def
@@ -178,5 +183,6 @@ main = do
       , normalBorderColor = "" ++ myblack2 ++ ""
       , borderWidth = 2
       , startupHook = startup <+> setWMName "LG3D" <+> docksStartupHook
+      --, logHook = fadeInactiveLogHook 0.9 <+> myLogHook leftBar leftBarScreen2
       , logHook = fadeInactiveLogHook 0.9 <+> myLogHook leftBar
       } `additionalKeys` myKeys
