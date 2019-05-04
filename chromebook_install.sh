@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# this was tested installing crouton in the following way
+#$ sudo crouton -r bionic -t core
+# then inside the chroot installed
+#$ xserver-xorg-core xserver-xorg-video-dummy xserver-xorg-video-intel
+# finally updated the chroot with
+#$ sudo crouton -n bionic -u -t extension,keyboard,core,cli-extra,x11,xorg,chrome
+# Wasn't able to install the chroot with all the targets directly. TODO test
+# upgrading just after the chroot creation, without installing the xorg packages.
+
+
 alias INSTALL='sudo apt install -y'
 
 $INSTALL xserver-xorg-core xserver-xorg-video-dummy xserver-xorg-video-intel
