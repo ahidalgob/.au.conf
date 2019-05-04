@@ -2,9 +2,6 @@
 
 alias INSTALL='sudo apt install -y'
 
-#TODO bashrc
-#TODO gtk
-
 $INSTALL xserver-xorg-core xserver-xorg-video-dummy xserver-xorg-video-intel
 # when installed 18.04, these two were needed by a xmonad dependency
 $INSTALL libxrandr-dev libxss-dev
@@ -17,6 +14,7 @@ cabal install --force-reinstalls xmonad xmonad-contrib
 $INSTALL stalonetray dzen2 conky feh xdotool compton xclip curl git vim tmux \
     gcc build-essential python cmake python3-dev suckless-tools feh \
     rxvt-unicode vim-gui-common alsa-base pulseaudio thunar nm-tray
+$INSTALL software-properties-common python-software-properties
 
 $INSTALL xserver-xorg-input-synaptics
 # this would copy a template config file to the correct place. Might want to
@@ -60,7 +58,18 @@ mkdir -p ~/.config
 ln -s ~/.au.conf/gtk-3.0 ~/.config/
 
 
-
+check_in_file() {
+    if cat $1 | grep "$2" > /dev/null; then
+        return 0
+    fi
+    return 1
+}
+if ! check_in_file $HOME/.bashrc ". ~/.au_conf/bash/bashrcConfig"; then
+    echo "" >> $HOME/.bashrc
+    echo "if [ -f ~/.au.conf/bash/bashrcConfig ]; then" >> $HOME/.bashrc
+    echo "    . ~/.au.conf/bash/bashrcConfig" >> $HOME/.bashrc
+    echo "fi" >> $HOME/.bashrc
+fi
 
 
 ################################################################################
@@ -75,3 +84,4 @@ sudo apt update
 $INSTALL spotify-client
 
 unalias INSTALL
+
