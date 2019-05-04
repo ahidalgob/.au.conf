@@ -18,7 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugins {{{2
 
 "if light==0
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 "endif
 
 " syntax and indentation support
@@ -242,7 +242,7 @@ nnoremap <leader>d       : bp\|bd #<CR>
 
 " idk {{{2
 
-
+set colorcolumn=80
 
 " TODO this should go to a file specific to gvim (.gvimrc ?)
 set guioptions-=T

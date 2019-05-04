@@ -2,7 +2,6 @@
 
 # Load resources
 
-
 xrdb -merge .Xresources
 
 # Nice cursor
@@ -11,7 +10,7 @@ xset -b
 xset r rate 300 60
 
 nm-applet &
-dropbox &
+dropbox start &
 megasync &
 
 
@@ -21,12 +20,7 @@ megasync &
    #nm-applet --sm-disable &
 #fi
 
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
-
 compton -bf -D 5
-#xcompmgr &
-
 
 feh --bg-fill ~/.au.conf/wp.jpg
 
