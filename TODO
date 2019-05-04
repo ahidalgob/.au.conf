@@ -1,6 +1,7 @@
 General {{{1
-fix screensaver
-see what options we have with crompton
-
-XMonad {{{1
-gnome-screenshot --clipboard doesn't work, do it manually with xclip
+- screensaver
+- see what options we have with crompton (round corners)
+- notifications
+    - battery
+- zsh
+- gnome-screenshot --clipboard doesn't work, do it manually with xclip
