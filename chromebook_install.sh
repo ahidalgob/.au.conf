@@ -12,21 +12,21 @@
 
 alias INSTALL='sudo apt install -y'
 
-$INSTALL xserver-xorg-core xserver-xorg-video-dummy xserver-xorg-video-intel
+INSTALL xserver-xorg-core xserver-xorg-video-dummy xserver-xorg-video-intel
 # when installed 18.04, these two were needed by a xmonad dependency
-$INSTALL libxrandr-dev libxss-dev
+INSTALL libxrandr-dev libxss-dev
 
-$INSTALL xmonad cabal-install
+INSTALL xmonad cabal-install
 cabal update
 
 cabal install --force-reinstalls xmonad xmonad-contrib
 
-$INSTALL stalonetray dzen2 conky feh xdotool compton xclip curl git vim tmux \
-    gcc build-essential python cmake python3-dev suckless-tools feh \
+INSTALL stalonetray dzen2 conky feh xdotool compton xclip curl git vim tmux \
+    gcc build-essential python cmake python-dev python3-dev suckless-tools feh \
     rxvt-unicode vim-gui-common alsa-base pulseaudio thunar nm-tray
-$INSTALL software-properties-common python-software-properties
+INSTALL software-properties-common python-software-properties
 
-$INSTALL xserver-xorg-input-synaptics
+INSTALL xserver-xorg-input-synaptics
 # this would copy a template config file to the correct place. Might want to
 # modify it and save it.
 
@@ -35,8 +35,6 @@ $INSTALL xserver-xorg-input-synaptics
 
 
 ################################################################################
-
-git clone https://github.com/ahidalgob/.au.conf
 
 mkdir -p ~/.vim
 ln -s ~/.au.conf/vim/.vimrc ~/
@@ -53,8 +51,7 @@ ln -s ~/.au.conf/tmux/.tmux.conf ~/
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # you have to run prefix + I then (I think)
 
-
-ln -s ~/.au.conf/.stalonetrayrc ~/
+ln -s ~/.au.conf/xmonad/.stalonetrayrc ~/
 ln -s ~/.au.conf/xmonad/.xmonad ~/
 ln -s ~/.au.conf/.icons ~/
 ln -s ~/.au.conf/X/.xinitrc ~/
@@ -92,7 +89,7 @@ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 \
 echo deb http://repository.spotify.com stable non-free | \
     sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt update
-$INSTALL spotify-client
+INSTALL spotify-client
 
 unalias INSTALL
 
