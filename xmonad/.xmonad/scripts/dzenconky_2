@@ -6,7 +6,7 @@ total_run_times 0
 use_spacer none
 
 TEXT
-^bg(\#8e44ad)   ^i(/home/augusto/.xmonad/icons/music.xbm)   \
-${exec sh /home/augusto/.xmonad/scripts/func_mpc.sh}   \
-^bg(\#27ae60)   ^i(/home/augusto/.xmonad/icons/vol.xbm)   \
-${exec sh /home/augusto/.xmonad/scripts/func_volume.sh}
+^bg(\#8e44ad)   ^i(/home/ahidalgob/.xmonad/icons/music.xbm)   \
+${exec sh /home/ahidalgob/.xmonad/scripts/func_mpc.sh}   \
+^bg(\#27ae60)   ^i(/home/ahidalgob/.xmonad/icons/vol.xbm)   \
+${exec sh /home/ahidalgob/.xmonad/scripts/func_volume.sh}

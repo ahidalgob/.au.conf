@@ -60,15 +60,18 @@ myOtherScreenWS = myblack3
 myActiveWS = myblack2
 
 
-bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'Deja Vu Mono 2-9' -fg '" ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 20 -w 750"
-bar2 = "sh /home/augusto/.xmonad/scripts/dzen_info_1.sh"
+bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'Deja Vu Mono 2-9' -fg '" ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 1910"
+--bar1' = "dzen2 -dock -p -ta l -e 'button3=' -fn 'Deja Vu Mono 2-9' -fg '" ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 1910 -y 1600"
 
-cal_ic = "^ca(1,xdotool key alt+space)^i(/home/augusto/.xmonad/icons/"
+bar2 = "sh /home/ahidalgob/.xmonad/scripts/dzen_info_1.sh"
+--bar2' = "sh /home/ahidalgob/.xmonad/scripts/dzen_info_1.1.sh"
+
+cal_ic = "^ca(1,xdotool key alt+space)^i(/home/ahidalgob/.xmonad/icons/"
 vtitle = "^bg(" ++ myblack3 ++ ")  "
 vtitle_end = "  ^bg()"
 
 startup =
-    spawnOnce "sh /home/augusto/.xmonad/scripts/autostart.sh"
+    spawnOnce "sh /home/ahidalgob/.xmonad/xmonad-session-rc"
 
 myLogHook h =
     dynamicLogWithPP $ tryPP h
@@ -140,10 +143,10 @@ myKeys = [((mod1Mask, xK_p), spawn "dmenu_run -i") -- case insensitive
 
 myLayout = avoidStruts $ smartBorders $
     onWorkspace "0" sGrid $
-    reflectHoriz $ withIM (35%128) (ClassName "TelegramDesktop") $ reflectHoriz
+    reflectHoriz $ withIM (28%128) (ClassName "TelegramDesktop") $ reflectHoriz
     ( sTall ||| Full ||| Mirror sTall ||| sGrid )
     where
-      sTall = spacingRaw True myBorder True myBorder True $ Tall 1 (5/100) (1/2)
+      sTall = spacingRaw True myBorder True myBorder True $ Tall 1 (2/100) (1/2)
       sGrid = spacingRaw True myBorder True myBorder True Grid
       myBorder = Border 5 5 5 5
       --sCircle = spacing 5 $ Circle
@@ -163,19 +166,23 @@ myApps = composeAll
 
 main = do
     leftBar <- spawnPipe bar1
+    --leftBarScreen2 <- spawnPipe bar1'
     _ <- spawnPipe bar2 -- rightbar
+    --_ <- spawnPipe bar2' -- rightbar
     _ <- spawn "sleep 0.5; stalonetray" --stalone
 
     xmonad $ def
-      { manageHook = myApps <+> manageDocks <+> manageHook def
+      {  manageHook = myApps <+> manageDocks <+> manageHook def
       , layoutHook = myLayout
       , handleEventHook = docksEventHook <+> handleEventHook def
       , modMask = mod1Mask
       , workspaces = myWorkspaces
-      , terminal  = "urxvt -e tmux"
+      --, terminal  = "urxvt -e tmux"
+      , terminal  = "gnome-terminal"
       , focusedBorderColor = myblue2
       , normalBorderColor = "" ++ myblack2 ++ ""
       , borderWidth = 2
       , startupHook = startup <+> setWMName "LG3D" <+> docksStartupHook
-      , logHook = fadeInactiveLogHook 0.8 <+> myLogHook leftBar
+      --, logHook = fadeInactiveLogHook 0.9 <+> myLogHook leftBar leftBarScreen2
+      , logHook = fadeInactiveLogHook 0.9 <+> myLogHook leftBar
       } `additionalKeys` myKeys
