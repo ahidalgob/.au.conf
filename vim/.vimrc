@@ -1,6 +1,3 @@
-" Sets some variables specific to each machine
-":source ~/.vim/local_specific.vim
-
 " Vundle {{{1
 " Vundle Internal {{{2
 set nocompatible              " be iMproved, required
@@ -190,12 +187,12 @@ inoremap {}\ {}…<Esc>F}i
 inoremap <>\ <>…<Esc>F>i
 inoremap ""\ ""…<Esc>F"i
 
-inoremap <c-Space> <Esc>/…<CR>:noh<CR>"_c1l
-nnoremap <c-Space> /…<CR>:noh<CR>"_c1l
+"inoremap <c-Space> <Esc>/…<CR>:noh<CR>"_c1l
+"nnoremap <c-Space> /…<CR>:noh<CR>"_c1l
 
 " On some computers (or terminal?) C-Space sends ^@ (Nul)
-inoremap <Nul> <Esc>/…<CR>:noh<CR>"_c1l
-nnoremap <Nul> /…<CR>:noh<CR>"_c1l
+"inoremap <Nul> <Esc>/…<CR>:noh<CR>"_c1l
+"nnoremap <Nul> /…<CR>:noh<CR>"_c1l
 
 inoremap {<CR>  {<CR>}<Esc>O
 
@@ -363,6 +360,7 @@ nnoremap <leader>fi :YcmCompleter FixIt<CR>
 
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
 
 
 

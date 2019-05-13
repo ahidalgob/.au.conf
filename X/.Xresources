@@ -54,11 +54,17 @@ URxvt.scrollBar: false
 urxvt*depth: 32
 URxvt.background: [92]#000000
 
-URxvt*font: xft:DejaVu Sans Mono:size=10:minspace=False, xft:DejaVu Sans:pixelsize=9
-URxvt*boldFont: xft:DejaVu Sans Mono:size=11:minspace=False, xft:DejaVu Sans:pixelsize=9
+URxvt*font: xft:InputMono ExLight:size=14:minspace=False:antialias=true, xft:DejaVu Sans:pixelsize=9
+!URxvt.font: xft:InputMono ExLight:pixelsize=18
+!URxvt*boldFont: xft:DejaVu Sans Mono:size=11:minspace=False, xft:DejaVu Sans:pixelsize=9
 !
 !-1 with normal font
 URxvt.letterSpace:-1
+
+Xft.dpi:        65
+Xft.antialias:  false
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
 
 ! extensions {{{2
 URxvt.perl-ext-common: font-size
