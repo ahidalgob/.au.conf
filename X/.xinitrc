@@ -20,7 +20,7 @@ sleep 5 &&megasync &
 
 compton -bf -D 5
 
-xrandr --output HDMI1 --auto --output eDP1 --auto --left-of HDMI1
+bash ~/.au.conf/scripts/setscreens.sh
 feh --bg-fill ~/.au.conf/wp.jpg
 
 exec xmonad
