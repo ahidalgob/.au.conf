@@ -8,7 +8,7 @@
 *.cursorColor: #d0d0d0
 !
 ! Black
-*.color0:      #151515
+*.color0:      #000000
 *.color8:      #505050
 !
 ! Red
@@ -52,7 +52,7 @@
 URxvt.scrollBar: false
 
 urxvt*depth: 32
-URxvt.background: [92]#000000
+URxvt.background: [100]#000000
 
 URxvt*font: xft:InputMono ExLight:size=14:minspace=False:antialias=true, xft:DejaVu Sans:pixelsize=9
 !URxvt.font: xft:InputMono ExLight:pixelsize=18
