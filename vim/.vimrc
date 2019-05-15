@@ -121,6 +121,10 @@ set history=1500         " REMEMBER
 set lazyredraw            " Don't redraw on macros!
 set ttyfast               " Batch send characters to screen (way faster)
 set clipboard=unnamedplus
+
+
+"Mouse click doesn't work inside tmux
+set ttymouse=xterm2
 set mouse=a
 
 set foldmethod=marker
