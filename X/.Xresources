@@ -74,14 +74,6 @@ URxvt.perl-ext-common: font-size
 URxvt.keysym.Control-Tab: \033{
 URxvt.keysym.Control-Shift-ISO_Left_Tab: \033}
 
-!remaps C-(, C-[ ,C-{, C-< and C-" for easy use in vim  "
-!not very aesthetic, gona fix it "someday"
-URxvt.keysym.Control-0x28: (_^_)
-URxvt.keysym.Control-0x5B: [_^_]
-URxvt.keysym.Control-0x7B: {_^_}
-URxvt.keysym.Control-0x3C: <_^_>
-URxvt.keysym.Control-0x22: "_^_"
-
 
 ! disable ctrl-shit
 URxvt*iso14755: False

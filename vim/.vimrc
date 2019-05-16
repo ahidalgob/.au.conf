@@ -1,3 +1,6 @@
+" TODO
+" Different cursors for different modes
+
 " Vundle {{{1
 " Vundle Internal {{{2
 set nocompatible              " be iMproved, required
@@ -108,108 +111,77 @@ filetype plugin indent on    " required
 
 
 " General {{{1
-" idk {{{2
-
 filetype on
 filetype plugin indent on " Load indent and plugin files for filetype
-set autoread              " When file changes outside of vim
 set confirm               " Enable dialogs instead of annoying errors
 set autoread              " When file changes outside of vim
-syntax enable
-set number relativenumber
 set history=1500         " REMEMBER
 set lazyredraw            " Don't redraw on macros!
 set ttyfast               " Batch send characters to screen (way faster)
 set clipboard=unnamedplus
 
-
-"Mouse click doesn't work inside tmux
-set ttymouse=xterm2
-set mouse=a
-
 set foldmethod=marker
 
-set scrolloff=5
+set textwidth=80
 
+au BufRead,BufNewFile *.x set filetype=haskell
+au BufRead,BufNewFile *.y set filetype=haskell
+
+" Appearance {{{2
 :colorscheme afterglow
+set colorcolumn=80
+syntax enable
 
-
-" TODO
-" Different cursors for different modes. Tmux-compatible
-"if empty($TMUX)
-  "let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  "let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-  "let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-"else
-  "let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  "let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-  "let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
-"endif
-
-
-" set cursorline only in active window
-augroup CursorLineOnlyInActiveWindow
-  autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-  autocmd WinLeave * setlocal nocursorline
-augroup END
-
-set autoindent
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
 set number
-set expandtab
-set hlsearch
-set incsearch
-
-nnoremap <silent> <leader>hh :noh<CR>
-
 :augroup numbertoggle
 :  autocmd!
 :  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
 :  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 :augroup END
 
+" Set cursorline only in active window
+augroup CursorLineOnlyInActiveWindow
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  autocmd WinLeave * setlocal nocursorline
+augroup END
+
+ "Indention {{{2
+set autoindent
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+" Search {{{2
+set hlsearch
+set incsearch
+set ignorecase
+
+
 " Mappings {{{2
 
-inoremap (_) ()…<Esc>F)i
-inoremap {<bar>} {}…<Esc>F}i
-inoremap [\] []…<Esc>F]i
+inoremap jk <Esc>
+inoremap kj <Esc>
 
-" Not very aesthetic, works with my urxvt maps
-inoremap (_^_) ()…<Esc>F)i
-inoremap [_^_] []…<Esc>F]i
-inoremap {_^_} {}…<Esc>F}i
-inoremap <_^_> <>…<Esc>F>i
-inoremap "_^_" ""…<Esc>F"i
+inoremap ()<c-h> ()…<Esc>F)i
+inoremap []<c-h> []…<Esc>F]i
+inoremap {}<c-h> {}…<Esc>F}i
+inoremap <><c-h> <>…<Esc>F>i
+inoremap ""<c-h> ""…<Esc>F"i
 
-" Maybe this is better
-inoremap ()\ ()…<Esc>F)i
-inoremap []\ []…<Esc>F]i
-inoremap {}\ {}…<Esc>F}i
-inoremap <>\ <>…<Esc>F>i
-inoremap ""\ ""…<Esc>F"i
-
-"inoremap <c-Space> <Esc>/…<CR>:noh<CR>"_c1l
-"nnoremap <c-Space> /…<CR>:noh<CR>"_c1l
-
-" On some computers (or terminal?) C-Space sends ^@ (Nul)
-"inoremap <Nul> <Esc>/…<CR>:noh<CR>"_c1l
-"nnoremap <Nul> /…<CR>:noh<CR>"_c1l
+inoremap <c-Space> <Esc>/…<CR>:noh<CR>"_c1l
+" In nomral mode C-Space sends ^@ (Nul)
+nnoremap <Nul> /…<CR>:noh<CR>"_c1l
 
 inoremap {<CR>  {<CR>}<Esc>O
 
 nnoremap j gj
 nnoremap k gk
 
-
-
-inoremap jk <Esc>
-inoremap kj <Esc>
-
-
 " Search for selected text, forwards or backwards.
+nnoremap <silent> <leader>hh :noh<CR>
+
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
   \gvy/<C-R><C-R>=substitute(
@@ -239,28 +211,21 @@ nnoremap <leader><Tab>   : bnext<CR>
 " Delete current buffer
 nnoremap <leader>d       : bp\|bd #<CR>
 
+" Mouse {{{2
+" Sometimes I use the mouse.
+set scrolloff=5
+if !has('nvim')
+    " Some plugin script or something else sourced after .vimrc conflicts with
+    " this. This can re-set at the end of inicialization but running vim with
+    " -c "set ttymouse=xterm2" option. Fixed with an alias ¯\_(ツ)_/¯.
+    set ttymouse=xterm2
+endif
 
 
 " idk {{{2
 
-set colorcolumn=80
-
 " TODO this should go to a file specific to gvim (.gvimrc ?)
 set guioptions-=T
-"if small
-    "set guifont=Monospace\ 12
-"endif
-
-
-
-autocmd filetype haskell set tabstop=2
-autocmd filetype haskell set shiftwidth=0 " Follow 'tabstop'
-autocmd filetype haskell set softtabstop=-1 " Follow 'shiftwidth'
-
-
-au BufRead,BufNewFile *.x set filetype=haskell
-au BufRead,BufNewFile *.y set filetype=haskell
-
 
 
 " Plugins {{{1
