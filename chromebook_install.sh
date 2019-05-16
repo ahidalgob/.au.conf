@@ -50,9 +50,6 @@ ln -s ~/.au.conf/vim/.vimrc ~/
 ln -s ~/.au.conf/vim/ftplugin ~/.vim
 git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
 vim +PluginInstall
-cd ~/.vim/bundle/YouCompleteMe
-./install.py --clang-completer
-cd -
 
 ln -s ~/.au.conf/git/.gitconfig ~/.gitconfig
 
