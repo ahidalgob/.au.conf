@@ -33,7 +33,7 @@ myOtherScreenWS = myblack3
 myActiveWS = myblack2
 
 bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'Terminata-14' -fg '"
-  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 1010"
+  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 900"
 
 bar2 = "sh /home/augusto/.xmonad/scripts/dzen_info_1.sh"
 
