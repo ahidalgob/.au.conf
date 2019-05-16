@@ -1,5 +1,6 @@
 " TODO
 " Different cursors for different modes
+" Make only one config file for both vim and nvim
 
 " Vundle {{{1
 " Vundle Internal {{{2
@@ -214,6 +215,7 @@ nnoremap <leader>d       : bp\|bd #<CR>
 " Mouse {{{2
 " Sometimes I use the mouse.
 set scrolloff=5
+set mouse=a
 if !has('nvim')
     " Some plugin script or something else sourced after .vimrc conflicts with
     " this. This can re-set at the end of inicialization but running vim with
