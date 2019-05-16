@@ -18,18 +18,16 @@ Plugin 'VundleVim/Vundle.vim'
 
 " Plugins {{{2
 
-"if light==0
-Plugin 'Valloric/YouCompleteMe'
-"endif
+" deoplete and dependencies for vim
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
 
 " syntax and indentation support
 Plugin 'sheerun/vim-polyglot'
 
 " linting
 Plugin 'w0rp/ale'
-
-" sublime-like multiple cursors
-" Plugin 'terryma/vim-multiple-cursors'
 
 " easy motion
 Plugin 'easymotion/vim-easymotion'
@@ -231,23 +229,6 @@ set guioptions-=T
 
 
 " Plugins {{{1
-" Multiple Cursors {{{2
-" Called once right before you start selecting multiple cursors
-function! Multiple_cursors_before()
-    let s:previous_folding=&foldmethod
-    set foldmethod=manual
-
-    let s:old_ycm_whitelist = g:ycm_filetype_whitelist
-    let g:ycm_filetype_whitelist = {}
-endfunction
-
-" Called once only when the multiple selection is canceled
-function! Multiple_cursors_after()
-    let &foldmethod = s:previous_folding
-
-    let g:ycm_filetype_whitelist = s:old_ycm_whitelist
-endfunction
-
 " Airline {{{2
 
 
@@ -315,18 +296,6 @@ let NERDTreeIgnore=['\.hi$', '\.o$']
 
 
 
-" YouCompleteMe {{{2
-"if light==0
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_global_ycm_extra_conf = '~/.au.conf/vim/ycm_global_ycm_extra_conf.py'
-"endif
-"
-"let g:ycm_server_python_interpreter = '/usr/bin/python3'
-set completeopt-=preview
-let g:ycm_show_diagnostics_ui = 0
-
-nnoremap <leader>fi :YcmCompleter FixIt<CR>
-
 " Better Whitespace {{{2
 
 let g:better_whitespace_enabled=1
@@ -360,3 +329,7 @@ let g:ale_set_highlights = 0
 nmap <leader>ad :ALEDetail<cr>
 nmap <leader>an :ALENext<cr>
 nmap <leader>ap :ALEPrevious<cr>
+
+
+" deoplete {{{2
+let g:deoplete#enable_at_startup = 1
