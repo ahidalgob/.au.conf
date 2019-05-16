@@ -6,9 +6,13 @@
 #$ xserver-xorg-core xserver-xorg-video-dummy xserver-xorg-video-intel
 # finally updated the chroot with
 #$ sudo crouton -n bionic -u -t extension,keyboard,core,cli-extra,x11,xorg,chrome
-# Wasn't able to install the chroot with all the targets directly. TODO test
-# upgrading just after the chroot creation, without installing the xorg packages.
+# Wasn't able to install the chroot with all the targets directly.
 
+# TODO
+# Fonts (xfonts-terminus?)
+# cabal install ghc-mod hling
+# Neovim
+# Adding cabal to path
 
 alias INSTALL='sudo apt install -y'
 
@@ -16,15 +20,20 @@ INSTALL xserver-xorg-core xserver-xorg-video-dummy xserver-xorg-video-intel
 # when installed 18.04, these two were needed by a xmonad dependency
 INSTALL libxrandr-dev libxss-dev
 
-INSTALL xmonad cabal-install
-cabal update
+# Not sure if this is needed, previous xmonad install wasn't not clean
+INSTALL libxinerama-dev
 
+cabal update
+# I faced a permission denied problem installing xmonad-contrib. Fixed it with
+# sudo.
 cabal install --force-reinstalls xmonad xmonad-contrib
 
 INSTALL stalonetray dzen2 conky feh xdotool compton xclip curl git vim tmux \
     gcc build-essential python cmake python-dev python3-dev suckless-tools feh \
-    rxvt-unicode vim-gui-common alsa-base pulseaudio thunar nm-tray
-INSTALL software-properties-common python-software-properties
+    rxvt-unicode vim-gui-common alsa-base pulseaudio thunar nm-tray usbutils \
+    scrot psmisc
+INSTALL software-properties-common python-software-properties python-pip \
+    python3-pip
 
 INSTALL xserver-xorg-input-synaptics
 # this would copy a template config file to the correct place. Might want to
