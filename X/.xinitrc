@@ -7,9 +7,6 @@ xrdb -merge .Xresources
 xsetroot -cursor_name left_ptr &
 
 xset -b
-xset r rate 300 60
-setxkbmap -option caps:swapescape # swaps escape and caps
-xmodmap ~/.au.conf/scripts/chromebookXModMap
 
 # we wait 5 seconds to wait for stalonetray to be launched
 sleep 5 && nm-applet &

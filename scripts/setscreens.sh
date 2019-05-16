@@ -1,3 +1,5 @@
+#!/bin/bash
+
 NSCREENS="$(xrandr | grep --count [^dis]connected)"
 if [ "$NSCREENS" == "1" ]; then
     xrandr --auto
