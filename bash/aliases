@@ -1,5 +1,6 @@
 
 alias tmux='tmux -2'
+alias vim='vim -c "set ttymouse=xterm2"'
 
 # small alias so ranger exits to current directory
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
