@@ -10,7 +10,7 @@
 
 # TODO
 # Fonts (xfonts-terminus?)
-# cabal install ghc-mod hling
+# cabal install ghc-mod hlint
 # Neovim
 # Adding cabal to path
 
@@ -27,6 +27,9 @@ cabal update
 # I faced a permission denied problem installing xmonad-contrib. Fixed it with
 # sudo.
 cabal install --force-reinstalls xmonad xmonad-contrib
+
+sudo add-apt-repository ppa:jonathonf/vim # vim in repo has a bug
+sudo apt update
 
 INSTALL stalonetray dzen2 conky feh xdotool compton xclip curl git vim tmux \
     gcc build-essential python cmake python-dev python3-dev suckless-tools feh \
