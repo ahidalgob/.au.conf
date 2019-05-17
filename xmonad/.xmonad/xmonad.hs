@@ -94,9 +94,9 @@ myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -m 0 -fn 'Terminata-14'") -- c
            , spawn $ "killall dzen2; killall stalonetray;"
              <> "xmonad --recompile; xmonad --restart")
 
-         , ((0, xK_Print), spawn "gnome-screenshot; mv ~/Screenshot* ~/Pictures/Screenshots")
+         , ((0, xK_Print), spawn "scrot")
          --, ((controlMask, xK_Print), spawn "gnome-screenshot --clipboard")
-         , ((shiftMask, xK_Print), spawn "sleep 0.3; gnome-screenshot --area")
+         , ((shiftMask, xK_Print), spawn "sleep 0.3; scrot -s")
          --, ((controlMask, xK_Print), spawn "gnome-screenshot --area")
 
 
