@@ -33,8 +33,16 @@ Plugin 'VundleVim/Vundle.vim'
 
 " deoplete and dependencies for vim
 Plugin 'Shougo/deoplete.nvim'
-Plugin 'roxma/nvim-yarp'
-Plugin 'roxma/vim-hug-neovim-rpc'
+
+" deoplete {{{2
+if has('nvim')
+    let g:deoplete#enable_at_startup = 1
+else
+    plugin 'roxma/nvim-yarp'
+    Plugin 'roxma/vim-hug-neovim-rpc'
+    " deoplete conflicts with ttymouse setting for vim, this *hackily* fixes
+    autocmd VimEnter * call deoplete#enable()
+endif
 
 " syntax and indentation support
 Plugin 'sheerun/vim-polyglot'
@@ -217,10 +225,9 @@ nnoremap <leader>d       : bp\|bd #<CR>
 set scrolloff=5
 set mouse=a
 if !has('nvim')
-    " Some plugin script or something else sourced after .vimrc conflicts with
-    " this. This can re-set at the end of inicialization but running vim with
-    " -c "set ttymouse=xterm2" option. Fixed with an alias ¯\_(ツ)_/¯.
-    set ttymouse=xterm2
+    " Somethings conflicts with ttymouse setting, specifically deoplete#enable()
+    " Note this has to be before than `call deoplete#enable()`
+    autocmd VimEnter * set ttymouse=xterm2
 endif
 
 
@@ -333,5 +340,3 @@ nmap <leader>an :ALENext<cr>
 nmap <leader>ap :ALEPrevious<cr>
 
 
-" deoplete {{{2
-let g:deoplete#enable_at_startup = 1
