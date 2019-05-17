@@ -121,7 +121,7 @@ myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -m 0 -fn 'Terminata-14'") -- c
 myLayout = avoidStruts $ smartBorders $
     onWorkspace "0" sGrid $
     reflectHoriz $ withIM (28%128) (ClassName "TelegramDesktop") $ reflectHoriz
-    ( sTall ||| Full ||| Mirror sTall ||| sGrid )
+    ( sTall ||| Full)
     where
       sTall = spacingRaw True myBorder True myBorder True $ Tall 1 (2/100) (1/2)
       sGrid = spacingRaw True myBorder True myBorder True Grid
