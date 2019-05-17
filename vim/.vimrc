@@ -8,10 +8,13 @@ set nocompatible              " be iMproved, required
 filetype off                  " required <<========== We can turn it on later
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+if has('nvim')
+    set rtp+=~/.config/nvim/bundle/Vundle.vim
+    call vundle#begin('~/.config/nvim/bundle')
+else
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+endif
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -34,11 +37,10 @@ Plugin 'VundleVim/Vundle.vim'
 " deoplete and dependencies for vim
 Plugin 'Shougo/deoplete.nvim'
 
-" deoplete {{{2
 if has('nvim')
     let g:deoplete#enable_at_startup = 1
 else
-    plugin 'roxma/nvim-yarp'
+    Plugin 'roxma/nvim-yarp'
     Plugin 'roxma/vim-hug-neovim-rpc'
     " deoplete conflicts with ttymouse setting for vim, this *hackily* fixes
     autocmd VimEnter * call deoplete#enable()
