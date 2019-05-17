@@ -17,6 +17,19 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " Plugins {{{2
+" revise {{{3
+" easy motion
+"Plugin 'easymotion/vim-easymotion'
+
+"
+"Plugin 'tpope/vim-surround'
+
+"
+"Plugin 'tpope/vim-unimpaired'
+
+" easy lining up text
+"Plugin 'godlygeek/tabular'
+"}}}
 
 " deoplete and dependencies for vim
 Plugin 'Shougo/deoplete.nvim'
@@ -29,20 +42,8 @@ Plugin 'sheerun/vim-polyglot'
 " linting
 Plugin 'w0rp/ale'
 
-" easy motion
-Plugin 'easymotion/vim-easymotion'
-
-" graphic undo tree
-Plugin 'sjl/gundo.vim'
-
 " easy visual select
 Plugin 'terryma/vim-expand-region'
-
-"
-Plugin 'tpope/vim-surround'
-
-"
-Plugin 'tpope/vim-unimpaired'
 
 " file system explorer
 Plugin 'scrooloose/nerdtree'
@@ -69,24 +70,13 @@ Plugin 'edkolev/tmuxline.vim'
 " tabs-like list of buffers, integrates nicely with airline
 Plugin 'bling/vim-bufferline'
 
-" easy lining up text
-Plugin 'godlygeek/tabular'
-
 " easy commenting lines
 Plugin 'scrooloose/nerdcommenter'
 
 " indent levels guides
 Plugin 'nathanaelkane/vim-indent-guides'
 
-" distraction-free writing
-Plugin 'junegunn/goyo.vim'
-Plugin 'junegunn/limelight.vim'
-
-
-" Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'danilo-augusto/vim-afterglow'
-"Plugin 'altercation/vim-colors-solarized'
-"Plugin 'chriskempson/tomorrow-theme'
 
 Plugin 'ntpeters/vim-better-whitespace'
 
@@ -123,13 +113,22 @@ set foldmethod=marker
 
 set textwidth=80
 
+set wildmenu
+
 au BufRead,BufNewFile *.x set filetype=haskell
 au BufRead,BufNewFile *.y set filetype=haskell
+
+" Split direction for windows:
+set splitbelow
+set splitright
 
 " Appearance {{{2
 :colorscheme afterglow
 set colorcolumn=80
 syntax enable
+
+" italicized comments
+highlight Comment        cterm=italic
 
 set number
 :augroup numbertoggle
@@ -177,6 +176,9 @@ inoremap {<CR>  {<CR>}<Esc>O
 
 nnoremap j gj
 nnoremap k gk
+
+vnoremap < <gv
+vnoremap > >gv
 
 " Search for selected text, forwards or backwards.
 nnoremap <silent> <leader>hh :noh<CR>
