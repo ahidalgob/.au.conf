@@ -42,7 +42,7 @@ if has('nvim')
 else
     Plugin 'roxma/nvim-yarp'
     Plugin 'roxma/vim-hug-neovim-rpc'
-    " deoplete conflicts with ttymouse setting for vim, this *hackily* fixes
+    " deoplete conflicts with ttymouse setting for vim, this *hackily* fixes it
     autocmd VimEnter * call deoplete#enable()
 endif
 
@@ -50,7 +50,11 @@ endif
 Plugin 'sheerun/vim-polyglot'
 
 " linting
-Plugin 'w0rp/ale'
+Plugin 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plugin 'junegunn/fzf'
 
 " easy visual select
 Plugin 'terryma/vim-expand-region'
@@ -168,7 +172,6 @@ set ignorecase
 
 
 " Mappings {{{2
-
 inoremap jk <Esc>
 inoremap kj <Esc>
 
@@ -315,30 +318,8 @@ let g:strip_whitespace_confirm=0
 
 
 
-" Ale {{{2
-
-"let g:ale_enable=0
-"let g:ale_lint_on_enter = 0
-"
-map <leader>aa :ALEToggle<cr>
-
-
-let g:ale_linters = {
-\ 'haskell': ['ghc', 'hlint'],
-\ 'cpp': ['gcc', 'clang'],
-\}
-
-let g:ale_fixers = {
-\ 'cpp' : ['clang-format'],
-\ 'haskell' : ['hlint'],
-\}
-
-let g:ale_haskell_ghc_options = '-W -dynamic'
-
-let g:ale_set_highlights = 0
-
-nmap <leader>ad :ALEDetail<cr>
-nmap <leader>an :ALENext<cr>
-nmap <leader>ap :ALEPrevious<cr>
-
-
+" LanguageClient server{{{2
+let g:LanguageClient_serverCommands = {
+    \ 'haskell': ['hie-wrapper'],
+    \ 'cpp': ['ccls'],
+    \ }
