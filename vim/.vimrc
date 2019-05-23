@@ -323,3 +323,5 @@ let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie-wrapper'],
     \ 'cpp': ['ccls'],
     \ }
+
+let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']

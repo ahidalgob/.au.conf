@@ -9,11 +9,11 @@ use_spacer none
 # ${time %a, %d %b %R} \
 
 TEXT
-^bg(\#a50505)   ^i(/home/augusto/.xmonad/icons/cpu.xbm)   \
-${cpu cpu0}%   \
-^bg(\#151515)   ^i(/home/augusto/.xmonad/icons/mem.xbm)   \
-${mem} (${memperc}%)   \
-^bg(\#050505)   ^i(/home/augusto/.icons/stlarch/batt5full.xbm)  \
-$battery_short   \
-^bg(\#151515)   ^i(/home/augusto/.xmonad/icons/clock.xbm)   \
+^bg(\#a50505) ^i(/home/augusto/.xmonad/icons/cpu.xbm) \
+${cpu cpu0}% \
+^bg(\#151515) ^i(/home/augusto/.xmonad/icons/mem.xbm) \
+${mem} (${memperc}%) \
+^bg(\#050505) ^i(/home/augusto/.icons/stlarch/batt5full.xbm) \
+$battery_short \
+^bg(\#151515) ^i(/home/augusto/.xmonad/icons/clock.xbm) \
 ${time %a, %d %b %R} \

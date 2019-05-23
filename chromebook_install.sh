@@ -45,6 +45,10 @@ INSTALL xserver-xorg-input-synaptics
 #mkdir -p /etc/X11/xorg.conf.d
 #sudo cp /usr/share/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d
 
+################################################################################
+# ccls
+INSTALL llvm-7-dev clang clang-7 libclang-7-dev
+## and follow the instructions
 
 ################################################################################
 

@@ -32,14 +32,13 @@ myCurrentWS = mymagenta
 myOtherScreenWS = myblack3
 myActiveWS = myblack2
 
-bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'Terminata-14' -fg '"
+-- Note the simple quotes!
+bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'InputMono-14' -fg '"
   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 900"
 
-bar2 = "sh /home/augusto/.xmonad/scripts/dzen_info_1.sh"
-
-calIc = "^ca(1,xdotool key alt+space)^i(/home/augusto/.xmonad/icons/"
-vtitle = "^bg(" ++ myblack3 ++ ")  "
-vtitleEnd = "  ^bg()"
+conkyBar = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
+  ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-14' -fg '"
+  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 500 -x 866 -y 0"
 
 myLogHook h =
     dynamicLogWithPP $ tryPP h
@@ -74,6 +73,9 @@ tryPP h = def
         , t]
     }
   where
+  calIc = "^ca(1,xdotool key alt+space)^i(/home/augusto/.xmonad/icons/"
+  vtitle = "^bg(" ++ myblack3 ++ ")  "
+  vtitleEnd = "  ^bg()"
   clickable mouseKey action string =
     "^ca("++mouseKey++",xdotool key "++action++")" ++ string ++ "^ca()"
   -- TODO this wont work with - or =, need to check if xdotool understand the
@@ -120,7 +122,7 @@ myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -m 0 -fn 'Terminata-14'") -- c
 
 myLayout = avoidStruts $ smartBorders $
     onWorkspace "0" sGrid $
-    reflectHoriz $ withIM (28%128) (ClassName "TelegramDesktop") $ reflectHoriz
+    reflectHoriz $ withIM (67%256) (ClassName "TelegramDesktop") $ reflectHoriz
     ( sTall ||| Full)
     where
       sTall = spacingRaw True myBorder True myBorder True $ Tall 1 (2/100) (1/2)
@@ -141,8 +143,8 @@ myApps = composeAll
 
 main = do
     leftBar <- spawnPipe bar1
-    _ <- spawnPipe bar2 -- rightbar
-    _ <- spawn "sleep 0.5; stalonetray" --stalone
+    _ <- spawn conkyBar
+    _ <- spawn "sleep 0.5; stalonetray"
 
     xmonad $ def
       { manageHook = myApps <+> manageDocks <+> manageHook def
