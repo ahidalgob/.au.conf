@@ -2,116 +2,92 @@
 " Different cursors for different modes
 " Make only one config file for both vim and nvim
 
-" Vundle {{{1
-" Vundle Internal {{{2
-set nocompatible              " be iMproved, required
-filetype off                  " required <<========== We can turn it on later
 
-" set the runtime path to include Vundle and initialize
-if has('nvim')
-    set rtp+=~/.config/nvim/bundle/Vundle.vim
-    call vundle#begin('~/.config/nvim/bundle')
-else
-    set rtp+=~/.vim/bundle/Vundle.vim
-    call vundle#begin()
+" vim-plug {{{1
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Plugins {{{2
-" revise {{{3
-" easy motion
-"Plugin 'easymotion/vim-easymotion'
+call plug#begin('~/.vim/plugged')
 
-"
-"Plugin 'tpope/vim-surround'
-
-"
-"Plugin 'tpope/vim-unimpaired'
-
-" easy lining up text
-"Plugin 'godlygeek/tabular'
+" revise {{{2
+"Plug 'easymotion/vim-easymotion'
+"Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-unimpaired'
+"Plug 'godlygeek/tabular'
 "}}}
 
 " deoplete and dependencies for vim
-Plugin 'Shougo/deoplete.nvim'
+
 
 if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup = 1
 else
-    Plugin 'roxma/nvim-yarp'
-    Plugin 'roxma/vim-hug-neovim-rpc'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
     " deoplete conflicts with ttymouse setting for vim, this *hackily* fixes it
     autocmd VimEnter * call deoplete#enable()
 endif
 
 " syntax and indentation support
-Plugin 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 " linting
-Plugin 'autozimu/LanguageClient-neovim', {
+Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plugin 'junegunn/fzf'
+Plug 'junegunn/fzf'
 
 " easy visual select
-Plugin 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region'
 
 " file system explorer
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " git magic
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " visual representation of marks
-Plugin 'kshenoy/vim-signature'
+Plug 'kshenoy/vim-signature'
 
 " improves . command on some plugins actions
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
 " navigate seamlessly between vim and tmux splits
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 " airline
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
 " generates tmux airline-like line
-Plugin 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim'
 
 " tabs-like list of buffers, integrates nicely with airline
-Plugin 'bling/vim-bufferline'
+Plug 'bling/vim-bufferline'
 
 " easy commenting lines
-Plugin 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdcommenter'
 
 " indent levels guides
-Plugin 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides'
 
-Plugin 'danilo-augusto/vim-afterglow'
+Plug 'danilo-augusto/vim-afterglow'
 
-Plugin 'ntpeters/vim-better-whitespace'
+Plug 'ntpeters/vim-better-whitespace'
 
-" Vundle Internal {{{2
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-" Put the rest of your .vimrc file here
-
-
+call plug#end()
 
 " General {{{1
 filetype on
