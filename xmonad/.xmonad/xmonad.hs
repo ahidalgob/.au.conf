@@ -58,14 +58,12 @@ tryPP h = def
 
     , ppTitle   = wrap vtitle vtitleEnd . shorten 60
     , ppLayout    = dzenColor mywhite1 myblack1 . pad .
-      (\t -> case drop (length "ReflectX IM ReflextX ") t of
-              "Spacing Tall"        -> "  " ++ calIc ++ "sptall.xbm)  ^ca()"
-              "Mirror Spacing Tall" -> "  " ++ calIc ++ "mptall.xbm)  ^ca()"
-              "Full"                -> "  " ++ calIc ++ "full.xbm)  ^ca()"
-              "Spacing Grid"        -> "  " ++ calIc ++ "grid.xbm)  ^ca()"
-              _                     -> "  " ++ calIc ++ "grid.xbm)  ^ca()" -- Need this because of WS 0
-
-      )
+      (\t -> calIc ++ (case cleanLayout t of
+              "Spacing Tall"  -> "sptall.xbm"
+              "Full"          -> "full.xbm"
+              "Spacing Grid"  -> "grid.xbm"
+              _               -> "grid.xbm" -- Need this because of WS 0
+        ) ++  ") ^ca()" )
     , ppOrder = \(ws:l:t:_) ->
         [ l
         , clickable "5" "alt+Page_Down" $ clickable "4" "alt+Page_Up" ws
@@ -73,6 +71,7 @@ tryPP h = def
         , t]
     }
   where
+  cleanLayout = drop (length "ReflectX IM ReflextX ")
   calIc = "^ca(1,xdotool key alt+space)^i(/home/augusto/.xmonad/icons/"
   vtitle = "^bg(" ++ myblack3 ++ ")  "
   vtitleEnd = "  ^bg()"
