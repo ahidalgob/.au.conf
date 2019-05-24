@@ -1,7 +1,8 @@
 General {{{1
 - screensaver
-- see what options we have with crompton (round corners)
 - notifications
     - battery
+- scrot
+    - xclip
+    - set destination
 - zsh
-- gnome-screenshot --clipboard doesn't work, do it manually with xclip
