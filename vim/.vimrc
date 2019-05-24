@@ -2,8 +2,8 @@
 " Different cursors for different modes
 " Make only one config file for both vim and nvim
 
-
 " vim-plug {{{1
+" Download plug-in {{{2
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -25,9 +25,6 @@ call plug#begin('~/.vim/plugged')
 "Plug 'godlygeek/tabular'
 "}}}
 
-" deoplete and dependencies for vim
-
-
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup = 1
@@ -48,6 +45,9 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'junegunn/fzf'
+
+Plug 'w0rp/ale'
+
 
 " easy visual select
 Plug 'terryma/vim-expand-region'
@@ -299,5 +299,7 @@ let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie-wrapper'],
     \ 'cpp': ['ccls'],
     \ }
-
 let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
+
+" ALE{{{2
+let g:ale_linters = {'haskell' : ['ghc']}
