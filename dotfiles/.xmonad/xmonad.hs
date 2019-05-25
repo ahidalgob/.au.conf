@@ -108,7 +108,7 @@ myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -m 0 -fn 'Terminata-14'") -- c
 
          --, ((mod1Mask .|. shiftMask, xK_space), sendMessage PrevLayout) TODO Is this impossible?
          --
-         , ((controlMask .|. shiftMask, xK_space), spawn "~/.au.conf/scripts/toogleKeyboardLayout.sh")
+         , ((controlMask .|. shiftMask, xK_space), spawn "~/.au.conf/scripts/toogleKeyboardLayout")
 
          , ((0, xF86XK_AudioLowerVolume ), spawn "amixer set Master 2%-")
          , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer set Master 2%+")

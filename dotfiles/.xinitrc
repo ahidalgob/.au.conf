@@ -18,6 +18,6 @@ sleep 5 &&megasync &
 compton -bf -D 5
 
 bash ~/.au.conf/scripts/setscreens.sh
-feh --bg-fill ~/.au.conf/wp.jpg
+feh --bg-fill ~/wp.jpg
 
 exec xmonad
