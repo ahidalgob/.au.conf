@@ -1,0 +1,42 @@
+#!/bin/bash
+
+paths=(
+    .config/gtk-3.0
+    .config/nvim
+    .gitconfig
+    .gtkrc-2.0
+    .icons
+    .stalonetrayrc
+    .themes
+    .tmux.conf
+    .urxvt
+    .vim/ftplugin
+    .vim/autoload
+    .vimrc
+    .xinitrc
+    .xmonad
+    .Xresources
+)
+
+root=~/.au.conf/dotfiles/
+
+for p in "${paths[@]}"; do
+    targetDirname=~/$(dirname $p)
+    target=~/$p
+    if [ ! -d $targetDirname ]; then
+        echo "created $targetDirname to link $target"
+        mkdir -p $targetDirname
+    fi
+
+    if [ -e $target ] && [ ! -L $target ]; then
+        if [ "$1" == "-f" ]; then
+            ln -sfr "$root$p" -t "$targetDirname"
+            echo "linked $p"
+        else
+            echo "WARNING: $target exists and is not a link (-f to force it)"
+        fi
+    else
+        ln -sfr "$root$p" -t "$targetDirname"
+        echo "linked $p"
+    fi
+done
