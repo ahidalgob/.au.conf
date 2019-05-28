@@ -9,9 +9,9 @@ xsetroot -cursor_name left_ptr &
 xset -b
 
 # we wait 5 seconds to wait for stalonetray to be launched
-sleep 5 && nm-applet &
-sleep 5 && dropbox start &
-sleep 5 && megasync &
+sleep 8 && nm-applet &
+sleep 8 && dropbox start &
+sleep 8 && megasync &
 
 #xscreensaver -no-splash &
 

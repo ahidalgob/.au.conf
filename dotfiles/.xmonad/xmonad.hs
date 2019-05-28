@@ -4,6 +4,7 @@ import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.Place
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.Grid
 import XMonad.Layout.IM
@@ -59,12 +60,12 @@ tryPP h = def
 
     , ppTitle   = wrap vtitle vtitleEnd . shorten 60
     , ppLayout    = dzenColor mywhite1 myblack1 . pad .
-      (\t -> calIc ++ (case cleanLayout t of
-              "Spacing Tall"  -> "sptall.xbm"
-              "Full"          -> "full.xbm"
-              "Spacing Grid"  -> "grid.xbm"
-              _               -> "grid.xbm" -- Need this because of WS 0
-        ) ++  ") ^ca()" )
+      (\t -> calIc ++ (case last . words $ t of
+              "Tall"  -> "sptall.xbm"
+              "Full"  -> "full.xbm"
+              "Grid" -> "grid.xbm"
+              _      -> "grid.xbm" -- Need this because of WS 0
+        ) ++  ")^ca()")
     , ppOrder = \(ws:l:t:_) ->
         [ l
         , clickable "5" "alt+Page_Down" $ clickable "4" "alt+Page_Up" ws
@@ -72,7 +73,6 @@ tryPP h = def
         , t]
     }
   where
-  cleanLayout = drop (length "ReflectX IM ReflextX ")
   calIc = "^ca(1,xdotool key alt+space)^i(/home/augusto/.xmonad/icons/"
   vtitle = "^bg(" ++ myblack3 ++ ")  "
   vtitleEnd = "  ^bg()"
@@ -123,28 +123,34 @@ myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -m 0 -fn 'InputMono-10'") -- c
 myLayout = avoidStruts $ smartBorders $
     onWorkspace "0" sGrid $
     reflectHoriz $ withIM (67%256) (ClassName "TelegramDesktop") $ reflectHoriz
-    ( magnifiercz 1.03 sTall ||| Full)
+    ( magnifiercz 1.02 sTall ||| Full)
     where
       sTall = spacingRaw True myBorder True myBorder True $ Tall 1 (2/100) (1/2)
       sGrid = spacingRaw True myBorder True myBorder True Grid
       myBorder = Border 5 5 5 5
 
 -- use xprop to get these properties
-myApps = composeAll
-    [ isFullscreen                                                 --> doFullFloat
+myApps = composeAll $
+    [ isFullscreen                                             --> doFullFloat
     , className =? "mpv"                                           --> doFloat
     , className =? "TelegramDesktop"  <&&> title =? "Media viewer" --> doFloat
-    , title =? "Open File"                                         --> doCenterFloat
-    , title =? "File Operation Progress"                           --> doCenterFloat
-    --, resource =? "Dialog"                                         --> doFloat
-    , title =? "CSSE101Queue"                                  --> doFloat
-    , title =? "tk"                                            --> doFloat
+    , className =? "MEGAsync" -->
+        (placeHook $ withGaps (25,0,0,0) $ underMouse (0.05, 0))
+    --, resource =? "Dialog" --> doFloat
     ]
+    ++ [ title =? t --> doCenterFloat | t <- centerFloatTitles ]
+  where
+    centerFloatTitles =
+      [ "Open File"
+      , "File Operation Progress"
+      , "Volume Control"
+      ]
+    --floatTitles = [ "CSSE101Queue" , "tk"]
 
 main = do
     leftBar <- spawnPipe bar1
     _ <- spawn conkyBar
-    _ <- spawn "sleep 0.5; stalonetray"
+    _ <- spawn "sleep 1.5; stalonetray"
 
     xmonad $ def
       { manageHook = myApps <+> manageDocks <+> manageHook def
