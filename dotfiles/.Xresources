@@ -54,15 +54,15 @@ URxvt.scrollBar: false
 urxvt*depth: 32
 URxvt.background: [100]#000000
 
-URxvt*font: xft:InputMono ExLight:size=14:minspace=False:antialias=true, xft:DejaVu Sans:pixelsize=9
+URxvt*font: xft:InputMono ExLight:size=10:minspace=False:antialias=true, xft:DejaVu Sans:pixelsize=9
 !URxvt.font: xft:InputMono ExLight:pixelsize=18
 !URxvt*boldFont: xft:DejaVu Sans Mono:size=11:minspace=False, xft:DejaVu Sans:pixelsize=9
 !
 !-1 with normal font
 URxvt.letterSpace:-1
 
-Xft.dpi:        65
-Xft.antialias:  false
+!Xft.dpi:        72
+Xft.antialias:  true
 Xft.hinting:    true
 Xft.hintstyle:  hintfull
 

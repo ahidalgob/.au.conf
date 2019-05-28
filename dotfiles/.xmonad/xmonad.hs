@@ -33,11 +33,11 @@ myOtherScreenWS = myblack3
 myActiveWS = myblack2
 
 -- Note the simple quotes!
-bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'InputMono-14' -fg '"
+bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'InputMono-10' -fg '"
   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 900"
 
 conkyBar = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
-  ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-14' -fg '"
+  ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 500 -x 866 -y 0"
 
 myLogHook h =
@@ -88,7 +88,7 @@ myWorkspaces :: [String]
 myWorkspaces =
     [ "1:TERM" , "2:WEB"] ++ map show [3..7] ++ ["8:IM" , "9:ENT"] ++ map fst myExtraWS
 
-myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -m 0 -fn 'Terminata-14'") -- case insensitive
+myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -b -m 0 -fn 'InputMono-10'") -- case insensitive
          , ( (mod1Mask, xK_f)
            , withFocused $ windows . flip W.float (W.RationalRect 0 0 1 1))
          , ( (mod1Mask, xK_q)

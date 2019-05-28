@@ -151,11 +151,7 @@ set ignorecase
 inoremap jk <Esc>
 inoremap kj <Esc>
 
-inoremap ()<c-h> ()…<Esc>F)i
-inoremap []<c-h> []…<Esc>F]i
-inoremap {}<c-h> {}…<Esc>F}i
-inoremap <><c-h> <>…<Esc>F>i
-inoremap ""<c-h> ""…<Esc>F"i
+inoremap <c-h> …<Esc>hi
 
 inoremap <c-Space> <Esc>/…<CR>:noh<CR>"_c1l
 " In nomral mode C-Space sends ^@ (Nul)
