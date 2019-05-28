@@ -11,6 +11,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Reflect
 import XMonad.Layout.Spacing
+import XMonad.Layout.Magnifier
 
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys)
@@ -122,7 +123,7 @@ myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -m 0 -fn 'InputMono-10'") -- c
 myLayout = avoidStruts $ smartBorders $
     onWorkspace "0" sGrid $
     reflectHoriz $ withIM (67%256) (ClassName "TelegramDesktop") $ reflectHoriz
-    ( sTall ||| Full)
+    ( magnifiercz 1.03 sTall ||| Full)
     where
       sTall = spacingRaw True myBorder True myBorder True $ Tall 1 (2/100) (1/2)
       sGrid = spacingRaw True myBorder True myBorder True Grid
