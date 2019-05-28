@@ -88,7 +88,7 @@ myWorkspaces :: [String]
 myWorkspaces =
     [ "1:TERM" , "2:WEB"] ++ map show [3..7] ++ ["8:IM" , "9:ENT"] ++ map fst myExtraWS
 
-myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -b -m 0 -fn 'InputMono-10'") -- case insensitive
+myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -m 0 -fn 'InputMono-10'") -- case insensitive
          , ( (mod1Mask, xK_f)
            , withFocused $ windows . flip W.float (W.RationalRect 0 0 1 1))
          , ( (mod1Mask, xK_q)
