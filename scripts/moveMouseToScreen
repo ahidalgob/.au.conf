@@ -1,0 +1,10 @@
+#! /bin/bash
+
+X=1366
+Y=768
+
+SCREEN=$1
+
+x=$(($SCREEN * $X + $X/2))
+y=$(($Y/2))
+xdotool mousemove $x $y
