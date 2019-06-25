@@ -85,7 +85,8 @@ Plug 'scrooloose/nerdcommenter'
 " indent levels guides
 Plug 'nathanaelkane/vim-indent-guides'
 
-Plug 'danilo-augusto/vim-afterglow'
+"Plug 'danilo-augusto/vim-afterglow'
+Plug 'ahidalgob/vim-afterglow'
 
 Plug 'ntpeters/vim-better-whitespace'
 
