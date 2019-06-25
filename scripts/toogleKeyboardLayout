@@ -13,13 +13,13 @@ setxkbmap -option caps:swapescape # swaps escape and caps
 #TODO detect
 
 THINKPAD="$(lsusb | grep --count Lenovo)"
-if [ "$THINKPAD" == "0" ]; then
-    xmodmap -e "clear control"
+#if [ "$THINKPAD" == "0" ]; then
+    #xmodmap -e "clear control"
 
-    xmodmap -e "keycode 133 = Escape"
-    xmodmap -e "keycode 105 = Left"
-    xmodmap -e "keycode 113 = Control_R"
-    xmodmap -e "add control = Control_R Control_L"
+    #xmodmap -e "keycode 133 = Escape"
+    #xmodmap -e "keycode 105 = Left"
+    #xmodmap -e "keycode 113 = Control_R"
+    #xmodmap -e "add control = Control_R Control_L"
 
     #xmodmap -e "keycode 108 = Overlay1_Enable"
     #xmodmap -e "keycode 108 = Mode_switch"
@@ -27,6 +27,7 @@ if [ "$THINKPAD" == "0" ]; then
     #xmodmap -e "keysym j = j J Down"
     #xmodmap -e "keysym k = k K Up"
     #xmodmap -e "keysym l = l L Right"
-fi
+#fi
 
+xset -b
 xset r rate 300 60
