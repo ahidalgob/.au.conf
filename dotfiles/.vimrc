@@ -39,6 +39,8 @@ endif
 " syntax and indentation support
 Plug 'sheerun/vim-polyglot'
 
+Plug 'SirVer/ultisnips'
+
 " linting
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -299,3 +301,9 @@ let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
 
 " ALE{{{2
 let g:ale_linters = {'haskell' : ['ghc']}
+
+
+" Snips{{{2
+let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+" vertically split ultisnips edit window
+let g:UltiSnipsEditSplit="vertical"
