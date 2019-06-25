@@ -1,5 +1,6 @@
 
 alias tmux='tmux -2'
+alias gnvim='nvim-gtk'
 
 # small alias so ranger exits to current directory
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
@@ -36,21 +37,5 @@ function CPF {
         done
     fi
 }
-
-
-# old {{{1
-# alias guake='myguake'
-# function myguake {
-# 	if [ -z "$1" ]; then
-# 		\guake
-# 	else
-# 		if [ "$1" == "here" ]; then
-# 			shift
-# 			\guake -n $PWD "$@"
-# 		else
-# 			\guake "$@"
-# 		fi
-# 	fi
-# }
 
 
