@@ -301,9 +301,53 @@ let g:strip_whitespace_confirm=0
 " LanguageClient server{{{2
 let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie-wrapper'],
+    \ 'lhaskell': ['hie-wrapper'],
     \ 'cpp': ['ccls'],
     \ }
-let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
+let g:LanguageClient_rootMarkers = ['stack.yaml']
+
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+map <Leader>lk :call LanguageClient#textDocument_hover()<CR>
+map <Leader>lg :call LanguageClient#textDocument_definition()<CR>
+map <Leader>lr :call LanguageClient#textDocument_rename()<CR>
+map <Leader>lf :call LanguageClient#textDocument_formatting()<CR>
+map <Leader>lb :call LanguageClient#textDocument_references()<CR>
+map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
+map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
+
+
+let g:LanguageClient_diagnosticsDisplay = {
+    \     1: {
+    \         "name": "Error",
+    \         "texthl": "howtowork",
+    \         "signText": "✖",
+    \         "signTexthl": "ErrorMsg",
+    \     },
+    \     2: {
+    \         "name": "Warning",
+    \         "texthl": "howtowork",
+    \         "signText": "⚠",
+    \         "signTexthl": "ALEWarningSign",
+    \     },
+    \     3: {
+    \         "name": "Information",
+    \         "texthl": "howtowork",
+    \         "signText": "ℹ",
+    \         "signTexthl": "ALEInfoSign",
+    \     },
+    \     4: {
+    \         "name": "Hint",
+    \         "texthl": "howtowork",
+    \         "signText": "➤",
+    \         "signTexthl": "ALEInfoSign",
+    \     },
+    \ }
+
+
+hi link ALEError Error
+hi Warning term=underline cterm=underline ctermfg=Yellow gui=undercurl guisp=Gold
+hi link ALEWarning Warning
+hi link ALEInfo SpellCap
 
 " ALE{{{2
 let g:ale_linters = {'haskell' : ['ghc']}
