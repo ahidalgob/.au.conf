@@ -9,9 +9,10 @@ xsetroot -cursor_name left_ptr &
 xset -b
 
 # we wait 5 seconds to wait for stalonetray to be launched
-sleep 8 && nm-applet &
-sleep 8 && dropbox start &
-sleep 8 && megasync &
+sleep 5 && nm-applet &
+sleep 5 && dropbox start &
+sleep 5 && megasync &
+#sleep 5 && TogglDesktop &
 
 #xscreensaver -no-splash &
 
@@ -24,4 +25,5 @@ bash ~/.au.conf/scripts/toogleKeyboardLayout
 
 feh --bg-fill ~/wp.jpg
 
-exec xmonad
+#exec xmonad
+exec my-xmonad-exe
