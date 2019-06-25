@@ -117,6 +117,11 @@ set splitright
 
 " Appearance {{{2
 :colorscheme afterglow
+let g:afterglow_no_terminal_background = 1
+if exists('g:GtkGuiLoaded')
+    call rpcnotify(1, 'Gui', 'Font', 'Fira Code 10')
+endif
+
 set colorcolumn=80
 syntax enable
 
