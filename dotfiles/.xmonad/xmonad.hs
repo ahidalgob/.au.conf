@@ -42,8 +42,16 @@ conkyBar = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
   ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 500 -x 866 -y 0"
 
-myLogHook h =
-    dynamicLogWithPP $ tryPP h
+bar2 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'InputMono-10' -fg '"
+  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 900 -x 1366"
+
+conkyBar2 = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
+  ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
+  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 500 -x 2232 -y 0"
+
+myLogHook h1 = do
+    dynamicLogWithPP $ tryPP h1
+    --dynamicLogWithPP $ tryPP h2
 
 -- TODO How to set color based on a given screen (for having multiple docks)
 -- We can set the color of ppCurrent and ppVisible with the same function
@@ -134,22 +142,29 @@ myApps = composeAll $
     [ isFullscreen                                             --> doFullFloat
     , className =? "mpv"                                           --> doFloat
     , className =? "TelegramDesktop"  <&&> title =? "Media viewer" --> doFloat
-    , className =? "MEGAsync" -->
-        (placeHook $ withGaps (25,0,0,0) $ underMouse (0.05, 0))
     --, resource =? "Dialog" --> doFloat
     ]
     ++ [ title =? t --> doCenterFloat | t <- centerFloatTitles ]
+    ++ [ className =? n -->
+      placeHook (withGaps (25,0,0,0) $ underMouse (0.2, 0)) <+> doFloat
+          | n <- mouseFloatClassNames ]
   where
     centerFloatTitles =
       [ "Open File"
       , "File Operation Progress"
       , "Volume Control"
       ]
+    mouseFloatClassNames =
+      [ "MEGAsync"
+      , "Toggl Desktop"
+      ]
     --floatTitles = [ "CSSE101Queue" , "tk"]
 
 main = do
     leftBar <- spawnPipe bar1
+    --rightBar <- spawnPipe bar2
     _ <- spawn conkyBar
+    --_ <- spawn conkyBar2
     _ <- spawn "sleep 1.5; stalonetray"
 
     xmonad $ def
@@ -163,5 +178,6 @@ main = do
       , normalBorderColor = "" ++ myblack2 ++ ""
       , borderWidth = 2
       , startupHook = setWMName "LG3D" <+> docksStartupHook
+      --, logHook = fadeInactiveLogHook 0.9 <+> myLogHook leftBar rightBar
       , logHook = fadeInactiveLogHook 0.9 <+> myLogHook leftBar
       } `additionalKeys` myKeys
