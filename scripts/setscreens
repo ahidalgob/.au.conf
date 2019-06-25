@@ -9,5 +9,5 @@ else
     else
         SCREEN="eDP1"
     fi
-    xrandr --output HDMI1 --auto --output $SCREEN --auto --left-of HDMI1
+    xrandr --output HDMI1 --auto --dpi 92 --output $SCREEN --auto --left-of HDMI1
 fi
