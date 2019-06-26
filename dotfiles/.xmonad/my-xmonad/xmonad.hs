@@ -13,11 +13,15 @@ import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Reflect
 import XMonad.Layout.Spacing
 import XMonad.Layout.Magnifier
+import XMonad.Prompt
+import XMonad.Prompt.ConfirmPrompt
 
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys)
 import Graphics.X11.ExtraTypes.XF86
 import System.IO
+import System.Exit
+
 import qualified XMonad.StackSet as W
 
 import Control.Monad
@@ -99,7 +103,15 @@ myWorkspaces :: [String]
 myWorkspaces =
     [ "1:TERM" , "2:WEB"] ++ map show [3..7] ++ ["8:IM" , "9:ENT"] ++ map fst myExtraWS
 
-myKeys = [ ((mod1Mask, xK_p), spawn "dmenu_run -i -m 0 -fn 'InputMono-10'") -- case insensitive
+myXPConfig = def
+  { position          = Top
+  , alwaysHighlight   = True
+  , promptBorderWidth = 0
+  , font              = "xft:fira code:size=12"
+  }
+
+myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io exitSuccess)
+         , ((mod1Mask, xK_p), spawn "dmenu_run -i -m 0 -fn 'InputMono-10'") -- case insensitive
          , ( (mod1Mask, xK_f)
            , withFocused $ windows . flip W.float (W.RationalRect 0 0 1 1))
          , ( (mod1Mask, xK_q)
