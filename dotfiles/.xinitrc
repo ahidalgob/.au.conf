@@ -25,5 +25,4 @@ bash ~/.au.conf/scripts/toogleKeyboardLayout
 
 feh --bg-fill ~/wp.jpg
 
-#exec xmonad
-exec my-xmonad-exe
+exec xmonad
