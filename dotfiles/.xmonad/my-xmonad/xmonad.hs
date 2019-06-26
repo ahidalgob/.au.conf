@@ -68,6 +68,8 @@ setDzenCommands :: [(String, ScreenId)] -> X ()
 setDzenCommands = XS.put . DzenCommands
 
 -- TODO: instead of killing and spawning all, just do the necessary
+-- BUG: I was trying to run this in every LogHook but it seems like it runs
+-- in parallel and lazily, and ends up running too many dzens.
 setDzens :: X ()
 setDzens = do
   Dzens dzens <- XS.get
@@ -90,7 +92,6 @@ setDzens = do
 
 myLogHook :: X ()
 myLogHook =  do
-  setDzens
   Dzens dzens <- XS.get
   mapM_ (dynamicLogWithPP <=< tryPP) dzens
 
@@ -229,6 +230,7 @@ main = do
       , borderWidth = 2
       , startupHook = setWMName "LG3D"
                     <+> docksStartupHook
-                    <+> setDzenCommands [ (bar1, S 0) , (bar2, S 1)]
+                    <+> setDzenCommands [(bar1, S 0) , (bar2, S 1)]
+                    <+> setDzens
       , logHook = fadeInactiveLogHook 0.9 <+> myLogHook
       } `additionalKeys` myKeys
