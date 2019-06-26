@@ -70,10 +70,12 @@ setDzenCommands = XS.put . DzenCommands
 -- TODO: instead of killing and spawning all, just do the necessary
 setDzens :: X ()
 setDzens = do
-  DzenCommands dzenCommands <- XS.get
-  ndzens <- mapM (\(command, screen) ->
-    spawnPipe command >>= (\handle -> return (handle, screen)))  (take 1 dzenCommands)
-  XS.put (Dzens ndzens)
+  Dzens dzens <- XS.get
+  when (null dzens) $ do
+    DzenCommands dzenCommands <- XS.get
+    ndzens <- mapM (\(command, screen) ->
+      spawnPipe command >>= (\handle -> return (handle, screen))) dzenCommands
+    XS.put (Dzens ndzens)
   --Dzens dzens <- XS.get
   --nScreens <- getNScreens
   --when (length dzens /= nScreens) $ do
