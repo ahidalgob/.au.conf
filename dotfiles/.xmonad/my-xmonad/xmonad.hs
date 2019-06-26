@@ -19,6 +19,8 @@ import XMonad.Util.EZConfig (additionalKeys)
 import Graphics.X11.ExtraTypes.XF86
 import System.IO
 import qualified XMonad.StackSet as W
+
+import Control.Monad
 import Data.Ratio ((%))
 import Data.Monoid((<>))
 
@@ -49,20 +51,17 @@ conkyBar2 = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
   ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 500 -x 2232 -y 0"
 
-myLogHook h1 = do
-    dynamicLogWithPP $ tryPP h1
-    --dynamicLogWithPP $ tryPP h2
+myLogHook :: [(Handle, ScreenId)] -> X ()
+myLogHook = mapM_ (dynamicLogWithPP <=< tryPP)
 
--- TODO How to set color based on a given screen (for having multiple docks)
--- We can set the color of ppCurrent and ppVisible with the same function
--- that sets the color based on whether the WS is the one in the screen or not.
-tryPP :: Handle -> PP
-tryPP h = def
+tryPP :: (Handle, ScreenId) -> X PP
+tryPP (h, sid) = do
+  Just wid <- screenWorkspace sid
+  return $ def
     { ppOutput    = hPutStrLn h
-    , ppCurrent   = dzenColor mywhite1 myCurrentWS . clickableWS . pad
-    , ppVisible   = dzenColor mywhite1 myOtherScreenWS . clickableWS . pad
+    , ppCurrent = visibleWS wid
+    , ppVisible = visibleWS wid
     , ppHidden    = dzenColor mywhite1 myActiveWS . clickableWS . pad
-    --, ppHiddenNoWindows = dzenColor mywhite1 myblack0 . pad
     , ppWsSep   = ""
     , ppSep     = ""
 
@@ -81,6 +80,9 @@ tryPP h = def
         , t]
     }
   where
+  visibleWS wid ws = if wid == ws
+    then dzenColor mywhite1 myCurrentWS . clickableWS . pad $ ws
+    else dzenColor mywhite1 myOtherScreenWS . clickableWS . pad $ ws
   calIc = "^ca(1,xdotool key alt+space)^i(/home/augusto/.xmonad/icons/"
   vtitle = "^bg(" ++ myblack3 ++ ")  "
   vtitleEnd = "  ^bg()"
@@ -158,14 +160,13 @@ myApps = composeAll $
       [ "MEGAsync"
       , "Toggl Desktop"
       ]
-    --floatTitles = [ "CSSE101Queue" , "tk"]
 
 main = do
     leftBar <- spawnPipe bar1
-    --rightBar <- spawnPipe bar2
-    _ <- spawn conkyBar
-    --_ <- spawn conkyBar2
-    _ <- spawn "sleep 1.5; stalonetray"
+    rightBar <- spawnPipe bar2
+    spawn conkyBar
+    spawn conkyBar2
+    spawn "sleep 1.5; stalonetray"
 
     xmonad $ def
       { manageHook = myApps <+> manageDocks <+> manageHook def
@@ -178,6 +179,6 @@ main = do
       , normalBorderColor = "" ++ myblack2 ++ ""
       , borderWidth = 2
       , startupHook = setWMName "LG3D" <+> docksStartupHook
-      --, logHook = fadeInactiveLogHook 0.9 <+> myLogHook leftBar rightBar
-      , logHook = fadeInactiveLogHook 0.9 <+> myLogHook leftBar
+      , logHook = fadeInactiveLogHook 0.9 <+> myLogHook [ (leftBar, S 0)
+                                                        , (rightBar, S 1)]
       } `additionalKeys` myKeys

@@ -1,6 +1,3 @@
-xmonad.hi
-xmonad.o
 xmonad
-xmonad.errors
-xmonad.state
-xmonad-x86_64-linux
+xmonad-contrib
+.stack-work

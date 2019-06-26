@@ -1,0 +1,8 @@
+resolver: lts-13.26
+
+packages:
+- my-xmonad
+- xmonad
+- xmonad-contrib
+
+extra-deps: []
