@@ -1,4 +1,5 @@
 import XMonad
+import XMonad.Util.ExtensibleState as XS
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.FadeInactive
@@ -55,8 +56,41 @@ conkyBar2 = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
   ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 500 -x 2232 -y 0"
 
-myLogHook :: [(Handle, ScreenId)] -> X ()
-myLogHook = mapM_ (dynamicLogWithPP <=< tryPP)
+newtype DzenCommands = DzenCommands [(String, ScreenId)] deriving Typeable
+instance ExtensionClass DzenCommands where
+  initialValue = DzenCommands []
+
+newtype Dzens = Dzens [(Handle, ScreenId)] deriving Typeable
+instance ExtensionClass Dzens where
+  initialValue = Dzens []
+
+setDzenCommands :: [(String, ScreenId)] -> X ()
+setDzenCommands = XS.put . DzenCommands
+
+-- TODO: instead of killing and spawning all, just do the necessary
+setDzens :: X ()
+setDzens = do
+  DzenCommands dzenCommands <- XS.get
+  ndzens <- mapM (\(command, screen) ->
+    spawnPipe command >>= (\handle -> return (handle, screen)))  (take 1 dzenCommands)
+  XS.put (Dzens ndzens)
+  --Dzens dzens <- XS.get
+  --nScreens <- getNScreens
+  --when (length dzens /= nScreens) $ do
+    --spawn "killall dzen2"
+    --DzenCommands dzenCommands <- XS.get
+    --ndzens <- mapM (\(command, screen) ->
+      --spawnPipe command >>= (\handle -> return (handle, screen)))
+        --(take nScreens dzenCommands)
+    --XS.put (Dzens ndzens)
+  --where
+  --getNScreens = return 1 -- TODO
+
+myLogHook :: X ()
+myLogHook =  do
+  setDzens
+  Dzens dzens <- XS.get
+  mapM_ (dynamicLogWithPP <=< tryPP) dzens
 
 tryPP :: (Handle, ScreenId) -> X PP
 tryPP (h, sid) = do
@@ -95,6 +129,7 @@ tryPP (h, sid) = do
   -- TODO this wont work with - or =, need to check if xdotool understand the
   -- first character (for - is xK_minus and so on)
   clickableWS ws = "^ca(1,xdotool key alt+" ++ [ws!!1] ++ ")" ++ ws ++ "^ca()" -- 2nd because of padding space
+
 
 
 myExtraWS = [("0", xK_0),("-", xK_minus),("=", xK_equal)]
@@ -174,8 +209,8 @@ myApps = composeAll $
       ]
 
 main = do
-    leftBar <- spawnPipe bar1
-    rightBar <- spawnPipe bar2
+    --leftBar <- spawnPipe bar1
+    --rightBar <- spawnPipe bar2
     spawn conkyBar
     spawn conkyBar2
     spawn "sleep 1.5; stalonetray"
@@ -190,7 +225,8 @@ main = do
       , focusedBorderColor = myblue2
       , normalBorderColor = "" ++ myblack2 ++ ""
       , borderWidth = 2
-      , startupHook = setWMName "LG3D" <+> docksStartupHook
-      , logHook = fadeInactiveLogHook 0.9 <+> myLogHook [ (leftBar, S 0)
-                                                        , (rightBar, S 1)]
+      , startupHook = setWMName "LG3D"
+                    <+> docksStartupHook
+                    <+> setDzenCommands [ (bar1, S 0) , (bar2, S 1)]
+      , logHook = fadeInactiveLogHook 0.9 <+> myLogHook
       } `additionalKeys` myKeys
