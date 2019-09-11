@@ -27,7 +27,10 @@ import qualified XMonad.StackSet as W
 
 import Control.Monad
 import Data.Ratio ((%))
+import Data.Maybe
 import Data.Monoid((<>))
+
+import AuXMonad.CommandOnScreen
 
 myblack1  = "#151515"
 myblack2  = "#212121"
@@ -43,11 +46,11 @@ myActiveWS = myblack2
 
 -- Note the simple quotes!
 bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'InputMono-10' -fg '"
-  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 900"
+  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 800"
 
 conkyBar = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
   ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
-  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 500 -x 866 -y 0"
+  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 566 -x 800 -y 0"
 
 bar2 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'InputMono-10' -fg '"
   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 900 -x 1366"
@@ -56,44 +59,18 @@ conkyBar2 = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
   ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 500 -x 2232 -y 0"
 
-newtype DzenCommands = DzenCommands [(String, ScreenId)] deriving Typeable
-instance ExtensionClass DzenCommands where
-  initialValue = DzenCommands []
-
-newtype Dzens = Dzens [(Handle, ScreenId)] deriving Typeable
-instance ExtensionClass Dzens where
-  initialValue = Dzens []
-
-setDzenCommands :: [(String, ScreenId)] -> X ()
-setDzenCommands = XS.put . DzenCommands
-
--- TODO: instead of killing and spawning all, just do the necessary
--- BUG: I was trying to run this in every LogHook but it seems like it runs
--- in parallel and lazily, and ends up running too many dzens.
-setDzens :: X ()
-setDzens = do
-  Dzens dzens <- XS.get
-  when (null dzens) $ do
-    DzenCommands dzenCommands <- XS.get
-    ndzens <- mapM (\(command, screen) ->
-      spawnPipe command >>= (\handle -> return (handle, screen))) dzenCommands
-    XS.put (Dzens ndzens)
-  --Dzens dzens <- XS.get
-  --nScreens <- getNScreens
-  --when (length dzens /= nScreens) $ do
-    --spawn "killall dzen2"
-    --DzenCommands dzenCommands <- XS.get
-    --ndzens <- mapM (\(command, screen) ->
-      --spawnPipe command >>= (\handle -> return (handle, screen)))
-        --(take nScreens dzenCommands)
-    --XS.put (Dzens ndzens)
-  --where
-  --getNScreens = return 1 -- TODO
 
 myLogHook :: X ()
 myLogHook =  do
   Dzens dzens <- XS.get
   mapM_ (dynamicLogWithPP <=< tryPP) dzens
+
+closeDzen2 :: X ()
+closeDzen2 = do
+  Dzens dzens <- XS.get
+  let [(handle, _)] = filter (\d -> snd d == S 1) dzens
+  io $ hClose handle
+
 
 tryPP :: (Handle, ScreenId) -> X PP
 tryPP (h, sid) = do
@@ -174,6 +151,7 @@ myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io
          , ((0, xF86XK_AudioLowerVolume ), spawn "amixer set Master 2%-")
          , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer set Master 2%+")
          , ((0, xF86XK_AudioMute ), spawn "amixer set Master toggle")
+         , ((mod1Mask , xK_b), closeDzen2)
          ]
          ++
          [ ((mod1Mask, key), windows $ W.greedyView ws) | (ws, key) <- myExtraWS ]
