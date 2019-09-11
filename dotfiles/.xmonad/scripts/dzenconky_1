@@ -9,6 +9,7 @@ use_spacer none
 # ${time %a, %d %b %R} \
 
 TEXT
+^bg(\#151515) ${downspeed wlp9s0} \
 ^bg(\#a50505) ^i(/home/augusto/.xmonad/icons/cpu.xbm) \
 ${cpu cpu0}% \
 ^bg(\#151515) ^i(/home/augusto/.xmonad/icons/mem.xbm) \

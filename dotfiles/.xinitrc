@@ -10,6 +10,7 @@ xset -b
 
 # we wait 5 seconds to wait for stalonetray to be launched
 sleep 5 && nm-applet &
+sleep 5 && blueman-applet &
 sleep 5 && dropbox start &
 sleep 5 && megasync &
 #sleep 5 && TogglDesktop &
