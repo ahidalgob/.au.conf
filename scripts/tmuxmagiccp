@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd ~/Projects/MagicCP
+tmux send-keys "cd ~/Projects/MagicCP" C-m
+tmux send-keys "vim" C-m
+tmux send-keys "\\n" C-m
+tmux rename-window "vim"
+tmux new-window
+tmux rename-window "build"
+tmux split-window -h
+tmux split-window
+tmux resize-pane -D 7
+tmux send-keys "ghci" C-m
+tmux new-window
+tmux rename-window "git"
+tmux send-keys "git status" C-m

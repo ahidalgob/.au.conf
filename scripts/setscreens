@@ -1,13 +1,23 @@
 #!/bin/bash
 
-NSCREENS="$(xrandr | grep --count [^dis]connected)"
-if [ "$NSCREENS" == "1" ]; then
-    xrandr --auto
+#NSCREENS="$(xrandr | grep --count [^dis]connected)"
+
+if [ "$(xrandr | grep --count 'LVDS1 connected')" == "1" ] ;then
+    SCREEN="LVDS1"
 else
-    if [ "$(xrandr | grep --count 'LVDS1 connected')" == "1" ] ;then
-        SCREEN="LVDS1"
-    else
-        SCREEN="eDP1"
-    fi
-    xrandr --output HDMI1 --auto --dpi 92 --output $SCREEN --auto --left-of HDMI1
+    SCREEN="eDP1"
 fi
+
+if [ "$(xrandr | grep --count 'VGA1 connected')" == "1" ] ;then
+    VGA1=" --output VGA1 --auto --right-of $SCREEN"
+else
+    VGA1=""
+fi
+
+if [ "$(xrandr | grep --count 'HDMI1 connected')" == "1" ] ;then
+    HDMI1=" --output HDMI1 --auto --dpi 92 --right-of $SCREEN"
+else
+    HDMI1=""
+fi
+
+xrandr --output $SCREEN --auto$VGA1$HDMI1

@@ -1,0 +1,14 @@
+#! /bin/bash
+
+if [ -z "$1" ] || [ -z "$2" ] ; then
+    echo "run as:"
+    echo "$ mountdrive /dev/device /mnt/folder"
+    exit 1
+fi
+
+if [ ! -d "$2" ] ; then
+    sudo mkdir $2
+    echo "creating $2"
+fi
+
+sudo mount -o gid=augusto,fmask=113,dmask=002 $1 $2
