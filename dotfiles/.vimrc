@@ -1,6 +1,10 @@
 " TODO
 " Different cursors for different modes
 " Make only one config file for both vim and nvim
+"
+set nocompatible
+filetype plugin indent on
+syntax on
 
 " vim-plug {{{1
 " Download plug-in {{{2
@@ -35,6 +39,16 @@ else
     " deoplete conflicts with ttymouse setting for vim, this *hackily* fixes it
     autocmd VimEnter * call deoplete#enable()
 endif
+
+"Testing
+"Plug 'iamcco/mathjax-support-for-mkdp'
+"Plug 'iamcco/markdown-preview.vim'
+"
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
+Plug 'vimwiki/vimwiki'
 
 " syntax and indentation support
 Plug 'sheerun/vim-polyglot'
@@ -74,7 +88,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'bling/vim-airline'
 
 " generates tmux airline-like line
-Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
 
 " tabs-like list of buffers, integrates nicely with airline
 Plug 'bling/vim-bufferline'
@@ -103,8 +117,9 @@ set ttyfast               " Batch send characters to screen (way faster)
 set clipboard=unnamedplus
 
 set foldmethod=marker
+set nofoldenable
 
-set textwidth=80
+"set textwidth=80 " annoying
 
 set wildmenu
 
@@ -223,6 +238,35 @@ set guioptions-=T
 
 
 " Plugins {{{1
+
+"let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      "\ 'syntax': 'markdown', 'ext': '.md'}]
+
+
+"let g:vimwiki_ext2syntax = {'.md': 'markdown',
+                "\ '.mkd': 'markdown',
+                "\ '.wiki': 'media'}
+
+
+" vimwiki
+let wiki_magicHaskeller = {}
+let wiki_magicHaskeller.path = '~/Dropbox/Notes/MagicHaskeller/'
+let wiki_magicHaskeller.syntax = 'markdown'
+let wiki_magicHaskeller.ext = '.md'
+
+let wiki_CP = {}
+let wiki_CP.path = '~/Dropbox/Notes/CompetitiveProgramming/'
+let wiki_CP.syntax = 'markdown'
+let wiki_CP.ext = '.md'
+
+let wiki_personal = {}
+let wiki_personal.path = '~/Dropbox/Notes/Personal'
+let wiki_personal.syntax = 'markdown'
+let wiki_personal.ext = '.md'
+
+let g:vimwiki_list = [wiki_magicHaskeller, wiki_CP, wiki_personal]
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
+
 " Airline {{{2
 
 
