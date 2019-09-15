@@ -44,19 +44,19 @@ myOtherScreenWS = myblack3
 myActiveWS = myblack2
 
 -- Note the simple quotes!
-bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'InputMono-10' -fg '"
-  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 800"
-
-conkyBar = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
-  ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
-  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 566 -x 800 -y 0"
-
-bar2 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'InputMono-10' -fg '"
-  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 900 -x 1366"
-
-conkyBar2 = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
-  ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
-  ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 500 -x 2232 -y 0"
+-- bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'InputMono-10' -fg '"
+--   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 800"
+--
+-- conkyBar = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
+--   ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
+--   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 566 -x 800 -y 0"
+--
+-- bar2 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'InputMono-10' -fg '"
+--   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 900 -x 1366"
+--
+-- conkyBar2 = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
+--   ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
+--   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 500 -x 2232 -y 0"
 
 myLogHook :: [(Handle, ScreenId)] -> X ()
 myLogHook = mapM_ (dynamicLogWithPP <=< tryPP)
@@ -179,11 +179,11 @@ myApps = composeAll $
       ]
 
 main = do
-    leftBar <- spawnPipe bar1
-    rightBar <- spawnPipe bar2
-    spawn conkyBar
-    spawn conkyBar2
-    spawn "sleep 1.5; stalonetray"
+    --leftBar <- spawnPipe bar1
+    --rightBar <- spawnPipe bar2
+    --spawn conkyBar
+    --spawn conkyBar2
+    --spawn "sleep 1.5; stalonetray"
 
     xmonad $ ewmh def
       { manageHook = myApps <+> manageDocks <+> manageHook def
@@ -197,6 +197,6 @@ main = do
       , borderWidth = 2
       , startupHook = setWMName "LG3D"
                     <+> docksStartupHook
-      , logHook = fadeInactiveLogHook 0.9 <+> myLogHook [ (leftBar, S 0)
-                                                        , (rightBar, S 1)]
+      , logHook = fadeInactiveLogHook 0.9 -- <+> myLogHook [ (leftBar, S 0)
+                                            --            , (rightBar, S 1)]
       } `additionalKeys` myKeys
