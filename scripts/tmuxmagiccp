@@ -2,7 +2,7 @@
 
 cd ~/Projects/MagicCP
 tmux send-keys "cd ~/Projects/MagicCP" C-m
-tmux send-keys "vim" C-m
+tmux send-keys "nvim" C-m
 tmux send-keys "\\n" C-m
 tmux rename-window "vim"
 tmux new-window
