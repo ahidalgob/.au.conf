@@ -1,5 +1,5 @@
 import XMonad
-import XMonad.Util.ExtensibleState as XS
+--import XMonad.Util.ExtensibleState as XS
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.FadeInactive
@@ -31,8 +31,6 @@ import Data.Ratio ((%))
 import Data.Maybe
 import Data.Monoid((<>))
 
-import AuXMonad.CommandOnScreen
-
 myblack1  = "#151515"
 myblack2  = "#212121"
 myblack3  = "#505050"
@@ -60,17 +58,8 @@ conkyBar2 = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
   ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 500 -x 2232 -y 0"
 
-
-myLogHook :: X ()
-myLogHook =  do
-  Dzens dzens <- XS.get
-  mapM_ (dynamicLogWithPP <=< tryPP) dzens
-
-closeDzen2 :: X ()
-closeDzen2 = do
-  Dzens dzens <- XS.get
-  let [(handle, _)] = filter (\d -> snd d == S 1) dzens
-  io $ hClose handle
+myLogHook :: [(Handle, ScreenId)] -> X ()
+myLogHook = mapM_ (dynamicLogWithPP <=< tryPP)
 
 
 tryPP :: (Handle, ScreenId) -> X PP
@@ -152,7 +141,6 @@ myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io
          , ((0, xF86XK_AudioLowerVolume ), spawn "amixer set Master 2%-")
          , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer set Master 2%+")
          , ((0, xF86XK_AudioMute ), spawn "amixer set Master toggle")
-         , ((mod1Mask , xK_b), closeDzen2)
          ]
          ++
          [ ((mod1Mask, key), windows $ W.greedyView ws) | (ws, key) <- myExtraWS ]
@@ -191,8 +179,8 @@ myApps = composeAll $
       ]
 
 main = do
-    --leftBar <- spawnPipe bar1
-    --rightBar <- spawnPipe bar2
+    leftBar <- spawnPipe bar1
+    rightBar <- spawnPipe bar2
     spawn conkyBar
     spawn conkyBar2
     spawn "sleep 1.5; stalonetray"
@@ -209,7 +197,6 @@ main = do
       , borderWidth = 2
       , startupHook = setWMName "LG3D"
                     <+> docksStartupHook
-                    <+> setDzenCommands [(bar1, S 0) , (bar2, S 1)]
-                    <+> setDzens
-      , logHook = fadeInactiveLogHook 0.9 <+> myLogHook
+      , logHook = fadeInactiveLogHook 0.9 <+> myLogHook [ (leftBar, S 0)
+                                                        , (rightBar, S 1)]
       } `additionalKeys` myKeys

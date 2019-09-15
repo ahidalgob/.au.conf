@@ -23,11 +23,3 @@ executable my-xmonad-exe
                  xmonad >= 0.15 && < 0.16,
                  xmonad-contrib >= 0.15 && < 0.16
   default-language: Haskell2010
-
-
-library
-  exposed-modules: AuXMonad.CommandOnScreen
-  build-depends: base >=4.7 && <5,
-                 X11>=1.6.1 && < 1.10,
-                 xmonad >= 0.15 && < 0.16,
-                 xmonad-contrib >= 0.15 && < 0.16
