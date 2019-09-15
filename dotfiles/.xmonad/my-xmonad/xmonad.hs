@@ -7,6 +7,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.Place
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.Grid
 import XMonad.Layout.IM
 import XMonad.Layout.NoBorders
@@ -126,7 +127,7 @@ myXPConfig = def
   }
 
 myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io exitSuccess)
-         , ((mod1Mask, xK_p), spawn "dmenu_run -i -m 0 -fn 'InputMono-10'") -- case insensitive
+         , ((mod1Mask, xK_p), spawn "rofi -combi-modi window,drun,run -show combi -modi combi,drun -font 'InputMono 10' -show-icons -theme solarized") -- case insensitive
          , ( (mod1Mask, xK_f)
            , withFocused $ windows . flip W.float (W.RationalRect 0 0 1 1))
          , ( (mod1Mask, xK_q)
@@ -196,7 +197,7 @@ main = do
     spawn conkyBar2
     spawn "sleep 1.5; stalonetray"
 
-    xmonad $ def
+    xmonad $ ewmh def
       { manageHook = myApps <+> manageDocks <+> manageHook def
       , layoutHook = myLayout
       , handleEventHook = docksEventHook <+> handleEventHook def
