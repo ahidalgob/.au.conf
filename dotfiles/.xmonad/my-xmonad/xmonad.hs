@@ -17,9 +17,9 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.Magnifier
 import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
-
-import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Util.NamedWindows (getName)
+import XMonad.Util.Run (spawnPipe, safeSpawn)
 import Graphics.X11.ExtraTypes.XF86
 import System.IO
 import System.Exit
@@ -27,6 +27,8 @@ import System.Exit
 import qualified XMonad.StackSet as W
 
 import Control.Monad
+import Data.Function (on)
+import Data.List (sortBy)
 import Data.Ratio ((%))
 import Data.Maybe
 import Data.Monoid((<>))
@@ -43,25 +45,26 @@ myCurrentWS = mymagenta
 myOtherScreenWS = myblack3
 myActiveWS = myblack2
 
--- Note the simple quotes!
--- bar1 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'InputMono-10' -fg '"
---   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 800"
---
--- conkyBar = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
---   ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
---   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 566 -x 800 -y 0"
---
--- bar2 = "dzen2 -dock -p -ta l -e 'button3=' -fn 'InputMono-10' -fg '"
---   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 900 -x 1366"
---
--- conkyBar2 = "conky -c ~/.xmonad/scripts/dzenconky_1 | "
---   ++ "dzen2 -dock -p -ta r -e 'button3=' -fn 'InputMono-10' -fg '"
---   ++ mywhite1 ++ "' -bg '" ++ myblack2 ++ "' -h 25 -w 500 -x 2232 -y 0"
+myLogHook :: X ()
+myLogHook = do
+  winset <- gets windowset
+  title <- maybe (return "") (fmap show . getName) . W.peek $ winset
+  let currWs = W.currentTag winset
+  let notEmptyWss = [W.tag w | w <- W.workspaces winset, (isJust . W.stack) w]
+  let wss = filter (\w -> w `elem` notEmptyWss || w == currWs) myWorkspaces
+  let wsStr = join $ map (fmt currWs) wss
 
-myLogHook :: [(Handle, ScreenId)] -> X ()
-myLogHook = mapM_ (dynamicLogWithPP <=< tryPP)
+  io $ appendFile "/tmp/.xmonad-title-log" (title ++ "\n")
+  io $ appendFile "/tmp/.xmonad-workspace-log" (wsStr ++ "\n")
 
+  where fmt currWs ws
+          | currWs == ws =  underline myblue2 $ clickableWS ws
+          | otherwise    = clickableWS ws
+        underline color s = "%{u" ++ color ++ "}%{+u}" ++ s ++ "%{-u}"
+        overline color s = "%{o" ++ color ++ "}%{+o}" ++ s ++ "%{-o}"
+        clickableWS ws = " %{A1:xdotool key alt+" ++ [head ws] ++ ":}" ++ ws ++ "%{A} "
 
+{-
 tryPP :: (Handle, ScreenId) -> X PP
 tryPP (h, sid) = do
   Just wid <- screenWorkspace sid
@@ -100,6 +103,7 @@ tryPP (h, sid) = do
   -- first character (for - is xK_minus and so on)
   clickableWS ws = "^ca(1,xdotool key alt+" ++ [ws!!1] ++ ")" ++ ws ++ "^ca()" -- 2nd because of padding space
 
+-}
 
 
 myExtraWS = [("0", xK_0),("-", xK_minus),("=", xK_equal)]
@@ -120,14 +124,13 @@ myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io
          , ( (mod1Mask, xK_f)
            , withFocused $ windows . flip W.float (W.RationalRect 0 0 1 1))
          , ( (mod1Mask, xK_q)
-           , spawn $ "killall dzen2; killall stalonetray;"
+           , spawn $ "killall polybar; sleep 1;"
              <> "xmonad --recompile; xmonad --restart")
 
          , ((0, xK_Print), spawn "scrot")
          --, ((controlMask, xK_Print), spawn "gnome-screenshot --clipboard")
          , ((shiftMask, xK_Print), spawn "sleep 0.3; scrot -s")
          --, ((controlMask, xK_Print), spawn "gnome-screenshot --area")
-
 
          , ((mod1Mask, xK_Page_Up), moveTo Prev NonEmptyWS)
          , ((mod1Mask, xK_Page_Down), moveTo Next NonEmptyWS)
@@ -147,14 +150,15 @@ myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io
          ++
          [ ((mod1Mask .|. shiftMask, key), windows $ W.shift ws) | (ws, key) <- myExtraWS ]
 
-myLayout = avoidStruts $ smartBorders $
-    onWorkspace "0" sGrid $
+myLayout = avoidStruts $
+    spacingRaw False myBorder True myBorderIn True $
+    onWorkspace "0" Grid $
     reflectHoriz $ withIM (67%256) (ClassName "TelegramDesktop") $ reflectHoriz
-    ( magnifiercz 1.02 sTall ||| Full)
+    (sTall ||| Full)
     where
-      sTall = spacingRaw True myBorder True myBorder True $ Tall 1 (2/100) (1/2)
-      sGrid = spacingRaw True myBorder True myBorder True Grid
-      myBorder = Border 5 5 5 5
+      sTall = Tall 1 (2/100) (1/2)
+      myBorder = Border 1 1 1 1
+      myBorderIn = Border 8 8 8 8
 
 -- use xprop to get these properties
 myApps = composeAll $
@@ -179,11 +183,9 @@ myApps = composeAll $
       ]
 
 main = do
-    --leftBar <- spawnPipe bar1
-    --rightBar <- spawnPipe bar2
-    --spawn conkyBar
-    --spawn conkyBar2
-    --spawn "sleep 1.5; stalonetray"
+    spawn "polybar example"
+    safeSpawn "mkfifo" ["/tmp/" ++ ".xmonad-workspace-log"]
+    safeSpawn "mkfifo" ["/tmp/" ++ ".xmonad-title-log"]
 
     xmonad $ ewmh def
       { manageHook = myApps <+> manageDocks <+> manageHook def
@@ -194,9 +196,9 @@ main = do
       , terminal  = "urxvt -e tmux"
       , focusedBorderColor = myblue2
       , normalBorderColor = "" ++ myblack2 ++ ""
-      , borderWidth = 2
+      , borderWidth = 3
       , startupHook = setWMName "LG3D"
                     <+> docksStartupHook
-      , logHook = fadeInactiveLogHook 0.9 -- <+> myLogHook [ (leftBar, S 0)
-                                            --            , (rightBar, S 1)]
+      , logHook = fadeInactiveLogHook 0.9
+                  <+> myLogHook
       } `additionalKeys` myKeys
