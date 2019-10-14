@@ -5,4 +5,5 @@ packages:
 - xmonad
 - xmonad-contrib
 
-extra-deps: []
+extra-deps:
+- unix-2.7.2.2
