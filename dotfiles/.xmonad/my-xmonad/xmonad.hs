@@ -111,7 +111,7 @@ screenshot sel cop = spawn $ "sleep 0.3; maim " ++ selec ++ copy ++
 
 superMask = mod4Mask
 myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io exitSuccess)
-         , ((mod1Mask, xK_p), spawn "rofi -m -4 -combi-modi window,drun,run -show combi -modi combi,drun -font 'InputMono 10' -show-icons -theme solarized") -- case insensitive
+         , ((mod1Mask, xK_p), spawn "rofi -m -4 -combi-modi drun,run -show combi -modi combi,window -font 'InputMono 10' -show-icons -theme solarized")
          , ( (mod1Mask, xK_f)
            , withFocused $ windows . flip W.float (W.RationalRect 0 0 1 1))
          , ( (mod1Mask, xK_q)
