@@ -98,6 +98,17 @@ myXPConfig = def
   , font              = "xft:fira code:size=12"
   }
 
+screenshot :: Bool -> Bool -> X ()
+screenshot sel cop = spawn $ "sleep 0.3; maim " ++ selec ++ copy ++
+                      "~/Pictures/Screenshots/$(date +%s).png"
+  where
+    selec = if sel then "-s " else ""
+    copy = if cop
+              then "| xclip -selection clipboard -t image/png; " ++
+                   "xclip -selection clipboard -o > "
+              else ""
+
+
 superMask = mod4Mask
 myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io exitSuccess)
          , ((mod1Mask, xK_p), spawn "rofi -m -4 -combi-modi window,drun,run -show combi -modi combi,drun -font 'InputMono 10' -show-icons -theme solarized") -- case insensitive
@@ -107,10 +118,10 @@ myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io
            , spawn $ "killall polybar; sleep 1"
              <> "xmonad --recompile; xmonad --restart")
 
-         , ((0, xK_Print), spawn "scrot")
-         --, ((controlMask, xK_Print), spawn "gnome-screenshot --clipboard")
-         , ((shiftMask, xK_Print), spawn "sleep 0.3; scrot -s")
-         --, ((controlMask, xK_Print), spawn "gnome-screenshot --area")
+         , ((0, xK_Print), screenshot False False)
+         , ((controlMask, xK_Print), screenshot False True)
+         , ((shiftMask, xK_Print),  screenshot True False)
+         , ((controlMask .|. shiftMask, xK_Print), screenshot True True)
 
          , ((superMask, xK_k), moveTo Prev NonEmptyWS)
          , ((superMask, xK_j), moveTo Next NonEmptyWS)
