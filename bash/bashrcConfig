@@ -40,17 +40,16 @@ source ~/.au.conf/git/git-completion.bash
 
 
 # colors!
-lgreen="\[\e[92m\]"
-green="\[\e[0;32m\]"
-blue="\[\e[0;34m\]"
-purple="\[\e[0;35m\]"
-color1="\[\e[01;32m\]"
-color2="\[\e[01;34m\]"
-reset="\[\e[0m\]"
-inf=$'\u221e'
-empty_heart=$'\u2661'
+lgreen="$(tput setaf 10)"
+green="$(tput setaf 2)"
+blue="$(tput setaf 4)"
+purple="$(tput setaf 5)"
+reset="$(tput setaf 15)"
+
+#inf=$'\u221e'
+#empty_heart=$'\u2661'
 filled_heart=$'\u2665'
-filled_rotated_heart=$'\u2765'
+#filled_rotated_heart=$'\u2765'
 
 # Change command prompt
 source ~/.au.conf/git/git-prompt.sh
@@ -59,4 +58,4 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # '\$(__git_ps1)' adds git-related stuff
 # '\W' adds the name of the current directory
 
-PS1="$green Au$blue:\w$color1\$(__git_ps1)\n$reset$lgreen $filled_heart $reset"
+PS1="$green Au$blue:\w$green\$(__git_ps1)\n$reset$lgreen $filled_heart $reset"
