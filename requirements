@@ -1,0 +1,19 @@
+
+Requirements:
+
+- .au.conf in ~/
+- source bash/bashrcConfig in ~/.bashrc
+- git
+- tmux
+- urxvt
+- vim and nvim
+- xmonad
+- see themes in gtk 2 and 3 config files
+- see fonts in .Xresources
+- curl
+- dropbox
+- megasync
+- picom
+- xrandr
+- feh
+- polybar

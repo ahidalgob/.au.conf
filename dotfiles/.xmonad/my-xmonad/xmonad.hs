@@ -1,5 +1,4 @@
 import XMonad
---import XMonad.Util.ExtensibleState as XS
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.DynamicBars
 import XMonad.Hooks.DynamicLog
@@ -19,15 +18,18 @@ import XMonad.Layout.Magnifier
 import XMonad.Prompt
 import XMonad.Prompt.ConfirmPrompt
 import XMonad.Util.EZConfig (additionalKeys)
+--import XMonad.Util.ExtensibleState as XS
 import XMonad.Util.NamedWindows (getName)
 import XMonad.Util.Run (spawnPipe, safeSpawn)
+
+import qualified XMonad.StackSet as W
+
 import Graphics.X11.ExtraTypes.XF86
 import System.IO
 import System.Posix.Files
 import System.Exit
-import           System.Process                 ( callCommand )
+--import System.Process ( readProcess )
 
-import qualified XMonad.StackSet as W
 
 import Control.Monad
 import Data.Function (on)
@@ -36,19 +38,27 @@ import Data.Ratio ((%))
 import Data.Maybe
 import Data.Monoid((<>))
 
-myblack1  = "#151515"
-myblack2  = "#212121"
-myblack3  = "#505050"
-myblue2   = "#7ca9cb"
-myblue3   = "#3c698b"
-mymagenta = "#9f4e85"
-mywhite0  = "#a0a0a0"
-mywhite1  = "#d0d0d0"
+-- myblack1  = "#151515"
+-- mymagenta = "#9f4e85"
+-- mywhite0  = "#a1a0a0"
+-- mywhite1  = "#d0d0d0"
 
-myCurrentWS = myblue2
-myOtherScreenWS = myblue3
-hiddenWS = myblack3
--- myActiveWS = myblack2
+-- this throws an error, probably an xmonad bug
+-- solution(?): use a template for a color.hs file and put colors there :shrug:
+--getXresourcesField :: String -> IO String
+--getXresourcesField f = readProcess "/home/augusto/.au.conf/scripts/getXresourcesField" [f] ""
+
+myblack0  = "#212121" -- "*.background:" -- (darker grey)
+myblack2  = "#505050" -- "*.color8:" -- (dark grey)
+myblue1   = "#7ca9cb" -- "*.color4:"
+myblue2   = "#3c698b" -- "*.color12:"
+
+myCurrentWS = myblue1
+myOtherScreenWS = myblue2
+hiddenWS = myblack2
+
+normalBorderCol = myblack0
+focusedBorderCol = myblue1
 
 myLogHook :: X ()
 myLogHook = do
@@ -183,8 +193,12 @@ barInScreen (S 1) = do
     spawn "sleep 1; polybar barhdmi"
     spawnPipe "cat >> /tmp/.xmonad-workspace-hdmi-log"
 
-main = do
+startUpBeep :: IO ()
+startUpBeep =
     spawn "beep -f 165.4064 -l 100 -n -f 130.813 -l 100 -n -f 261.626 -l 100 -n -f 523.251 -l 100 -n -f1046.50 -l 100 -n -f 2093.00 -l 100 -n -f 4186.01 -l 200"
+
+main = do
+    startUpBeep
     xmonad $ ewmh def
       { manageHook = myApps <+> manageDocks <+> manageHook def
       , layoutHook = myLayout
@@ -194,8 +208,8 @@ main = do
       , modMask = mod1Mask
       , workspaces = myWorkspaces
       , terminal  = "urxvt -e tmux"
-      , focusedBorderColor = myblue2
-      , normalBorderColor = "" ++ myblack2 ++ ""
+      , focusedBorderColor = focusedBorderCol
+      , normalBorderColor = normalBorderCol
       , borderWidth = 2
       , startupHook = setWMName "LG3D"
                     <+> docksStartupHook

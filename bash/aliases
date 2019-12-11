@@ -2,7 +2,7 @@
 alias tmux='tmux -2'
 
 # small alias so ranger exits to current directory
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias ranger='mkdir -p $HOME/tmp; ranger --choosedir=$HOME/tmp/.rangerdir; LASTDIR=`cat $HOME/tmp/.rangerdir`; cd "$LASTDIR"'
 
 mybeep() {
   ( \speaker-test --frequency 900 --test sine > /dev/null )&
