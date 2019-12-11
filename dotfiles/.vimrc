@@ -96,6 +96,8 @@ Plug 'bling/vim-bufferline'
 " easy commenting lines
 Plug 'scrooloose/nerdcommenter'
 
+Plug 'Yggdroot/indentLine'
+
 " indent levels guides
 Plug 'nathanaelkane/vim-indent-guides'
 
@@ -347,6 +349,7 @@ let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie-wrapper'],
     \ 'lhaskell': ['hie-wrapper'],
     \ 'cpp': ['ccls'],
+    \ 'python': ['/usr/bin/pyls'],
     \ }
 let g:LanguageClient_rootMarkers = ['stack.yaml']
 
@@ -359,6 +362,7 @@ map <Leader>lb :call LanguageClient#textDocument_references()<CR>
 map <Leader>la :call LanguageClient#textDocument_codeAction()<CR>
 map <Leader>ls :call LanguageClient#textDocument_documentSymbol()<CR>
 
+"let g:LanguageClient_diagnosticsEnable = 0
 
 let g:LanguageClient_diagnosticsDisplay = {
     \     1: {
