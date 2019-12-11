@@ -15,12 +15,13 @@ sleep 5 && megasync &
 
 #xscreensaver -no-splash &
 
-compton -bf -D 5 --shadow-opacity=0 --shadow-radius=0
+#compton -bf -D 5 --shadow-opacity=0 --shadow-radius=0
+picom -b --shadow-opacity=0 --shadow-radius=0
 
 bash ~/.au.conf/scripts/setscreens &
 
 setxkbmap us -variant intl
-bash ~/.au.conf/scripts/toogleKeyboardLayout
+bash ~/.au.conf/scripts/toggleKeyboardLayout
 
 feh --bg-fill ~/wp.jpg
 
