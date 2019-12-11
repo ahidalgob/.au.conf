@@ -65,8 +65,10 @@ myLogHook = do
   winset <- gets windowset
   title <- maybe (return "") (fmap show . getName) . W.peek $ winset
   multiPP pP' pP'
-  spawn $ "echo \"" ++ (take 50 title ++ "\n") ++ "\" >> /tmp/.xmonad-title-log"
-  spawn $ "echo \"" ++ (take 50 title ++ "\n") ++ "\" >> /tmp/.xmonad-title-hdmi-log"
+  let title' = "%{A4:xdotool key alt+k:}%{A5:xdotool key alt+j:}" ++
+              (take 50 title) ++ "%{A}%{A}\n"
+  spawn $ "echo \"" ++ title' ++ "\" >> /tmp/.xmonad-title-log"
+  spawn $ "echo \"" ++ title' ++ "\" >> /tmp/.xmonad-title-hdmi-log"
 
 underline color s = "%{u" ++ color ++ "}%{+u}" ++ s ++ "%{-u}"
 overline color s = "%{o" ++ color ++ "}%{+o}" ++ s ++ "%{-o}"
