@@ -145,6 +145,7 @@ myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io
          --, ((mod1Mask .|. shiftMask, xK_space), sendMessage PrevLayout) TODO Is this impossible?
          --
          , ((controlMask .|. shiftMask, xK_space), spawn "~/.au.conf/scripts/toggleKeyboardLayout")
+         , ((mod1Mask, xK_c), spawn "~/.au.conf/scripts/toggleCompton")
 
          , ((0, xF86XK_AudioLowerVolume ), spawn "amixer set Master 2%-")
          , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer set Master 2%+")
@@ -197,7 +198,8 @@ barInScreen (S 1) = do
 
 startUpBeep :: IO ()
 startUpBeep =
-    spawn "beep -f 165.4064 -l 100 -n -f 130.813 -l 100 -n -f 261.626 -l 100 -n -f 523.251 -l 100 -n -f1046.50 -l 100 -n -f 2093.00 -l 100 -n -f 4186.01 -l 200"
+    return ()
+    --spawn "beep -f 165.4064 -l 100 -n -f 130.813 -l 100 -n -f 261.626 -l 100 -n -f 523.251 -l 100 -n -f1046.50 -l 100 -n -f 2093.00 -l 100 -n -f 4186.01 -l 200"
 
 main = do
     startUpBeep
@@ -216,6 +218,6 @@ main = do
       , startupHook = setWMName "LG3D"
                     <+> docksStartupHook
                     <+> dynStatusBarStartup barInScreen (return ())
-      , logHook = fadeInactiveLogHook 0.9
+      , logHook = fadeInactiveLogHook 0.7
                 <+> myLogHook
       } `additionalKeys` myKeys
