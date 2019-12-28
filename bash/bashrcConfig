@@ -21,6 +21,8 @@ if [ -f ~/.au.conf/bash/aliases ]; then
     . ~/.au.conf/bash/aliases
 fi
 
+export HISTCONTROL=ignoreboth:erasedups
+
 # https://github.com/sickill/stderred
 # if [ -d ~/Programs/stderred/ ]; then
 #     export LD_PRELOAD="/home/augusto/Programs/stderred/build/libstderred.so${LD_PRELOAD:+:$LD_PRELOAD}"
@@ -40,11 +42,11 @@ source ~/.au.conf/git/git-completion.bash
 
 
 # colors!
-lgreen="$(tput setaf 10)"
-green="$(tput setaf 2)"
-blue="$(tput setaf 4)"
-purple="$(tput setaf 5)"
-reset="$(tput setaf 15)"
+lgreen="\[$(tput setaf 10)\]"
+green="\[$(tput setaf 2)\]"
+blue="\[$(tput setaf 4)\]"
+purple="\[$(tput setaf 5)\]"
+reset="\[$(tput setaf 15)\]"
 
 #inf=$'\u221e'
 #empty_heart=$'\u2661'
