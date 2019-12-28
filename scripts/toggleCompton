@@ -1,0 +1,6 @@
+#!/bin/bash
+if [[ $(ps -e | grep compton) ]]; then
+    killall compton
+else
+    compton -b --shadow-opacity=0 --shadow-radius=0 --blur-background --blur-method kawase --backend glx --blur-strength 12 --glx-no-stencil --glx-no-rebind-pixmap --use-ewmh-active-win --refresh-rate=0
+fi
