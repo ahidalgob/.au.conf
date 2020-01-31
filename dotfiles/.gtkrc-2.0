@@ -1,3 +1,2 @@
-gtk-icon-theme-name = "Numix"
-gtk-theme-name = "Adwaita-Xfce Dark"
-
+gtk-icon-theme-name = "flattrcolor"
+gtk-theme-name = "FlatColor"
