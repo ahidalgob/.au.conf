@@ -1,77 +1,57 @@
 import XMonad
-import XMonad.Actions.CycleWS
-import XMonad.Hooks.DynamicBars
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.FadeInactive
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
-import XMonad.Hooks.Place
-import XMonad.Hooks.SetWMName
-import XMonad.Hooks.EwmhDesktops
-import XMonad.Layout.Grid
-import XMonad.Layout.IM
-import XMonad.Layout.NoBorders
-import XMonad.Layout.PerWorkspace
-import XMonad.Layout.Reflect
-import XMonad.Layout.Spacing
-import XMonad.Layout.Magnifier
-import XMonad.Prompt
-import XMonad.Prompt.ConfirmPrompt
-import XMonad.Util.EZConfig (additionalKeys)
---import XMonad.Util.ExtensibleState as XS
-import XMonad.Util.NamedWindows (getName)
-import XMonad.Util.Run (spawnPipe, safeSpawn)
-
 import qualified XMonad.StackSet as W
 
-import Graphics.X11.ExtraTypes.XF86
+import XMonad.Actions.CycleWS ( WSType(NonEmptyWS), moveTo, prevWS, nextWS
+                              , Direction1D(Next, Prev) )
+import XMonad.Hooks.DynamicBars ( dynStatusBarStartup, dynStatusBarEventHook
+                                , multiPP )
+import XMonad.Hooks.DynamicLog ( PP(..), shorten, pad )
+import XMonad.Hooks.EwmhDesktops ( ewmh )
+import XMonad.Hooks.FadeInactive ( fadeInactiveLogHook )
+import XMonad.Hooks.ManageDocks ( avoidStruts, docksEventHook, docksStartupHook
+                                , manageDocks )
+import XMonad.Hooks.ManageHelpers ( doCenterFloat, doFullFloat, isFullscreen )
+import XMonad.Hooks.Place ( placeHook, withGaps, underMouse )
+import XMonad.Hooks.SetWMName ( setWMName )
+import XMonad.Layout.Grid ( Grid(Grid) )
+import XMonad.Layout.IM ( withIM, Property(ClassName) )
+import XMonad.Layout.NoBorders ( lessBorders, Ambiguity(OnlyScreenFloat) )
+import XMonad.Layout.PerWorkspace ( onWorkspace )
+import XMonad.Layout.Reflect ( reflectHoriz )
+import XMonad.Layout.Spacing ( toggleScreenSpacingEnabled
+                             , toggleWindowSpacingEnabled, Border(Border)
+                             , spacingRaw )
+import XMonad.Prompt ( XPConfig(..), XPPosition(Top) )
+import XMonad.Prompt.ConfirmPrompt ( confirmPrompt )
+import XMonad.Util.EZConfig ( additionalKeys )
+import XMonad.Util.NamedWindows ( getName )
+import XMonad.Util.Run ( spawnPipe, safeSpawn )
+
+import Au.Colors
+import Au.Util.Screenshot (screenshot)
+import Au.Util.Polybar
+
+import Graphics.X11.ExtraTypes.XF86 ( xF86XK_AudioLowerVolume
+                                    , xF86XK_AudioRaiseVolume
+                                    , xF86XK_AudioMute )
+import System.Exit (exitSuccess)
 import System.IO
 import System.Posix.Files
-import System.Exit
---import System.Process ( readProcess )
 
-
-import Control.Monad
-import Data.Function (on)
-import Data.List (sortBy)
 import Data.Ratio ((%))
-import Data.Maybe
 import Data.Monoid((<>))
-
--- myblack1  = "#151515"
--- mymagenta = "#9f4e85"
--- mywhite0  = "#a1a0a0"
--- mywhite1  = "#d0d0d0"
-
--- this throws an error, probably an xmonad bug
--- solution(?): use a template for a color.hs file and put colors there :shrug:
---getXresourcesField :: String -> IO String
---getXresourcesField f = readProcess "/home/augusto/.au.conf/scripts/getXresourcesField" [f] ""
-
-myblack0  = "#212121" -- "*.background:" -- (darker grey)
-myblack2  = "#505050" -- "*.color8:" -- (dark grey)
-myblue1   = "#7ca9cb" -- "*.color4:"
-myblue2   = "#3c698b" -- "*.color12:"
-
-myCurrentWS = myblue1
-myOtherScreenWS = myblue2
-hiddenWS = myblack2
-
-normalBorderCol = myblack0
-focusedBorderCol = myblue1
+import Text.Printf(printf)
 
 myLogHook :: X ()
 myLogHook = do
   winset <- gets windowset
   title <- maybe (return "") (fmap show . getName) . W.peek $ winset
   multiPP pP' pP'
-  let title' = "%{A4:xdotool key alt+k:}%{A5:xdotool key alt+j:}" ++
-              (take 50 title) ++ "%{A}%{A}\n"
-  spawn $ "echo \"" ++ title' ++ "\" >> /tmp/.xmonad-title-log"
-  spawn $ "echo \"" ++ title' ++ "\" >> /tmp/.xmonad-title-hdmi-log"
-
-underline color s = "%{u" ++ color ++ "}%{+u}" ++ s ++ "%{-u}"
-overline color s = "%{o" ++ color ++ "}%{+o}" ++ s ++ "%{-o}"
+  let title' = clickable ScrollUp "xdotool key alt+k" $
+               clickable ScrollDown "xdotool key alt+j" $
+               (take 50 title)
+  titleLogHook (S 0) title'
+  titleLogHook (S 1) title'
 
 pP' :: PP
 pP' = tryPP undefined
@@ -79,10 +59,10 @@ pP' = tryPP undefined
 tryPP :: Handle -> PP
 tryPP h = def
     { ppOutput  = hPutStrLn h
-    , ppCurrent = pad . underline myCurrentWS . clickableWS
-    , ppVisible = pad . underline myOtherScreenWS . clickableWS
+    , ppCurrent = pad . underline color4 . clickableWS
+    , ppVisible = pad . underline color12 . clickableWS
     , ppHidden  = pad . clickableWS
-    , ppHiddenNoWindows = pad . foreGround hiddenWS . clickableWS
+    , ppHiddenNoWindows = pad . foreground color8 . clickableWS
     , ppWsSep   = ""
     , ppSep     = ""
     , ppTitle   = shorten 60
@@ -91,35 +71,23 @@ tryPP h = def
         [ scrollableWS ws ]
     }
   where
-  foreGround color s = "%{F" ++ color ++ "}" ++ s ++ "%{F-}"
-  clickableWS ws = "%{A1:xdotool key alt+" ++ [head ws] ++ ":}" ++ ws ++ "%{A}"
-  scrollableWS wss = "%{A4:xdotool key super+k:}" ++
-                     "%{A5:xdotool key super+j:}" ++
-                     wss ++ "%{A}%{A}"
+  clickableWS ws = clickable LeftClick ("xdotool key alt+" ++ [head ws]) ws
+  scrollableWS wss = clickable ScrollUp "xdotool key super+k" $
+                     clickable ScrollDown "xdotool key super+j" $
+                     wss
 
 myExtraWS = [("0", xK_0),("-", xK_minus),("=", xK_equal)]
-
 myWorkspaces :: [String]
 myWorkspaces =
     [ "1:TERM" , "2:WEB"] ++ map show [3..7] ++ ["8:IM" , "9:ENT"] ++ map fst myExtraWS
 
+myXPConfig :: XPConfig
 myXPConfig = def
   { position          = Top
   , alwaysHighlight   = True
   , promptBorderWidth = 0
   , font              = "xft:fira code:size=12"
   }
-
-screenshot :: Bool -> Bool -> X ()
-screenshot sel cop = spawn $ "sleep 0.3; maim " ++ selec ++ copy ++
-                      "~/Pictures/Screenshots/$(date +%s).png"
-  where
-    selec = if sel then "-s " else ""
-    copy = if cop
-              then "| xclip -selection clipboard -t image/png; " ++
-                   "xclip -selection clipboard -o > "
-              else ""
-
 
 superMask = mod4Mask
 myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io exitSuccess)
@@ -168,26 +136,32 @@ myLayout = lessBorders OnlyScreenFloat $ avoidStruts $
 
 -- use xprop to get these properties
 myApps = composeAll $
-    [ isFullscreen                                             --> doFullFloat
-    , className =? "mpv"                                           --> doFloat
-    , className =? "TelegramDesktop"  <&&> title =? "Media viewer" --> doFloat
-    --, resource =? "Dialog" --> doFloat
+    [ isFullscreen                                            --> doFullFloat
+    , className =? "TelegramDesktop" <&&> title =? "Media viewer" --> doFloat
+    ,  windowRole =? "pop-up"                                 --> doCenterFloat
     ]
-    ++ [ title =? t --> doCenterFloat | t <- centerFloatTitles ]
-    ++ [ className =? n -->
-      placeHook (withGaps (25,0,0,0) $ underMouse (0.2, 0)) <+> doFloat
-          | n <- mouseFloatClassNames ]
+    ++ [ title =? t     --> doCenterFloat   | t <- centerFloatTitles ]
+    ++ [ className =? n --> doCenterFloat   | n <- centerFloatClassNames ]
+    ++ [ className =? n --> floatUnderMouse | n <- mouseFloatClassNames ]
   where
+    windowRole = stringProperty "WM_WINDOW_ROLE"
+    floatUnderMouse =
+      placeHook (withGaps (25,0,0,0) $ underMouse (0.2, 0)) <+> doFloat
     centerFloatTitles =
       [ "Open File"
       , "File Operation Progress"
       , "Volume Control"
       ]
+    centerFloatClassNames =
+      [ "Wpg"
+      ]
     mouseFloatClassNames =
       [ "MEGAsync"
       , "Toggl Desktop"
+      , "mpv"
       ]
 
+-- dynStatusBarEventHook expects a `ScreenId -> IO Handle`
 barInScreen :: ScreenId -> IO Handle
 barInScreen (S 0) = do
     spawn "sleep 1; polybar bar1"
@@ -195,6 +169,13 @@ barInScreen (S 0) = do
 barInScreen (S 1) = do
     spawn "sleep 1; polybar barhdmi"
     spawnPipe "cat >> /tmp/.xmonad-workspace-hdmi-log"
+
+titleLogHook :: ScreenId -> String -> X ()
+titleLogHook screen s =
+  spawn $ printf "echo \"%s\n\" >> %s" s (screenPipe screen)
+  where
+    screenPipe (S 0) = "/tmp/.xmonad-title-log"
+    screenPipe (S 1) = "/tmp/.xmonad-title-hdmi-log"
 
 startUpBeep :: IO ()
 startUpBeep =
@@ -212,10 +193,10 @@ main = do
       , modMask = mod1Mask
       , workspaces = myWorkspaces
       , terminal  = "urxvt -e tmux"
-      , focusedBorderColor = focusedBorderCol
-      , normalBorderColor = normalBorderCol
+      , focusedBorderColor = color4
+      , normalBorderColor = color0
       , borderWidth = 2
-      , startupHook = setWMName "LG3D"
+      , startupHook = setWMName "LG3D" -- TODO what is this?
                     <+> docksStartupHook
                     <+> dynStatusBarStartup barInScreen (return ())
       , logHook = fadeInactiveLogHook 0.7

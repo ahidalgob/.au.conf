@@ -1,2 +1,5 @@
 git clone https://github.com/ahidalgob/xmonad
 git clone https://github.com/ahidalgob/xmonad-contrib
+stack build
+# errors?
+stack install

@@ -16,12 +16,22 @@ build-type:     Simple
   --type: git
   --location: https://github.com/ahidalgob/my-xmonad
 
+library
+  exposed-modules: Au.Colors
+                 , Au.Util.Screenshot
+                 , Au.Util.Polybar
+  hs-source-dirs:  .
+  build-depends: base
+               , xmonad
+  default-language: Haskell2010
+
 executable my-xmonad-exe
   main-is: xmonad.hs
-  build-depends: base >=4.7 && <5,
-                 X11>=1.6.1 && < 1.10,
-                 xmonad >= 0.15 && < 0.16,
-                 xmonad-contrib >= 0.15 && < 0.16,
-                 process,
-                 unix
+  build-depends: base >=4.7 && <5
+               , X11>=1.6.1 && < 1.10
+               , xmonad >= 0.15 && <= 0.16
+               , xmonad-contrib >= 0.15 && <= 0.16
+               , process
+               , unix
+               , my-xmonad
   default-language: Haskell2010
