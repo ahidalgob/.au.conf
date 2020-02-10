@@ -4,6 +4,7 @@ paths=(
     .config/gtk-3.0
     .config/nvim
     .config/polybar
+    .config/compton.conf
     .gitconfig
     .gtkrc-2.0
     .icons
