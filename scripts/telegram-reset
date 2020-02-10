@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# requires:
+# gtk-lunch
+# wmctrl
+# telegram in .local/share/applications/telegramdesktop.desktop
+
+TELEPID=$(ps -e | grep "telegram$" | cut -d " " -f1)
+
+# Check if telegram is running
+if [ ! -z "$TELEPID" ]
+then
+    TELELINE=$(wmctrl -l -p | grep "$TELEPID")
+    TELEWS=$(echo "$TELELINE" | cut -d " " -f3)
+    TELEWID=$(echo "$TELELINE" | cut -d " " -f1)
+
+    # close telegram
+    #wmctrl -i -c "$TELEWID"
+    kill -9 "$TELEWID"
+
+    # relaunch telegram
+    cd .local/share/applications/
+    gtk-launch telegramdesktop.desktop
+    cd -
+
+    TELEPID=$(ps -e | grep "telegram$" | cut -d " " -f1)
+    TELELINE=$(wmctrl -l -p | grep "$TELEPID")
+    # wait for it to be recognized by wmctrl
+    while [ -z "$TELELINE" ]
+    do
+        sleep 0.05
+        TELELINE=$(wmctrl -l -p | grep "$TELEPID")
+    done
+
+    TELEWID=$(echo "$TELELINE" | cut -d " " -f1)
+    wmctrl -i -r "$TELEWID" -t "$TELEWS"
+fi
