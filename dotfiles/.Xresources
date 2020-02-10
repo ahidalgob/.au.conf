@@ -3,41 +3,41 @@
 ! Generated with :
 ! XRDB2Xreources.py
 !
-*.foreground:  #d0d0d0
-*.background:  #212121
-*.cursorColor: #d0d0d0
-!
-! Black
-*.color0:      #000000
-*.color8:      #505050
-!
-! Red
-*.color1:      #ac4142
-*.color9:      #ac4142
-!
-! Green
-*.color2:      #7e8e50
-*.color10:     #7e8e50
-!
-! Yellow
-*.color3:      #e5b567
-*.color11:     #e5b567
-!
-! Blue
-*.color4:      #7ca9cb
-*.color12:     #3c698b
-!
-! Magenta
-*.color5:      #9f4e85
-*.color13:     #9f4e85
-!
-! Cyan
-*.color6:      #7dd6cf
-*.color14:     #7dd6cf
-!
-! White
-*.color7:      #d0d0d0
-*.color15:     #f5f5f5
+! *.foreground:  #d0d0d0
+! *.background:  #212121
+! *.cursorColor: #d0d0d0
+! !
+! ! Black
+! *.color0:      #000000
+! *.color8:      #505050
+! !
+! ! Red
+! *.color1:      #ac4142
+! *.color9:      #ac4142
+! !
+! ! Green
+! *.color2:      #7e8e50
+! *.color10:     #7e8e50
+! !
+! ! Yellow
+! *.color3:      #e5b567
+! *.color11:     #e5b567
+! !
+! ! Blue
+! *.color4:      #7ca9cb
+! *.color12:     #3c698b
+! !
+! ! Magenta
+! *.color5:      #9f4e85
+! *.color13:     #9f4e85
+! !
+! ! Cyan
+! *.color6:      #7dd6cf
+! *.color14:     #7dd6cf
+! !
+! ! White
+! *.color7:      #d0d0d0
+! *.color15:     #f5f5f5
 !
 ! Bold, Italic, Underline
 *.colorBD:     #d0d0d0
@@ -54,8 +54,7 @@ URxvt.scrollBar: false
 urxvt*depth: 32
 URxvt.background: [100]#000000
 
-URxvt*font: xft:InputMono ExLight:size=10:minspace=False:antialias=true, xft:DejaVu Sans:pixelsize=9, xft:Iosevka
-!URxvt.font: xft:InputMono ExLight:pixelsize=18
+URxvt*font: xft:InputMono ExLight:size=10:minspace=False:antialias=true, xft:DejaVu Sans:pixelsize=9, xft:Iosevka Nerd Font Mono
 !URxvt*boldFont: xft:DejaVu Sans Mono:size=11:minspace=False, xft:DejaVu Sans:pixelsize=9
 !
 !-1 with normal font
