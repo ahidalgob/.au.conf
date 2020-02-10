@@ -29,7 +29,7 @@ function CPF {
             if [ -e "$FILE".cpp ]; then
                 echo "$FILE.cpp already exists!"
             else
-                cp ~/MegaSync/Competitive_Programming/Code2/template.cpp ./"$FILE".cpp
+                cp ~/Projects/CPAlgorithms/template.cpp ./"$FILE".cpp
                 echo "$FILE.cpp created :)"
             fi
 #           subl "$FILE.cpp"
