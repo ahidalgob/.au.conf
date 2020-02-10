@@ -23,6 +23,8 @@ library
   hs-source-dirs:  .
   build-depends: base
                , xmonad
+               , directory
+               , filepath
   default-language: Haskell2010
 
 executable my-xmonad-exe
@@ -34,4 +36,6 @@ executable my-xmonad-exe
                , process
                , unix
                , my-xmonad
+               , directory
+               , filepath
   default-language: Haskell2010

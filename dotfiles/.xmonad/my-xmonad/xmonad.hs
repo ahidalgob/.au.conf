@@ -27,7 +27,7 @@ import XMonad.Util.EZConfig ( additionalKeys )
 import XMonad.Util.NamedWindows ( getName )
 import XMonad.Util.Run ( spawnPipe, safeSpawn )
 
-import Au.Colors
+import Au.Colors ( color, withAlpha )
 import Au.Util.Screenshot (screenshot)
 import Au.Util.Polybar
 
@@ -49,9 +49,19 @@ myLogHook = do
   multiPP pP' pP'
   let title' = clickable ScrollUp "xdotool key alt+k" $
                clickable ScrollDown "xdotool key alt+j" $
-               (take 50 title)
+               background (withAlpha "aa" $ color 0) $
+               padUntil 52 $
+               take 50 title
   titleLogHook (S 0) title'
   titleLogHook (S 1) title'
+  where
+    padUntil :: Int -> String -> String
+    padUntil l s
+      | length s >= l = s
+      | otherwise =
+          let dif = l - length s
+           in (replicate (dif `div` 2) ' ') <> s <>
+              (replicate ((dif+1) `div` 2) ' ')
 
 pP' :: PP
 pP' = tryPP undefined
@@ -59,16 +69,16 @@ pP' = tryPP undefined
 tryPP :: Handle -> PP
 tryPP h = def
     { ppOutput  = hPutStrLn h
-    , ppCurrent = pad . underline color4 . clickableWS
-    , ppVisible = pad . underline color12 . clickableWS
+    , ppCurrent = pad . foreground (color 15) . underline (color 4) . clickableWS
+    , ppVisible = pad . underline (color 12) . clickableWS
     , ppHidden  = pad . clickableWS
-    , ppHiddenNoWindows = pad . foreground color8 . clickableWS
+    , ppHiddenNoWindows = pad . foreground (withAlpha "80" (color 15)) . clickableWS
     , ppWsSep   = ""
     , ppSep     = ""
     , ppTitle   = shorten 60
     , ppLayout  = const " "
     , ppOrder = \(ws:l:t:_) ->
-        [ scrollableWS ws ]
+        [ background (withAlpha "aa" $ color 0) $ scrollableWS ws ]
     }
   where
   clickableWS ws = clickable LeftClick ("xdotool key alt+" ++ [head ws]) ws
@@ -91,7 +101,7 @@ myXPConfig = def
 
 superMask = mod4Mask
 myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io exitSuccess)
-         , ((mod1Mask, xK_p), spawn "rofi -m -4 -combi-modi drun,run -show combi -modi combi,window -font 'InputMono 10' -show-icons -theme solarized")
+         , ((mod1Mask, xK_p), spawn "rofi -m -4 -combi-modi drun,run -show combi -modi combi,window -font 'InputMono 10' -show-icons")
          , ( (mod1Mask, xK_f)
            , withFocused $ windows . flip W.float (W.RationalRect 0 0 1 1))
          , ( (mod1Mask, xK_q)
@@ -193,12 +203,11 @@ main = do
       , modMask = mod1Mask
       , workspaces = myWorkspaces
       , terminal  = "urxvt -e tmux"
-      , focusedBorderColor = color4
-      , normalBorderColor = color0
+      , focusedBorderColor = color 4
+      , normalBorderColor = color 0
       , borderWidth = 2
       , startupHook = setWMName "LG3D" -- TODO what is this?
                     <+> docksStartupHook
                     <+> dynStatusBarStartup barInScreen (return ())
-      , logHook = fadeInactiveLogHook 0.7
-                <+> myLogHook
+      , logHook = myLogHook
       } `additionalKeys` myKeys
