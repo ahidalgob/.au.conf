@@ -1,4 +1,4 @@
-; :setfiletype dosini
+; vi set ft=dosini
 
 ;==========================================================
 ;
@@ -63,7 +63,7 @@ font-3 = DejaVuSans:pixelsize=7;3
 
 modules-left = workspaces-xmonad
 modules-center = title-xmonad
-modules-right = xkeyboard toggl xbacklight alsa memory cpu temperature wlan eth battery date powermenu
+modules-right = xkeyboard toggl xbacklight alsa memory cpu temperature wlan eth battery date
 ;modules-right = xkeyboard xbacklight alsa memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
@@ -121,7 +121,7 @@ font-3 = fixed:pixelsize=5;0
 
 modules-left = workspaces-xmonad-hdmi
 modules-center = title-xmonad-hdmi
-modules-right = xkeyboard toggl xbacklight alsa memory cpu temperature wlan eth battery date powermenu
+modules-right = xkeyboard toggl xbacklight alsa memory cpu temperature wlan eth battery date
 
 tray-position = right
 tray-padding = 0

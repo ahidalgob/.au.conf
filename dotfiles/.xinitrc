@@ -24,10 +24,6 @@ bash ~/.au.conf/scripts/setscreens &
 setxkbmap us -variant intl
 bash ~/.au.conf/scripts/toggleKeyboardLayout
 
-#compton -bf -D 5 --shadow-opacity=0 --shadow-radius=0
-#compton -b --shadow-opacity=0 --shadow-radius=0 --blur-background --blur-method kawase --backend glx --blur-strength 12 --glx-no-stencil --glx-no-rebind-pixmap --use-ewmh-active-win --refresh-rate=0
-compton -b
-
-feh --bg-fill ~/wp.jpg
+sleep 5 && compton -b && feh --bg-fill ~/wp.jpg &
 
 exec xmonad
