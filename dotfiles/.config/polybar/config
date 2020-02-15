@@ -20,11 +20,11 @@
 
 [colors]
 ;background = ${xrdb:background}
-background = #dd372b3b
-foreground = #ffffee
-red = #A7C9B0
-green = #c5e5b2
-blue = #76e1f0
+background = #dd341020
+foreground = #fff7eb
+red = #994B33
+green = #dc7163
+blue = #ff895c
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -299,16 +299,18 @@ warn-temperature = 72
 
 format = <ramp><label>
 format-prefix = " "
+format-suffix = " "
 format-underline =
 ;format-background = ${colors.background}
-label = "%temperature-c%糖 "
+label = "%temperature-c%糖"
 
-format-warn = <ramp><label-warn>
+format-warn = %{u#994B33}%{+u}<ramp><label-warn>%{-u}
 format-warn-prefix = " "
+format-warn-suffix = " "
 format-warn-foreground = ${colors.red}
-format-warn-underline = ${colors.red}
+format-warn-underline =
 ;format-warn-background = ${self.format-background}
-label-warn = "%temperature-c%糖 "
+label-warn = "%temperature-c%糖"
 
 ramp-0 = 
 ramp-1 = 
