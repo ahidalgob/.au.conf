@@ -103,6 +103,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 
 "Plug 'danilo-augusto/vim-afterglow'
 Plug 'ahidalgob/vim-afterglow'
+Plug 'deviantfero/wpgtk.vim'
 
 Plug 'ntpeters/vim-better-whitespace'
 
@@ -133,10 +134,14 @@ set splitbelow
 set splitright
 
 " Appearance {{{2
-:colorscheme afterglow
-let g:afterglow_no_terminal_background = 1
+":colorscheme afterglow
+"let g:afterglow_no_terminal_background = 1
+
+:colorscheme wpgtk
+
 if exists('g:GtkGuiLoaded')
-    call rpcnotify(1, 'Gui', 'Font', 'Fira Code 10')
+  colorscheme afterglow
+  call rpcnotify(1, 'Gui', 'Font', 'Fira Code Nerd Font 10')
 endif
 
 set colorcolumn=80
