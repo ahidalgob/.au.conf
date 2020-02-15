@@ -5,25 +5,25 @@
 # wmctrl
 # telegram in .local/share/applications/telegramdesktop.desktop
 
-TELEPID=$(ps -e | grep "telegram$" | cut -d " " -f1)
+TELEPID=$(ps -e | egrep "(telegram$|telegram-desktop$|telegram-deskto$)" | awk '{print $1}')
 
 # Check if telegram is running
 if [ ! -z "$TELEPID" ]
 then
     TELELINE=$(wmctrl -l -p | grep "$TELEPID")
-    TELEWS=$(echo "$TELELINE" | cut -d " " -f3)
-    TELEWID=$(echo "$TELELINE" | cut -d " " -f1)
+    TELEWS=$(echo "$TELELINE" | awk '{print $2}')
+    #TELEWID=$(echo "$TELELINE" | awk '{print $1}')
 
     # close telegram
     #wmctrl -i -c "$TELEWID"
-    kill -9 "$TELEWID"
+    kill -9 "$TELEPID"
 
     # relaunch telegram
-    cd .local/share/applications/
+    #cd .local/share/applications/
     gtk-launch telegramdesktop.desktop
-    cd -
+    #cd -
 
-    TELEPID=$(ps -e | grep "telegram$" | cut -d " " -f1)
+    TELEPID=$(ps -e | egrep "(telegram$|telegram-desktop$|telegram-deskto$)" | awk '{print $1}')
     TELELINE=$(wmctrl -l -p | grep "$TELEPID")
     # wait for it to be recognized by wmctrl
     while [ -z "$TELELINE" ]
@@ -32,6 +32,6 @@ then
         TELELINE=$(wmctrl -l -p | grep "$TELEPID")
     done
 
-    TELEWID=$(echo "$TELELINE" | cut -d " " -f1)
+    TELEWID=$(echo "$TELELINE" | awk '{print $1}')
     wmctrl -i -r "$TELEWID" -t "$TELEWS"
 fi
