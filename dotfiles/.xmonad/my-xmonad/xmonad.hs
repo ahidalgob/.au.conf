@@ -27,6 +27,7 @@ import XMonad.Util.EZConfig ( additionalKeys )
 import XMonad.Util.NamedWindows ( getName )
 import XMonad.Util.Run ( spawnPipe, safeSpawn )
 
+import Au.Workspaces ( myWorkspaces, myExtraWS )
 import Au.Colors ( color, withAlpha )
 import Au.Util.Screenshot (screenshot)
 import Au.Util.Polybar
@@ -69,16 +70,16 @@ pP' = tryPP undefined
 tryPP :: Handle -> PP
 tryPP h = def
     { ppOutput  = hPutStrLn h
-    , ppCurrent = pad . foreground (color 15) . underline (color 4) . clickableWS
-    , ppVisible = pad . underline (color 12) . clickableWS
-    , ppHidden  = pad . clickableWS
-    , ppHiddenNoWindows = pad . foreground (withAlpha "80" (color 15)) . clickableWS
-    , ppWsSep   = ""
+    , ppCurrent = foreground (color 15) . underline (color 12) . clickableWS
+    , ppVisible = underline (withAlpha "70" $ color 4) . clickableWS
+    , ppHidden  = clickableWS
+    , ppHiddenNoWindows = foreground (withAlpha "35" (color 15)) . clickableWS
+    , ppWsSep   = " "
     , ppSep     = ""
     , ppTitle   = shorten 60
     , ppLayout  = const " "
     , ppOrder = \(ws:l:t:_) ->
-        [ background (withAlpha "aa" $ color 0) $ scrollableWS ws ]
+        [ background (withAlpha "aa" $ color 0) $ pad $ scrollableWS ws ]
     }
   where
   clickableWS ws = clickable LeftClick ("xdotool key alt+" ++ [head ws]) ws
@@ -86,10 +87,6 @@ tryPP h = def
                      clickable ScrollDown "xdotool key super+j" $
                      wss
 
-myExtraWS = [("0", xK_0),("-", xK_minus),("=", xK_equal)]
-myWorkspaces :: [String]
-myWorkspaces =
-    [ "1:TERM" , "2:WEB"] ++ map show [3..7] ++ ["8:IM" , "9:ENT"] ++ map fst myExtraWS
 
 myXPConfig :: XPConfig
 myXPConfig = def
@@ -167,7 +164,7 @@ myApps = composeAll $
       ]
     mouseFloatClassNames =
       [ "MEGAsync"
-      , "Toggl Desktop"
+--      , "Toggl Desktop"
       , "mpv"
       ]
 
