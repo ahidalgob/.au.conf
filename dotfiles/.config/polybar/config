@@ -20,141 +20,93 @@
 
 [colors]
 ;background = ${xrdb:background}
-background = #00222222
-background-alt = #444
-foreground = ${xrdb:foreground}
-foreground-alt = #555
+background = #dd372b3b
+foreground = #ffffee
+red = #A7C9B0
+green = #c5e5b2
+blue = #76e1f0
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/bar1]
-;monitor = ${env:MONITOR:HDMI-1}
+[generalbar]
+font-0 = FiraCode Nerd Font:pixelsize=10;1
+; Big Fantasque for ws icons
+font-1 = FantasqueSansMono NF:pixelsize=18;4
+; Unifont for brightness
+font-2 = Unifont Upper:pixelsize=10;1
+; Big FiraCode for volume
+font-3 = FiraCode Nerd Font:pixelsize=16;2
+; Big Hurmit for Date
+font-4 = Hurmit NF:pixelsize=16:style=regular;4
+
 width = 100%
-height = 22
 ;offset-x = 1%
 ;offset-y = 1%
+height = 30
 radius = 0.0
 fixed-center = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 2
+line-size = 3
 line-color = #f00
 
-border-size = 5
+border-size = 0
+border-bottom-size = 8
 border-color = #00000000
 
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 1
-module-margin-right = 2
+module-margin-left = 0
+module-margin-right = 0
 
-font-0 = fixed:pixelsize=8;1
-font-1 = Unifont Upper:pixelsize=10;1
-; Iosevka for volume
-font-2 = "Iosevka Nerd Font:size=12;3"
-font-3 = DejaVuSans:pixelsize=7;3
-;font-2 = Siji:pixelsize=10
-;font-4 = fixed:pixelsize=8;1
+separator =
 
+tray-position = right
+tray-padding = 0
+;tray-detached = true
+;tray-offset-x = -8
+tray-background = ${colors.background}
+
+override-redirect = true
+
+cursor-click = default
+cursor-scroll = default
+
+modules-right = xkeyboard xbacklight alsa memory cpu temperature wlan eth battery date
+
+
+[bar/bar1]
+inherit = generalbar
+;monitor = ${env:MONITOR:HDMI-1}
 
 modules-left = workspaces-xmonad
 modules-center = title-xmonad
-modules-right = xkeyboard toggl xbacklight alsa memory cpu temperature wlan eth battery date
-;modules-right = xkeyboard xbacklight alsa memory cpu wlan eth battery temperature date powermenu
-
-tray-position = right
-tray-padding = 0
-;tray-detached = true
-;tray-offset-x = -8
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-cursor-click = default
-cursor-scroll = default
 
 
 [bar/barhdmi]
+inherit = generalbar
 monitor = HDMI1
-width = 100%
-height = 18
-;offset-x = 1%
-;offset-y = 1%
-radius = 0.0
-fixed-center = false
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 2
-line-color = #f00
-
-border-size = 5
-border-color = #00000000
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = fixed:pixelsize=8;1
-font-1 = Unifont Upper:pixelsize=10;1
-font-2 = "Iosevka Nerd Font:size=12;3"
-font-3 = fixed:pixelsize=5;0
-;font-2 = Siji:pixelsize=10;1
-;font-4 = Unifont Upper:pixelsize=10;1
-
 
 modules-left = workspaces-xmonad-hdmi
 modules-center = title-xmonad-hdmi
-modules-right = xkeyboard toggl xbacklight alsa memory cpu temperature wlan eth battery date
-
-tray-position = right
-tray-padding = 0
-;tray-detached = true
-;tray-offset-x = -8
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-cursor-click = default
-cursor-scroll = default
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; xwindow
+;[module/xwindow]
+;type = internal/xwindow
+;label = %title:0:30:...%
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; xkeyboard
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
 ;format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+;format-prefix-foreground =
 format-prefix-underline =
 
 label-layout =
@@ -165,309 +117,208 @@ label-indicator-margin = 0
 label-indicator-background = ${colors.secondary}
 label-indicator-underline =
 
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
-
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
-
-[module/i3]
-type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
-wrapping-scroll = false
-
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
-
-; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
-label-unfocused-padding = 2
-
-; visible = Active workspace on unfocused monitor
-label-visible = %index%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
-
-; urgent = Workspace with urgency hint set
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-; Separator in between workspaces
-; label-separator = |
-
-
-[module/mpd]
-type = internal/mpd
-format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-;icon-prev = 
-;icon-stop = 
-;icon-play = 
-;icon-pause = 
-;icon-next = 
-
-label-song-maxlen = 25
-label-song-ellipsis = true
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; xbacklight
 [module/xbacklight]
 type = internal/xbacklight
 
-ramp-font = 3
-format = <label><ramp>
-label-font = 4
-label = %percentage%%
+format = <ramp>
+format-prefix = " "
+format-background = ${colors.background}
 
+;label = %percentage%%
+
+ramp-font = 3
 ramp-0 = 🌕
 ramp-1 = 🌔
 ramp-2 = 🌓
-ramp-3 = 🌒
-ramp-4 = 🌑
-;ramp-0 = 
-;ramp-1 = 
-;ramp-2 = 
-;ramp-3 = 
-;ramp-4 = 
+ramp-3 = 🌓
+ramp-4 = 🌒
+ramp-5 = 🌑
 
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; cpu
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "CPU:"
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = " "
+format-font = 2
+;format-prefix-foreground =
 format-underline =
+format-background = ${colors.background}
+; what's the 2 here?
 label = %percentage:2%%
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; memory
 [module/memory]
 type = internal/memory
 interval = 2
 format-prefix = "MEM:"
-format-prefix-foreground = ${colors.foreground-alt}
+;format-prefix-foreground =
 format-underline =
+format-background = ${colors.background}
 label = %percentage_used%%
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; wlan
 [module/wlan]
 type = internal/network
 interface = wlp9s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #5555aa
-label-connected = %essid% %downspeed% %upspeed%
+format-connected-underline = ${colors.blue}
+label-connected = %essid%
 
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = .
-ramp-signal-1 = 直
-ramp-signal-2 = 直
-ramp-signal-3 = 直
-ramp-signal-4 = 直
+ramp-signal-0 = 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; eth
 [module/eth]
 type = internal/network
 interface = enp5s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-;format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+label-connected =  %local_ip%
 
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; date
 [module/date]
 type = internal/date
 interval = 1
 
 date =
-date-alt = "%Y-%m-%d "
+date-alt = "%d-%m "
 
-time =%H:%M
+time = %H:%M
 time-alt=%H:%M:%S
 
-;format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = " "
+format-suffix = " "
 format-underline =
+format-background = ${colors.background}
 
 label =%date%%time%
-label-font = 3
+label-font = 5
 
-;[module/pulseaudio]
-;type = internal/pulseaudio
-
-;format-volume = <label-volume> <bar-volume>
-;label-volume = VOL %percentage%%
-;label-volume-foreground = ${root.foreground}
-
-;label-muted = 🔇 muted
-;label-muted-foreground = #666
-
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; alsa
 [module/alsa]
 type = internal/alsa
 
-format-volume = <label-volume><ramp-volume>
-label-volume-font = 4
-label-volume = %percentage%%
-label-volume-foreground = ${root.foreground}
+format-volume = <ramp-volume>
+format-volume-background = ${colors.background}
+format-volume-prefix = " "
+;label-volume = %percentage%%
+;label-volume-foreground = ${root.foreground}
 
-;format-muted-prefix = " "
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+format-muted = "奄 "
+format-muted-background = ${colors.background}
+;format-muted-foreground =
 
-ramp-volume-font = 1
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-volume-3 = 
-ramp-volume-4 = 
-ramp-volume-5 = 
-ramp-volume-6 = 
-ramp-volume-7 = 
-ramp-volume-8 = 
-ramp-volume-9 = 
-ramp-volume-10 = 
+ramp-volume-font = 4
+ramp-volume-0 = "奄 "
+ramp-volume-1 = "奔 "
+ramp-volume-2 = "奔 "
+ramp-volume-3 = "奔 "
+ramp-volume-4 = "奔 "
+ramp-volume-5 = "奔 "
+ramp-volume-6 = "奔 "
+ramp-volume-7 = "奔 "
+ramp-volume-8 = "奔 "
+ramp-volume-9 = "奔 "
+ramp-volume-10 = "墳 "
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; battery
 [module/battery]
 type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ff00ff00
+format-charging-prefix = " "
+format-charging = <ramp-capacity><label-charging>
+ramp-capacity-underline = ${colors.green}
+label-charging-underline = ${colors.green}
+;format-charging-background = ${colors.background}
 
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = #ffff0000
+format-discharging-prefix = " "
+format-discharging = <animation-discharging><label-discharging>
+animation-discharging-underline = ${colors.red}
+label-discharging-underline = ${colors.red}
+;format-discharging-background = ${colors.background}
 
-label-full = 
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = #ff5555aa
+format-full-prefix = " "
+format-full = <label-full>
+label-full = ﮣ
+label-full-underline = ${colors.blue}
+format-full-background = ${colors.background}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+;ramp-capacity-foreground =
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+animation-charging-7 = 
 
 animation-charging-framerate = 400
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-3 = 
-animation-discharging-4 = 
+animation-discharging-0 = " "
+animation-discharging-1 = " "
+animation-discharging-2 = ""
+animation-discharging-3 = ""
+animation-discharging-4 = " "
+animation-discharging-5 = " "
+animation-discharging-6 = ""
+animation-discharging-7 = ""
 animation-discharging-framerate = 400
-animation-discharging-foreground = ${colors.foreground-alt}
+;animation-discharging-foreground =
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; temperature
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
-warn-temperature = 70
+units = false
+base-temperature = 40
+warn-temperature = 72
 
 format = <ramp><label>
+format-prefix = " "
 format-underline =
+;format-background = ${colors.background}
+label = "%temperature-c%糖 "
+
 format-warn = <ramp><label-warn>
-format-warn-underline = ${self.format-underline}
+format-warn-prefix = " "
+format-warn-foreground = ${colors.red}
+format-warn-underline = ${colors.red}
+;format-warn-background = ${self.format-background}
+label-warn = "%temperature-c%糖 "
 
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+;ramp-foreground =
 
-;ramp-0 = 
-;ramp-1 = 
-;ramp-2 = 
-ramp-0 =
-ramp-1 =
-ramp-2 =
-ramp-foreground = ${colors.foreground-alt}
 
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-;label-open = 
-label-open = x
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; settings
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
@@ -476,41 +327,43 @@ screenchange-reload = true
 ;compositing-border = over
 ;pseudo-transparency = false
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; wm
 [global/wm]
 margin-top = 0
 margin-bottom = -8
 
-; vim:ft=dosini
 
-
-
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; workspaces-xmonad
 [module/workspaces-xmonad]
 type = custom/script
 exec = tail -F /tmp/.xmonad-workspace-log
 ;exec-if = [ -p /tmp/.xmonad-workspace-log ]
 tail = true
+format-font = 2
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; title-xmonad
 [module/title-xmonad]
 type = custom/script
 exec = tail -F /tmp/.xmonad-title-log
 ;exec-if = [ -p /tmp/.xmonad-title-log ]
 tail = true
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; workspaces-xmonad-hdmi
 [module/workspaces-xmonad-hdmi]
 type = custom/script
 exec = tail -F /tmp/.xmonad-workspace-hdmi-log
 ;exec-if = [ -p /tmp/.xmonad-workspace-hdmi-log ]
 tail = true
+format-font = 2
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; title-xmonad-hdmi
 [module/title-xmonad-hdmi]
 type = custom/script
 exec = tail -F /tmp/.xmonad-title-hdmi-log
 ;exec-if = [ -p /tmp/.xmonad-title-hdmi-log ]
 tail = true
 
-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; toggl
 [module/toggl]
 type = custom/script
 exec = /home/augusto/.local/bin/simpleToggl

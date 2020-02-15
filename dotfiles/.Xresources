@@ -54,11 +54,15 @@ URxvt.scrollBar: false
 urxvt*depth: 32
 URxvt.background: [100]#000000
 
-URxvt*font: xft:InputMono ExLight:size=10:minspace=False:antialias=true, xft:DejaVu Sans:pixelsize=9, xft:Iosevka Nerd Font Mono
-!URxvt*boldFont: xft:DejaVu Sans Mono:size=11:minspace=False, xft:DejaVu Sans:pixelsize=9
+!URxvt*font: xft:InputMono ExLight:size=10:minspace=False:antialias=true, xft:DejaVu Sans:pixelsize=9, xft:Iosevka Nerd Font Mono
 !
-!-1 with normal font
-URxvt.letterSpace:-1
+!URxvt*font: xft:FantasqueSansMono NF:style=Regular:pixelsize=14
+!URxvt*font: xft:Hurmit NF:style=medium:pixelsize=14
+URxvt*font: xft:FiraCode Nerd Font Mono:style=Regular:pixelsize=14
+
+!
+URxvt.letterSpace:0
+URxvt.lineSpace:0
 
 !Xft.dpi:        72
 Xft.antialias:  true
