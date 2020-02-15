@@ -28,7 +28,7 @@ import XMonad.Util.NamedWindows ( getName )
 import XMonad.Util.Run ( spawnPipe, safeSpawn )
 
 import Au.Workspaces ( myWorkspaces, myExtraWS )
-import Au.Colors ( color, withAlpha )
+import Au.Colors ( color, withAlpha, polybarBGAlpha )
 import Au.Util.Screenshot (screenshot)
 import Au.Util.Polybar
 
@@ -50,7 +50,7 @@ myLogHook = do
   multiPP pP' pP'
   let title' = clickable ScrollUp "xdotool key alt+k" $
                clickable ScrollDown "xdotool key alt+j" $
-               background (withAlpha "aa" $ color 0) $
+               background (withAlpha polybarBGAlpha $ color 8) $
                padUntil 52 $
                take 50 title
   titleLogHook (S 0) title'
@@ -70,16 +70,16 @@ pP' = tryPP undefined
 tryPP :: Handle -> PP
 tryPP h = def
     { ppOutput  = hPutStrLn h
-    , ppCurrent = foreground (color 15) . underline (color 12) . clickableWS
+    , ppCurrent = underline (color 12) . clickableWS
     , ppVisible = underline (withAlpha "70" $ color 4) . clickableWS
     , ppHidden  = clickableWS
-    , ppHiddenNoWindows = foreground (withAlpha "35" (color 15)) . clickableWS
+    , ppHiddenNoWindows = foreground (withAlpha "50" (color 15)) . clickableWS
     , ppWsSep   = " "
     , ppSep     = ""
     , ppTitle   = shorten 60
     , ppLayout  = const " "
     , ppOrder = \(ws:l:t:_) ->
-        [ background (withAlpha "aa" $ color 0) $ pad $ scrollableWS ws ]
+        [ background (withAlpha polybarBGAlpha $ color 8) $ pad $ scrollableWS ws ]
     }
   where
   clickableWS ws = clickable LeftClick ("xdotool key alt+" ++ [head ws]) ws
@@ -122,9 +122,9 @@ myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io
          , ((controlMask .|. shiftMask, xK_space), spawn "~/.au.conf/scripts/toggleKeyboardLayout")
          , ((mod1Mask, xK_c), spawn "~/.au.conf/scripts/toggleCompton")
 
-         , ((0, xF86XK_AudioLowerVolume ), spawn "amixer set Master 2%-")
-         , ((0, xF86XK_AudioRaiseVolume ), spawn "amixer set Master 2%+")
-         , ((0, xF86XK_AudioMute ), spawn "amixer set Master toggle")
+         , ((0, xF86XK_AudioLowerVolume ), spawn "amixerdunst 2%-")
+         , ((0, xF86XK_AudioRaiseVolume ), spawn "amixerdunst 2%+")
+         , ((0, xF86XK_AudioMute ), spawn "amixerdunst toggle")
          ]
          ++
          [ ((mod1Mask, key), windows $ W.greedyView ws) | (ws, key) <- myExtraWS ]

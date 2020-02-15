@@ -24,6 +24,6 @@ bash ~/.au.conf/scripts/setscreens &
 setxkbmap us -variant intl
 bash ~/.au.conf/scripts/toggleKeyboardLayout
 
-sleep 1 && compton -b && wpg -s $(wpg -c) &
+sleep 1 && compton -b && wpg -s "$(wpg -c)" &
 
 exec xmonad
