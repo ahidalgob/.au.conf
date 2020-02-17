@@ -25,6 +25,8 @@ import XMonad.Prompt ( XPConfig(..), XPPosition(Top) )
 import XMonad.Prompt.ConfirmPrompt ( confirmPrompt )
 import XMonad.Util.EZConfig ( additionalKeys )
 import XMonad.Util.NamedWindows ( getName )
+import XMonad.Util.NamedScratchpad ( NamedScratchpad(..), namedScratchpadAction
+                                   , namedScratchpadManageHook, defaultFloating )
 import XMonad.Util.Run ( spawnPipe, safeSpawn )
 
 import Au.Workspaces ( myWorkspaces, myExtraWS )
@@ -98,7 +100,7 @@ myXPConfig = def
 
 superMask = mod4Mask
 myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io exitSuccess)
-         , ((mod1Mask, xK_p), spawn "rofi -m -4 -combi-modi drun,run -show combi -modi combi,window -font 'InputMono 10' -show-icons")
+         , ((mod1Mask, xK_p), spawn "rofi -m -4 -combi-modi drun,run -show combi -modi combi,window -show-icons")
          , ( (mod1Mask, xK_f)
            , withFocused $ windows . flip W.float (W.RationalRect 0 0 1 1))
          , ( (mod1Mask, xK_q)
@@ -125,6 +127,7 @@ myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io
          , ((0, xF86XK_AudioLowerVolume ), spawn "amixerdunst 2%-")
          , ((0, xF86XK_AudioRaiseVolume ), spawn "amixerdunst 2%+")
          , ((0, xF86XK_AudioMute ), spawn "amixerdunst toggle")
+         , ((mod1Mask  .|. controlMask, xK_h), namedScratchpadAction myScratchpads "Habitica")
          ]
          ++
          [ ((mod1Mask, key), windows $ W.greedyView ws) | (ws, key) <- myExtraWS ]
@@ -167,6 +170,15 @@ myApps = composeAll $
 --      , "Toggl Desktop"
       , "mpv"
       ]
+
+myScratchpads =
+  [ -- Habitica (created with brave)
+    NS "Habitica"
+       "gtk-launch brave-pdigihnmoiplkhocekidmdcmhchhdpjo-Default.desktop"
+       (title =? "Habitica - Gamify Your Life")
+       defaultFloating
+
+  ]
 
 -- dynStatusBarEventHook expects a `ScreenId -> IO Handle`
 barInScreen :: ScreenId -> IO Handle
