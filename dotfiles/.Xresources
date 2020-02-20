@@ -58,7 +58,7 @@ URxvt.background: [100]#000000
 !
 !URxvt*font: xft:FantasqueSansMono NF:style=Regular:pixelsize=14
 !URxvt*font: xft:Hurmit NF:style=medium:pixelsize=14
-URxvt*font: xft:FiraCode Nerd Font Mono:style=Regular:pixelsize=14
+URxvt*font: xft:FiraCode Nerd Font Mono:style=Regular:pixelsize=14, xft:Wuncon\ Siji:style=Regular:pixelsize=14
 
 !
 URxvt.letterSpace:0

@@ -20,11 +20,11 @@
 
 [colors]
 ;background = ${xrdb:background}
-background = #dd341020
-foreground = #fff7eb
-red = #994B33
-green = #dc7163
-blue = #ff895c
+background = #dd232836
+foreground = #fff7ec
+red = #9A7B84
+green = #5496e8
+blue = #1c91cc
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -39,6 +39,8 @@ font-2 = Unifont Upper:pixelsize=10;1
 font-3 = FiraCode Nerd Font:pixelsize=16;2
 ; Big Hurmit for Date
 font-4 = Hurmit NF:pixelsize=16:style=regular;4
+; Siji for some icons like ram and layouts
+font-5 = Siji:style=Regular
 
 width = 100%
 ;offset-x = 1%
@@ -76,7 +78,7 @@ override-redirect = true
 cursor-click = default
 cursor-scroll = default
 
-modules-right = xkeyboard xbacklight alsa memory cpu temperature wlan eth battery date
+modules-right = xkeyboard xbacklight alsa memory cpu temperature wlan eth proton battery date
 
 
 [bar/bar1]
@@ -152,7 +154,8 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "MEM:"
+format-font = 6
+format-prefix = "  "
 ;format-prefix-foreground =
 format-underline =
 format-background = ${colors.background}
@@ -180,6 +183,18 @@ interval = 3.0
 
 format-connected-underline = #55aa55
 label-connected =  %local_ip%
+
+format-disconnected =
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Proton
+[module/proton]
+type = internal/network
+interface = proton0
+interval = 3.0
+
+format-prefix = " "
+format-connected-underline = ${colors.blue}
+label-connected = "  Proton"
 
 format-disconnected =
 
@@ -304,7 +319,7 @@ format-underline =
 ;format-background = ${colors.background}
 label = "%temperature-c%糖"
 
-format-warn = %{u#994B33}%{+u}<ramp><label-warn>%{-u}
+format-warn = %{u#9A7B84}%{+u}<ramp><label-warn>%{-u}
 format-warn-prefix = " "
 format-warn-suffix = " "
 format-warn-foreground = ${colors.red}

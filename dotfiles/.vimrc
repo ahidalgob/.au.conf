@@ -134,10 +134,11 @@ set splitbelow
 set splitright
 
 " Appearance {{{2
-":colorscheme afterglow
-"let g:afterglow_no_terminal_background = 1
 
-:colorscheme wpgtk
+let g:afterglow_no_terminal_background = 1
+set termguicolors
+:colorscheme afterglow
+nnoremap <silent> <leader>c :colorscheme afterglow<CR>
 
 if exists('g:GtkGuiLoaded')
   colorscheme afterglow
