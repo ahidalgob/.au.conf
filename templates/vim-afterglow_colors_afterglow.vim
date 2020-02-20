@@ -1,0 +1,1 @@
+/home/augusto/.vim/plugged/vim-afterglow/colors/afterglow.vim

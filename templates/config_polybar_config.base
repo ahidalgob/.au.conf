@@ -1,0 +1,387 @@
+; vi set ft=dosini
+
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/polybar/polybar
+;
+;   The README contains a lot of information
+;
+;==========================================================
+
+[colors]
+;background = ${{xrdb:background}}
+background = #{polybarAlpha}{color8.strip}
+foreground = {color15}
+red = {color1}
+green = {color10}
+blue = {color12}
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[generalbar]
+font-0 = FiraCode Nerd Font:pixelsize=10;1
+; Big Fantasque for ws icons
+font-1 = FantasqueSansMono NF:pixelsize=18;4
+; Unifont for brightness
+font-2 = Unifont Upper:pixelsize=10;1
+; Big FiraCode for volume
+font-3 = FiraCode Nerd Font:pixelsize=16;2
+; Big Hurmit for Date
+font-4 = Hurmit NF:pixelsize=16:style=regular;4
+; Siji for some icons like ram and layouts
+font-5 = Siji:style=Regular
+
+width = 100%
+;offset-x = 1%
+;offset-y = 1%
+height = 30
+radius = 0.0
+fixed-center = false
+
+background = ${{colors.background}}
+foreground = ${{colors.foreground}}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-bottom-size = 8
+border-color = #00000000
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+separator =
+
+tray-position = right
+tray-padding = 0
+;tray-detached = true
+;tray-offset-x = -8
+tray-background = ${{colors.background}}
+
+override-redirect = true
+
+cursor-click = default
+cursor-scroll = default
+
+modules-right = xkeyboard xbacklight alsa memory cpu temperature wlan eth proton battery date
+
+
+[bar/bar1]
+inherit = generalbar
+;monitor = ${{env:MONITOR:HDMI-1}}
+
+modules-left = workspaces-xmonad
+modules-center = title-xmonad
+
+
+[bar/barhdmi]
+inherit = generalbar
+monitor = HDMI1
+
+modules-left = workspaces-xmonad-hdmi
+modules-center = title-xmonad-hdmi
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; xwindow
+;[module/xwindow]
+;type = internal/xwindow
+;label = %title:0:30:...%
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; xkeyboard
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+;format-prefix = " "
+;format-prefix-foreground =
+format-prefix-underline =
+
+label-layout =
+label-layout-underline =
+
+label-indicator-padding = 1
+label-indicator-margin = 0
+label-indicator-background = ${{colors.secondary}}
+label-indicator-underline =
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; xbacklight
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <ramp>
+format-prefix = " "
+format-background = ${{colors.background}}
+
+;label = %percentage%%
+
+ramp-font = 3
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌓
+ramp-4 = 🌒
+ramp-5 = 🌑
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; cpu
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-font = 2
+;format-prefix-foreground =
+format-underline =
+format-background = ${{colors.background}}
+; what's the 2 here?
+label = %percentage:2%%
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; memory
+[module/memory]
+type = internal/memory
+interval = 2
+format-font = 6
+format-prefix = "  "
+;format-prefix-foreground =
+format-underline =
+format-background = ${{colors.background}}
+label = %percentage_used%%
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; wlan
+[module/wlan]
+type = internal/network
+interface = wlp9s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = ${{colors.blue}}
+label-connected = %essid%
+
+format-disconnected =
+
+ramp-signal-0 = 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; eth
+[module/eth]
+type = internal/network
+interface = enp5s0
+interval = 3.0
+
+format-connected-underline = #55aa55
+label-connected =  %local_ip%
+
+format-disconnected =
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Proton
+[module/proton]
+type = internal/network
+interface = proton0
+interval = 3.0
+
+format-prefix = " "
+format-connected-underline = ${{colors.blue}}
+label-connected = "  Proton"
+
+format-disconnected =
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; date
+[module/date]
+type = internal/date
+interval = 1
+
+date =
+date-alt = "%d-%m "
+
+time = %H:%M
+time-alt=%H:%M:%S
+
+format-prefix = " "
+format-suffix = " "
+format-underline =
+format-background = ${{colors.background}}
+
+label =%date%%time%
+label-font = 5
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; alsa
+[module/alsa]
+type = internal/alsa
+
+format-volume = <ramp-volume>
+format-volume-background = ${{colors.background}}
+format-volume-prefix = " "
+;label-volume = %percentage%%
+;label-volume-foreground = ${{root.foreground}}
+
+format-muted = "奄 "
+format-muted-background = ${{colors.background}}
+;format-muted-foreground =
+
+ramp-volume-font = 4
+ramp-volume-0 = "奄 "
+ramp-volume-1 = "奔 "
+ramp-volume-2 = "奔 "
+ramp-volume-3 = "奔 "
+ramp-volume-4 = "奔 "
+ramp-volume-5 = "奔 "
+ramp-volume-6 = "奔 "
+ramp-volume-7 = "奔 "
+ramp-volume-8 = "奔 "
+ramp-volume-9 = "奔 "
+ramp-volume-10 = "墳 "
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; battery
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging-prefix = " "
+format-charging = <ramp-capacity><label-charging>
+ramp-capacity-underline = ${{colors.green}}
+label-charging-underline = ${{colors.green}}
+;format-charging-background = ${{colors.background}}
+
+format-discharging-prefix = " "
+format-discharging = <animation-discharging><label-discharging>
+animation-discharging-underline = ${{colors.red}}
+label-discharging-underline = ${{colors.red}}
+;format-discharging-background = ${{colors.background}}
+
+format-full-prefix = " "
+format-full = <label-full>
+label-full = ﮣ
+label-full-underline = ${{colors.blue}}
+format-full-background = ${{colors.background}}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+
+;ramp-capacity-foreground =
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+animation-charging-7 = 
+
+animation-charging-framerate = 400
+
+animation-discharging-0 = " "
+animation-discharging-1 = " "
+animation-discharging-2 = ""
+animation-discharging-3 = ""
+animation-discharging-4 = " "
+animation-discharging-5 = " "
+animation-discharging-6 = ""
+animation-discharging-7 = ""
+animation-discharging-framerate = 400
+;animation-discharging-foreground =
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; temperature
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+units = false
+base-temperature = 40
+warn-temperature = 72
+
+format = <ramp><label>
+format-prefix = " "
+format-suffix = " "
+format-underline =
+;format-background = ${{colors.background}}
+label = "%temperature-c%糖"
+
+format-warn = %{{u{color1}}}%{{+u}}<ramp><label-warn>%{{-u}}
+format-warn-prefix = " "
+format-warn-suffix = " "
+format-warn-foreground = ${{colors.red}}
+format-warn-underline =
+;format-warn-background = ${{self.format-background}}
+label-warn = "%temperature-c%糖"
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+;ramp-foreground =
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; settings
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+;pseudo-transparency = false
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; wm
+[global/wm]
+margin-top = 0
+margin-bottom = -8
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; workspaces-xmonad
+[module/workspaces-xmonad]
+type = custom/script
+exec = tail -F /tmp/.xmonad-workspace-log
+;exec-if = [ -p /tmp/.xmonad-workspace-log ]
+tail = true
+format-font = 2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; title-xmonad
+[module/title-xmonad]
+type = custom/script
+exec = tail -F /tmp/.xmonad-title-log
+;exec-if = [ -p /tmp/.xmonad-title-log ]
+tail = true
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; workspaces-xmonad-hdmi
+[module/workspaces-xmonad-hdmi]
+type = custom/script
+exec = tail -F /tmp/.xmonad-workspace-hdmi-log
+;exec-if = [ -p /tmp/.xmonad-workspace-hdmi-log ]
+tail = true
+format-font = 2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; title-xmonad-hdmi
+[module/title-xmonad-hdmi]
+type = custom/script
+exec = tail -F /tmp/.xmonad-title-hdmi-log
+;exec-if = [ -p /tmp/.xmonad-title-hdmi-log ]
+tail = true
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; toggl
+[module/toggl]
+type = custom/script
+exec = /home/augusto/.local/bin/simpleToggl
+tail = true
