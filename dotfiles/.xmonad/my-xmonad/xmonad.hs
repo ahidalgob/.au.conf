@@ -1,7 +1,8 @@
+{-# LANGUAGE RecordWildCards #-}
 import XMonad
 import qualified XMonad.StackSet as W
 
-import XMonad.Actions.CycleWS ( WSType(NonEmptyWS), moveTo, prevWS, nextWS
+import XMonad.Actions.CycleWS ( WSType(WSIs), moveTo, prevWS, nextWS
                               , Direction1D(Next, Prev) )
 import XMonad.Hooks.DynamicBars ( dynStatusBarStartup, dynStatusBarEventHook
                                 , multiPP )
@@ -42,8 +43,10 @@ import System.IO
 import System.Posix.Files
 
 import Data.Ratio ((%))
-import Data.Monoid((<>))
-import Text.Printf(printf)
+import Data.Monoid ((<>))
+import Data.List ( isSuffixOf )
+import Data.Maybe ( isJust )
+import Text.Printf (printf)
 
 myLogHook :: X ()
 myLogHook = do
@@ -63,8 +66,8 @@ myLogHook = do
       | length s >= l = s
       | otherwise =
           let dif = l - length s
-           in (replicate (dif `div` 2) ' ') <> s <>
-              (replicate ((dif+1) `div` 2) ' ')
+           in replicate (dif `div` 2) ' ' <> s <>
+              replicate ((dif+1) `div` 2) ' '
 
 pP' :: PP
 pP' = tryPP undefined
@@ -72,21 +75,23 @@ pP' = tryPP undefined
 tryPP :: Handle -> PP
 tryPP h = def
     { ppOutput  = hPutStrLn h
-    , ppCurrent = underline (color 12) . clickableWS
-    , ppVisible = underline (withAlpha "70" $ color 4) . clickableWS
-    , ppHidden  = clickableWS
-    , ppHiddenNoWindows = foreground (withAlpha "50" (color 15)) . clickableWS
+    , ppCurrent = underline (color 12) . clickableWS . noNSP
+    , ppVisible = underline (withAlpha "70" $ color 4) . clickableWS . noNSP
+    , ppHidden  = clickableWS . noNSP
+    , ppHiddenNoWindows = foreground (withAlpha "50" (color 15)) . clickableWS . noNSP
     , ppWsSep   = " "
     , ppSep     = ""
     , ppTitle   = shorten 60
-    , ppLayout  = const " "
+    , ppLayout  = const "uuu"
     , ppOrder = \(ws:l:t:_) ->
-        [ background (withAlpha polybarBGAlpha $ color 8) $ pad $ scrollableWS ws ]
+        [ scrollableWS ws ]
     }
   where
+  noNSP "NSP" = ""
+  noNSP s = s
   clickableWS ws = clickable LeftClick ("xdotool key alt+" ++ [head ws]) ws
   scrollableWS wss = clickable ScrollUp "xdotool key super+k" $
-                     clickable ScrollDown "xdotool key super+j" $
+                     clickable ScrollDown "xdotool key super+j"
                      wss
 
 
@@ -112,8 +117,8 @@ myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io
          , ((shiftMask, xK_Print),  screenshot True False)
          , ((controlMask .|. shiftMask, xK_Print), screenshot True True)
 
-         , ((superMask, xK_k), moveTo Prev NonEmptyWS)
-         , ((superMask, xK_j), moveTo Next NonEmptyWS)
+         , ((superMask, xK_k), moveTo Prev notNSPnonEmpty)
+         , ((superMask, xK_j), moveTo Next notNSPnonEmpty)
          , ((superMask .|. shiftMask, xK_k), prevWS)
          , ((superMask .|. shiftMask, xK_j), nextWS)
 
@@ -128,11 +133,14 @@ myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io
          , ((0, xF86XK_AudioRaiseVolume ), spawn "amixerdunst 2%+")
          , ((0, xF86XK_AudioMute ), spawn "amixerdunst toggle")
          , ((mod1Mask  .|. controlMask, xK_h), namedScratchpadAction myScratchpads "Habitica")
+         , ((mod1Mask  .|. controlMask, xK_m), namedScratchpadAction myScratchpads "RememberTheMilk")
          ]
          ++
          [ ((mod1Mask, key), windows $ W.greedyView ws) | (ws, key) <- myExtraWS ]
          ++
          [ ((mod1Mask .|. shiftMask, key), windows $ W.shift ws) | (ws, key) <- myExtraWS ]
+  where
+    notNSPnonEmpty = WSIs $ return (\W.Workspace{..} -> tag /= "NSP" && isJust stack)
 
 myLayout = lessBorders OnlyScreenFloat $ avoidStruts $
     spacingRaw False myBorder True myBorderIn True $
@@ -178,6 +186,10 @@ myScratchpads =
        (title =? "Habitica - Gamify Your Life")
        defaultFloating
 
+  ,  NS "RememberTheMilk"
+       "gtk-launch brave-hbibbhnebobgojikephdhjmdokgkckna-Default.desktop"
+       (title >>= \s -> return ("Remember The Milk" `isSuffixOf` s))
+       defaultFloating
   ]
 
 -- dynStatusBarEventHook expects a `ScreenId -> IO Handle`

@@ -20,12 +20,16 @@ data MouseButton
 buttonIndex :: MouseButton -> Int
 buttonIndex bi = fromEnum bi + 1
 
+ifNotEmpty :: (String -> String) -> (String -> String)
+ifNotEmpty f s = if s == "" then "" else f s
+
 -- lots of %
 clickable :: MouseButton -> String -> String -> String
-clickable b command s = printf "%%{A%d:%s:}%s%%{A}" (buttonIndex b) command s
+clickable b command = ifNotEmpty $
+  printf "%%{A%d:%s:}%s%%{A}" (buttonIndex b) command
 
 underline, overline, foreground, background :: String -> String -> String
-underline color s = printf "%%{u%s}%%{+u}%s%%{-u}" color s
-overline color s = printf "%%{o%s}%%{+o}%s%%{-o}" color s
-foreground color s = printf "%%{F%s}%s%%{F-}" color s
-background color s = printf "%%{B%s}%s%%{B-}" color s
+underline color = ifNotEmpty $ printf "%%{u%s}%%{+u}%s%%{-u}" color
+overline color = ifNotEmpty $ printf "%%{o%s}%%{+o}%s%%{-o}" color
+foreground color = ifNotEmpty $ printf "%%{F%s}%s%%{F-}" color
+background color = ifNotEmpty $ printf "%%{B%s}%s%%{B-}" color
