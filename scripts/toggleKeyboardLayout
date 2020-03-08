@@ -10,9 +10,11 @@ fi
 
 setxkbmap -option caps:swapescape # swaps escape and caps
 
-#TODO detect
+xset -b
+xset r rate 300 60
 
-THINKPAD="$(lsusb | grep --count Lenovo)"
+
+# THINKPAD="$(lsusb | grep --count Lenovo)"
 #if [ "$THINKPAD" == "0" ]; then
     #xmodmap -e "clear control"
 
@@ -28,6 +30,3 @@ THINKPAD="$(lsusb | grep --count Lenovo)"
     #xmodmap -e "keysym k = k K Up"
     #xmodmap -e "keysym l = l L Right"
 #fi
-
-xset -b
-xset r rate 300 60

@@ -4,6 +4,7 @@ import qualified XMonad.StackSet as W
 
 import XMonad.Actions.CycleWS ( WSType(WSIs), moveTo, prevWS, nextWS
                               , Direction1D(Next, Prev) )
+--import XMonad.Actions.UpdateFocus ( focusOnMouseMove, adjustEventInput )
 import XMonad.Hooks.DynamicBars ( dynStatusBarStartup, dynStatusBarEventHook
                                 , multiPP )
 import XMonad.Hooks.DynamicLog ( PP(..), shorten, pad )
@@ -82,9 +83,9 @@ tryPP h = def
     , ppWsSep   = " "
     , ppSep     = ""
     , ppTitle   = shorten 60
-    , ppLayout  = const "uuu"
+    , ppLayout  = const ""
     , ppOrder = \(ws:l:t:_) ->
-        [ scrollableWS ws ]
+        [ pad $ scrollableWS ws ]
     }
   where
   noNSP "NSP" = ""
@@ -169,6 +170,8 @@ myApps = composeAll $
       [ "Open File"
       , "File Operation Progress"
       , "Volume Control"
+      , "Friends List"
+      , "Steam - News"
       ]
     centerFloatClassNames =
       [ "Wpg"
@@ -219,6 +222,7 @@ main = do
       { manageHook = myApps <+> manageDocks <+> manageHook def
       , layoutHook = myLayout
       , handleEventHook = docksEventHook
+                      -- <+> focusOnMouseMove
                         <+> dynStatusBarEventHook barInScreen (spawn "killall polybar")
                         <+> handleEventHook def
       , modMask = mod1Mask
@@ -230,5 +234,6 @@ main = do
       , startupHook = setWMName "LG3D" -- TODO what is this?
                     <+> docksStartupHook
                     <+> dynStatusBarStartup barInScreen (return ())
+                    -- <+> adjustEventInput
       , logHook = myLogHook
       } `additionalKeys` myKeys
