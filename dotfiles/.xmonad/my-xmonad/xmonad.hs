@@ -5,6 +5,7 @@ import qualified XMonad.StackSet as W
 import XMonad.Actions.CycleWS ( WSType(WSIs), moveTo, prevWS, nextWS
                               , Direction1D(Next, Prev) )
 --import XMonad.Actions.UpdateFocus ( focusOnMouseMove, adjustEventInput )
+import XMonad.Actions.FloatKeys
 import XMonad.Hooks.DynamicBars ( dynStatusBarStartup, dynStatusBarEventHook
                                 , multiPP )
 import XMonad.Hooks.DynamicLog ( PP(..), shorten, pad )
@@ -133,8 +134,21 @@ myKeys = [ ((mod1Mask .|. shiftMask, xK_q), confirmPrompt myXPConfig "exit" $ io
          , ((0, xF86XK_AudioLowerVolume ), spawn "amixerdunst 2%-")
          , ((0, xF86XK_AudioRaiseVolume ), spawn "amixerdunst 2%+")
          , ((0, xF86XK_AudioMute ), spawn "amixerdunst toggle")
-         , ((mod1Mask  .|. controlMask, xK_h), namedScratchpadAction myScratchpads "Habitica")
-         , ((mod1Mask  .|. controlMask, xK_m), namedScratchpadAction myScratchpads "RememberTheMilk")
+
+         -- scratchpads and floating windows
+         , ((mod1Mask .|. controlMask, xK_t), namedScratchpadAction myScratchpads "Habitica")
+         , ((mod1Mask .|. controlMask, xK_m), namedScratchpadAction myScratchpads "RememberTheMilk")
+
+         , ((mod1Mask .|. controlMask, xK_k), withFocused (keysMoveWindow (0,-10)))
+         , ((mod1Mask .|. controlMask, xK_j), withFocused (keysMoveWindow (0,10)))
+         , ((mod1Mask .|. controlMask, xK_l), withFocused (keysMoveWindow (10,0)))
+         , ((mod1Mask .|. controlMask, xK_h), withFocused (keysMoveWindow (-10,0)))
+         , ((mod1Mask .|. controlMask .|. shiftMask, xK_k), withFocused (keysResizeWindow (0,-10) (0, 0)))
+         , ((mod1Mask .|. controlMask .|. shiftMask, xK_j), withFocused (keysResizeWindow (0,10) (0, 0)))
+         , ((mod1Mask .|. controlMask .|. shiftMask, xK_l), withFocused (keysResizeWindow (10,0) (0, 0)))
+         , ((mod1Mask .|. controlMask .|. shiftMask, xK_h), withFocused (keysResizeWindow (-10,0) (0, 0)))
+
+
          ]
          ++
          [ ((mod1Mask, key), windows $ W.greedyView ws) | (ws, key) <- myExtraWS ]
