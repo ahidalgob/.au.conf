@@ -27,6 +27,13 @@ call plug#begin('~/.vim/plugged')
 "Plug 'tpope/vim-surround'
 "Plug 'tpope/vim-unimpaired'
 "Plug 'godlygeek/tabular'
+
+
+"Plug 'iamcco/mathjax-support-for-mkdp'
+"Plug 'iamcco/markdown-preview.vim'
+"Plug 'plasticboy/vim-markdown'
+"Plug 'vimwiki/vimwiki'
+"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 "}}}
 
 if has('nvim')
@@ -39,16 +46,11 @@ else
     " deoplete conflicts with ttymouse setting for vim, this *hackily* fixes it
     autocmd VimEnter * call deoplete#enable()
 endif
+"Plug 'deoplete-plugins/deoplete-jedi'
 
-"Testing
-"Plug 'iamcco/mathjax-support-for-mkdp'
-"Plug 'iamcco/markdown-preview.vim'
-"
+"Plug 'davidhalter/jedi-vim'
+
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
-Plug 'vimwiki/vimwiki'
 
 " syntax and indentation support
 Plug 'sheerun/vim-polyglot'
@@ -63,7 +65,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'junegunn/fzf'
 
 Plug 'w0rp/ale'
-
 
 " easy visual select
 Plug 'terryma/vim-expand-region'
@@ -355,7 +356,7 @@ let g:LanguageClient_serverCommands = {
     \ 'haskell': ['hie-wrapper'],
     \ 'lhaskell': ['hie-wrapper'],
     \ 'cpp': ['ccls'],
-    \ 'python': ['/usr/bin/pyls'],
+    \ 'python': ['pyls'],
     \ }
 let g:LanguageClient_rootMarkers = ['stack.yaml']
 
@@ -403,9 +404,17 @@ hi Warning term=underline cterm=underline ctermfg=Yellow gui=undercurl guisp=Gol
 hi link ALEWarning Warning
 hi link ALEInfo SpellCap
 
-" ALE{{{2
-let g:ale_linters = {'haskell' : ['ghc']}
 
+" ALE{{{2
+" 'python' : ['mypy', 'flake8']
+let g:ale_linters = {
+    \ 'python' : []
+    \}
+
+" 'python' : ['yapf']
+let g:ale_fixers = {
+    \ 'python' : []
+    \}
 
 " Snips{{{2
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
