@@ -1,8 +1,0 @@
-General {{{1
-- screensaver
-- notifications
-    - battery
-- scrot
-    - xclip
-    - set destination
-- zsh
