@@ -1,0 +1,25 @@
+#! /bin/bash
+
+# This pings 8.8.8.8 3 packets and waits 10 seconds
+# if the echo reply is received, it beeps and finishes,
+# otherwise, it tries again and again...
+
+echo "waiting for successful ping"
+
+PINGOUT=$(ping -c 3 8.8.8.8 -W 10 |& grep "3 received")
+while [ -z "$PINGOUT" ]
+do
+    PINGOUT=$(ping -c 3 8.8.8.8 -W 10 |& grep "3 received")
+    sleep 5
+done
+
+echo $PINGOUT
+echo "successful ping to 8.8.8.8"
+for i in $(seq 1 1 4)
+do
+    beep -n -f 500 -l 100 \
+         -n -f 550 -l 100 \
+         -n -f 700 -l 100 \
+         -n -f 1200 -l 150
+    sleep 0.5
+done

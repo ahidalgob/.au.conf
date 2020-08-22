@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd ~/Projects/consultas-bancarias-mesada
+tmux send-keys "cd ~/Projects/consultas-bancarias-mesada" C-m
+tmux send-keys "nvim" C-m
+tmux send-keys "\\n" C-m
+tmux split-window -h
+tmux send-keys ". virtualenv/bin/activate" C-m
+tmux resize-pane -R 20
+tmux new-window
+tmux rename-window "git"
+tmux send-keys "git status" C-m
