@@ -1,83 +1,116 @@
 ! General colors {{{1
-! -----------------------------------------
-! Generated with :
-! XRDB2Xreources.py
-!
-! *.foreground:  #d0d0d0
-! *.background:  #212121
-! *.cursorColor: #d0d0d0
-! !
-! ! Black
-! *.color0:      #000000
-! *.color8:      #505050
-! !
-! ! Red
-! *.color1:      #ac4142
-! *.color9:      #ac4142
-! !
-! ! Green
-! *.color2:      #7e8e50
-! *.color10:     #7e8e50
-! !
-! ! Yellow
-! *.color3:      #e5b567
-! *.color11:     #e5b567
-! !
-! ! Blue
-! *.color4:      #7ca9cb
-! *.color12:     #3c698b
-! !
-! ! Magenta
-! *.color5:      #9f4e85
-! *.color13:     #9f4e85
-! !
-! ! Cyan
-! *.color6:      #7dd6cf
-! *.color14:     #7dd6cf
-! !
-! ! White
-! *.color7:      #d0d0d0
-! *.color15:     #f5f5f5
-!
-! Bold, Italic, Underline
-*.colorBD:     #d0d0d0
-!*.colorIT:
-!*.colorUL:
+
+! Copyright (c) 2016-present Arctic Ice Studio <development@arcticicestudio.com>
+! Copyright (c) 2016-present Sven Greb <code@svengreb.de>
+
+! Project:    Nord XResources
+! Version:    0.1.0
+! Repository: https://github.com/arcticicestudio/nord-xresources
+! License:    MIT
+
+#define nord0 #2E3440
+#define nord1 #3B4252
+#define nord2 #434C5E
+#define nord3 #4C566A
+#define nord4 #D8DEE9
+#define nord5 #E5E9F0
+#define nord6 #ECEFF4
+#define nord7 #8FBCBB
+#define nord8 #88C0D0
+#define nord9 #81A1C1
+#define nord10 #5E81AC
+#define nord11 #BF616A
+#define nord12 #D08770
+#define nord13 #EBCB8B
+#define nord14 #A3BE8C
+#define nord15 #B48EAD
+
+*.foreground:   nord4
+*.background:   nord0
+*.cursorColor:  nord4
+*fading: 35
+*fadeColor: nord3
 
 
+*.color0: nord1
+*.color1: nord11
+*.color2: nord14
+*.color3: nord13
+*.color4: nord9
+*.color5: nord15
+*.color6: nord8
+*.color7: nord5
+*.color8: nord3
+*.color9: nord11
+*.color10: nord14
+*.color11: nord13
+*.color12: nord9
+*.color13: nord15
+*.color14: nord7
+*.color15: nord6
+
+
+! *.color0: #3B4252
+! *.color1: #BF616A
+! *.color2: #A3BE8C
+! *.color3: #EBCB8B
+! *.color4: #81A1C1
+! *.color5: #B48EAD
+! *.color6: #88C0D0
+! *.color7: #E5E9F0
+! *.color8: #4C566A
+! *.color9: #BF616A
+! *.color10: #A3BE8C
+! *.color11: #EBCB8B
+! *.color12: #81A1C1
+! *.color13: #B48EAD
+! *.color14: #8FBCBB
+! *.color15: #ECEFF4
+
+! Normal      Bright
+! --------    -------
+! 0 Black      8 Black
+! 1 Red        9 Red
+! 2 Yellow    10 Yellow
+! 3 Green     11 Green
+! 4 Blue      12 Blue
+! 5 Magenta   13 Magenta
+! 6 Cyan      14 Cyan
+! 7 White     15 White
 
 
 ! urxvt {{{1
 ! appearance {{{2
-URxvt.scrollBar: false
+! URxvt.scrollBar: false
 
-urxvt*depth: 32
-URxvt.background: [100]#000000
+! urxvt*depth: 32
+! URxvt.background: [100]#000000
 
 !URxvt*font: xft:InputMono ExLight:size=10:minspace=False:antialias=true, xft:DejaVu Sans:pixelsize=9, xft:Iosevka Nerd Font Mono
 !
 !URxvt*font: xft:FantasqueSansMono NF:style=Regular:pixelsize=14
 !URxvt*font: xft:Hurmit NF:style=medium:pixelsize=14
-URxvt*font: xft:FiraCode Nerd Font Mono:style=Regular:pixelsize=14, xft:Wuncon\ Siji:style=Regular:pixelsize=14
+! URxvt*font: xft:FiraCode Nerd Font Mono:style=Regular:pixelsize=14, xft:Wuncon\ Siji:style=Regular:pixelsize=14
 
-!
-URxvt.letterSpace:0
-URxvt.lineSpace:0
+! URxvt.letterSpace:0
+! URxvt.lineSpace:0
 
 !Xft.dpi:        72
-Xft.antialias:  true
-Xft.hinting:    true
-Xft.hintstyle:  hintfull
+! Xft.antialias:  true
+! Xft.hinting:    true
+! Xft.hintstyle:  hintfull
 
 ! extensions {{{2
-URxvt.perl-ext-common: font-size
+! URxvt.perl-ext-common: font-size
 
 ! keyboard {{{2
 ! might be useful, remaps C-Tab and C-S-Tab
-URxvt.keysym.Control-Tab: \033{
-URxvt.keysym.Control-Shift-ISO_Left_Tab: \033}
-
+! URxvt.keysym.Control-Tab: \033{
+! URxvt.keysym.Control-Shift-ISO_Left_Tab: \033}
 
 ! disable ctrl-shit
-URxvt*iso14755: False
-URxvt*iso14755_52: False
+! URxvt*iso14755: False
+! URxvt*iso14755_52: False
+
+!URxvt.iconFile: /home/augusto/tmp/terminal.png
+! URxvt.iconFile: /usr/share/icons/Adwaita/24x24/apps/multimedia-volume-control-symbolic.symbolic.png

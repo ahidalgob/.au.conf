@@ -20,6 +20,7 @@ library
   exposed-modules: Au.Colors
                  , Au.Util.Screenshot
                  , Au.Util.Polybar
+                 , XMonad.Actions.ConditionalKeys
   hs-source-dirs:  .
   build-depends: base
                , xmonad

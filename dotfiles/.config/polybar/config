@@ -17,35 +17,35 @@
 ;   The README contains a lot of information
 ;
 ;==========================================================
+;  
 
 [colors]
-;background = ${xrdb:background}
-background = #dd232836
-foreground = #fff7ec
-red = #9A7B84
-green = #5496e8
-blue = #1c91cc
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
+red = ${xrdb:color1}
+green = ${xrdb:color3}
+blue = ${xrdb:color4}
+primary = ${xrdb:color1}
+secondary = ${xrdb:color1}
+alert = ${xrdb:color12}
 
 [generalbar]
-font-0 = FiraCode Nerd Font:pixelsize=10;1
+font-0 = FiraCode Nerd Font:pixelsize=8;1
 ; Big Fantasque for ws icons
-font-1 = FantasqueSansMono NF:pixelsize=18;4
+font-1 = FantasqueSansMono NF:pixelsize=12;3
 ; Unifont for brightness
-font-2 = Unifont Upper:pixelsize=10;1
+font-2 = Unifont Upper:pixelsize=8;1
 ; Big FiraCode for volume
-font-3 = FiraCode Nerd Font:pixelsize=16;2
+font-3 = FiraCode Nerd Font:pixelsize=12;2
 ; Big Hurmit for Date
-font-4 = Hurmit NF:pixelsize=16:style=regular;4
+font-4 = Hurmit NF:pixelsize=12:style=regular;4
 ; Siji for some icons like ram and layouts
 font-5 = Siji:style=Regular
 
 width = 100%
 ;offset-x = 1%
 ;offset-y = 1%
-height = 30
+height = 24
 radius = 0.0
 fixed-center = false
 
@@ -67,7 +67,7 @@ module-margin-right = 0
 
 separator =
 
-tray-position = right
+tray-position =
 tray-padding = 0
 ;tray-detached = true
 ;tray-offset-x = -8
@@ -78,15 +78,16 @@ override-redirect = true
 cursor-click = default
 cursor-scroll = default
 
-modules-right = xkeyboard xbacklight alsa memory cpu temperature wlan eth proton battery date
+;modules-right = xkeyboard xbacklight temperature eth proton date
+modules-right =
 
 
 [bar/bar1]
 inherit = generalbar
 ;monitor = ${env:MONITOR:HDMI-1}
 
-modules-left = workspaces-xmonad
-modules-center = title-xmonad
+modules-left = workspaces-xmonad title-xmonad xkeyboard xbacklight cpu memory temperature
+modules-center =
 
 
 [bar/barhdmi]
@@ -124,7 +125,7 @@ label-indicator-underline =
 type = internal/xbacklight
 
 format = <ramp>
-format-prefix = " "
+format-suffix = " "
 format-background = ${colors.background}
 
 ;label = %percentage%%
@@ -155,7 +156,7 @@ label = %percentage:2%%
 type = internal/memory
 interval = 2
 format-font = 6
-format-prefix = "  "
+format-prefix = ""
 ;format-prefix-foreground =
 format-underline =
 format-background = ${colors.background}
@@ -319,11 +320,11 @@ format-underline =
 ;format-background = ${colors.background}
 label = "%temperature-c%糖"
 
-format-warn = %{u#9A7B84}%{+u}<ramp><label-warn>%{-u}
+format-warn = <ramp><label-warn>
 format-warn-prefix = " "
 format-warn-suffix = " "
 format-warn-foreground = ${colors.red}
-format-warn-underline =
+format-warn-underline = ${colors.red}
 ;format-warn-background = ${self.format-background}
 label-warn = "%temperature-c%糖"
 
@@ -384,4 +385,10 @@ tail = true
 [module/toggl]
 type = custom/script
 exec = /home/augusto/.local/bin/simpleToggl
+tail = true
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; clockify
+[module/clockify]
+type = custom/script
+exec = /home/augusto/Projects/clockify/virtualenv/bin/python3 /home/augusto/Projects/clockify/main.py
 tail = true

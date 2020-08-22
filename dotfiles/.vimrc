@@ -1,7 +1,3 @@
-" TODO
-" Different cursors for different modes
-" Make only one config file for both vim and nvim
-"
 set nocompatible
 filetype plugin indent on
 syntax on
@@ -14,57 +10,17 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
 
 call plug#begin('~/.vim/plugged')
 
-" revise {{{2
-"Plug 'easymotion/vim-easymotion'
-"Plug 'tpope/vim-surround'
-"Plug 'tpope/vim-unimpaired'
-"Plug 'godlygeek/tabular'
-
-
-"Plug 'iamcco/mathjax-support-for-mkdp'
-"Plug 'iamcco/markdown-preview.vim'
-"Plug 'plasticboy/vim-markdown'
-"Plug 'vimwiki/vimwiki'
-"Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-"}}}
-
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    let g:deoplete#enable_at_startup = 1
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-    " deoplete conflicts with ttymouse setting for vim, this *hackily* fixes it
-    autocmd VimEnter * call deoplete#enable()
-endif
-"Plug 'deoplete-plugins/deoplete-jedi'
-
-"Plug 'davidhalter/jedi-vim'
-
-Plug 'godlygeek/tabular'
-
-" syntax and indentation support
-Plug 'sheerun/vim-polyglot'
-
-Plug 'SirVer/ultisnips'
-
 " linting
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'junegunn/fzf'
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+" Plug 'junegunn/fzf'
 
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 " easy visual select
 Plug 'terryma/vim-expand-region'
@@ -89,7 +45,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'bling/vim-airline'
 
 " generates tmux airline-like line
-" Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim'
 
 " tabs-like list of buffers, integrates nicely with airline
 Plug 'bling/vim-bufferline'
@@ -105,6 +61,10 @@ Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'danilo-augusto/vim-afterglow'
 Plug 'ahidalgob/vim-afterglow'
 Plug 'deviantfero/wpgtk.vim'
+Plug 'tomasiser/vim-code-dark'
+Plug 'arcticicestudio/nord-vim'
+
+Plug 'chrisbra/Colorizer'
 
 Plug 'ntpeters/vim-better-whitespace'
 
@@ -119,6 +79,8 @@ set history=1500         " REMEMBER
 set lazyredraw            " Don't redraw on macros!
 set ttyfast               " Batch send characters to screen (way faster)
 set clipboard=unnamedplus
+
+set completeopt-=preview
 
 set foldmethod=marker
 set nofoldenable
@@ -138,13 +100,13 @@ set splitright
 
 let g:afterglow_no_terminal_background = 1
 set termguicolors
-:colorscheme afterglow
-nnoremap <silent> <leader>c :colorscheme afterglow<CR>
+" colorscheme afterglow
 
-if exists('g:GtkGuiLoaded')
-  colorscheme afterglow
-  call rpcnotify(1, 'Gui', 'Font', 'Fira Code Nerd Font 10')
-endif
+" color are nord0_gui and nord12_gui
+autocmd ColorScheme * highlight Todo guifg=#2E3440 guibg=#D08770
+colorscheme nord
+
+" TODO
 
 set colorcolumn=80
 syntax enable
@@ -180,14 +142,6 @@ set ignorecase
 
 
 " Mappings {{{2
-inoremap jk <Esc>
-inoremap kj <Esc>
-
-inoremap <c-h> …<Esc>hi
-
-inoremap <c-Space> <Esc>/…<CR>:noh<CR>"_c1l
-" In nomral mode C-Space sends ^@ (Nul)
-nnoremap <Nul> /…<CR>:noh<CR>"_c1l
 
 inoremap {<CR>  {<CR>}<Esc>O
 
@@ -197,9 +151,9 @@ nnoremap k gk
 vnoremap < <gv
 vnoremap > >gv
 
-" Search for selected text, forwards or backwards.
 nnoremap <silent> <leader>hh :noh<CR>
 
+" Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
   \gvy/<C-R><C-R>=substitute(
@@ -217,17 +171,6 @@ vnoremap <silent> # :<C-U>
 set hidden        " We can leave a buffer with unsaved changes
 set nostartofline " Saves cursor position
 
-" Lists all buffers
-nnoremap <leader>l       : buffers<CR>
-
-" Previous buffer
-nnoremap <leader><S-Tab> : bprevious<CR>
-
-" Next buffer
-nnoremap <leader><Tab>   : bnext<CR>
-
-" Delete current buffer
-nnoremap <leader>d       : bp\|bd #<CR>
 
 " Mouse {{{2
 " Sometimes I use the mouse.
@@ -257,27 +200,7 @@ set guioptions-=T
                 "\ '.wiki': 'media'}
 
 
-" vimwiki
-let wiki_magicHaskeller = {}
-let wiki_magicHaskeller.path = '~/Dropbox/Notes/MagicHaskeller/'
-let wiki_magicHaskeller.syntax = 'markdown'
-let wiki_magicHaskeller.ext = '.md'
-
-let wiki_CP = {}
-let wiki_CP.path = '~/Dropbox/Notes/CompetitiveProgramming/'
-let wiki_CP.syntax = 'markdown'
-let wiki_CP.ext = '.md'
-
-let wiki_personal = {}
-let wiki_personal.path = '~/Dropbox/Notes/Personal'
-let wiki_personal.syntax = 'markdown'
-let wiki_personal.ext = '.md'
-
-let g:vimwiki_list = [wiki_magicHaskeller, wiki_CP, wiki_personal]
-let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-
 " Airline {{{2
-
 
 let g:airline_mode_map = {
             \ '__' : '-',
@@ -345,10 +268,6 @@ let NERDTreeIgnore=['\.hi$', '\.o$']
 
 " Better Whitespace {{{2
 
-let g:better_whitespace_enabled=1
-let g:strip_whitespace_on_save=1
-let g:strip_whitespace_confirm=0
-
 
 
 " LanguageClient server{{{2
@@ -358,6 +277,8 @@ let g:LanguageClient_serverCommands = {
     \ 'cpp': ['ccls'],
     \ 'python': ['pyls'],
     \ }
+" 'python': ['pyls', '-vv', '--log-file', '~/pyls.log'],
+"
 let g:LanguageClient_rootMarkers = ['stack.yaml']
 
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
@@ -420,3 +341,6 @@ let g:ale_fixers = {
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 " vertically split ultisnips edit window
 let g:UltiSnipsEditSplit="vertical"
+
+"let g:colorizer_auto_color = 1
+"

@@ -28,7 +28,7 @@ let g:colors_name = "afterglow"
 "let s:blue = "6c99bb"
 "let s:wine = "b05279"
 "let s:purple = "9e86c8"
-"let s:window = "4d5057"
+"let s:window = "4d5057" aa
 
 let s:foreground = "{color15.strip}"
 let s:background = "{color0.strip}"
@@ -572,6 +572,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     if version >= 700
         call <SID>X("SignColumn", "", s:chosen_background, "none")
     end
+    exec "hi clear SignColumn"
     call <SID>X("Todo", s:red, s:chosen_background, "bold")
 
     " Option g:afterglow_italic_comments

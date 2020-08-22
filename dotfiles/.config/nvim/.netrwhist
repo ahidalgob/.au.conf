@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =7
+let g:netrw_dirhist_7='/home/augusto/.vscode-oss/extensions/hars.cppsnippets-0.0.14'
+let g:netrw_dirhist_6='/home/augusto/Projects/mesada-venebank-service/venebakservice'
+let g:netrw_dirhist_5='/home/augusto/Projects/mesada-consultas-bancarias/bin'
+let g:netrw_dirhist_4='/home/augusto/Projects/mesada-consultas-bancarias/credentials'
+let g:netrw_dirhist_3='/home/augusto/Projects/mesada-consultas-bancarias/bin'
+let g:netrw_dirhist_2='/home/augusto/Projects/mesada-consultas-bancarias/credentials'
+let g:netrw_dirhist_1='/home/augusto/.config/rofi'
