@@ -1,14 +1,13 @@
 alias valias='v ~/.au.conf/bash/aliases'
 
-alias mcd='cd Projects/consultas-bancarias-mesada'
+alias mcd='cd Projects/Mesada/mesada-venebank-service'
 alias mset='. virtualenv/bin/activate'
-
-alias ovicd='cd Documents/OVI-2020/Ronda\ final'
 
 alias vxmonad='cd ~/.xmonad/my-xmonad/; nvim xmonad.hs'
 alias vnvim='cd ~/.config/nvim/; nvim'
 
 alias gst='git status'
+alias gch='git checkout'
 alias glg='git lg'
 alias glga='git lg --all'
 

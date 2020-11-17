@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 setxkbmap us,us -variant ,intl -option caps:swapescape,grp:shifts_toggle
 
 xset -b
