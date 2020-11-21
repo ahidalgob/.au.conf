@@ -225,6 +225,9 @@ esac
 
 #################################################################
 
+setopt interactivecomments
+
+
 alias mcd='cd Projects/mahi'
 
 alias gst='git status'
