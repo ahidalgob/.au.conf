@@ -2,3 +2,4 @@
 *local_specific.vim
 */stack.yaml.lock
 **/nvim/plugged
+**/nvim/autoload

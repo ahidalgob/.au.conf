@@ -3,11 +3,11 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-explorer',
   \ 'coc-vimlsp',
-  \ 'coc-pyright',
-  \ 'coc-python',
   \ 'coc-clangd',
-  \ 'coc-html'
   \ ]
+  "\ 'coc-html'
+  "\ 'coc-pyright',
+  "\ 'coc-python',
   "\ 'coc-actions',
   "\ 'coc-lists',
   "\ 'coc-emmet',
