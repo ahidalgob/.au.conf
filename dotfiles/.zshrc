@@ -30,8 +30,7 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 HISTFILE=~/.zhistory
 HISTSIZE=1000
 SAVEHIST=500
-#export EDITOR=/usr/bin/nano
-#export VISUAL=/usr/bin/nano
+export VISUAL=/usr/bin/nvim
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
 
 
@@ -64,9 +63,9 @@ bindkey '^[[Z' undo                                             # Shift+tab undo
 
 ## Alias section
 alias cp="cp -i"                                                # Confirm before overwriting something
+alias ls="ls --color"
 alias df='df -h'                                                # Human-readable sizes
 alias free='free -m'                                            # Show sizes in MB
-alias gitu='git add . && git commit && git push'
 
 # Theming section
 autoload -U compinit colors zcalc
@@ -228,14 +227,23 @@ esac
 setopt interactivecomments
 
 
-alias mcd='cd Projects/mahi'
+## git
 
 alias gst='git status'
+alias gfa='git fetch -p --all'
 alias gch='git checkout'
+alias gcmt='git commit'
 alias glg='git lg'
 alias glga='git lg --all'
+alias gpull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
+alias gpush='git push origin $(git rev-parse --abbrev-ref HEAD)'
+
 
 alias v='nvim'
+
+alias cc='cd $(fd -I --type directory --hidden --exclude .git --exclude .gradle --exclude .nvm  | fzf --layout=reverse); ls'
+alias vv='v $(fd -I --type file --hidden | fzf --layout=reverse)'
+alias nn='nohup alacritty --working-directory $(pwd) </dev/null &>/dev/null &'
 
 
 alias CP='CPF'
@@ -255,3 +263,6 @@ function CPF {
     fi
 }
 
+
+# Set up Node Version Manager
+source /usr/share/nvm/init-nvm.sh

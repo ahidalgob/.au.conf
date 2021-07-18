@@ -33,7 +33,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+p exec --no-startup-id dmenu_recency
+bindsym $mod+d exec --no-startup-id dmenu_recency
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -62,16 +62,36 @@ bindsym $mod+F3 exec pcmanfm
 bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill picom
-bindsym $mod+Ctrl+t exec --no-startup-id picom -b
+bindsym $mod+Ctrl+t exec --no-startup-id picom --experimental-backends -b
 bindsym $mod+Ctrl+d --release exec "killall dunst; exec notify-send 'restart dunst'"
-bindsym Print exec --no-startup-id i3-scrot
-bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
-bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+bindsym Print --release exec flameshot gui
 bindsym $mod+Ctrl+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
+bindsym KP_End --release exec --no-startup-id TogglDesktop
+# bindsym $mod+KP_Down --release exec --no-startup-id
+bindsym KP_Next --release exec --no-startup-id google-chrome-personal
+bindsym KP_Left --release exec --no-startup-id google-chrome-mahi
 
-bindsym $mod+F12 --release exec --no-startup-id mono ~/Projects/Mesada/ScreenshotMonitor/Screenshot\ Monitor.exe
+
+bindsym $mod+p --release exec --no-startup-id pycher --wrapper
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl -p spotify play-pause
+bindsym XF86AudioNext exec playerctl -p spotify next
+bindsym XF86AudioPrev exec playerctl -p spotify previous
+
+# 5
+bindsym Ctrl+KP_Begin --release exec --no-startup-id ~/.au.conf/scripts/lock-screen, mode "default"
+
+
+# 7
+bindsym KP_Home --release exec --no-startup-id ~/.au.conf/scripts/toggleKeyboardLayout
+
+# 8
+bindsym KP_Up --release exec --no-startup-id stretchly pause -d 15
+bindsym $mod+KP_Up --release exec --no-startup-id stretchly resume
+
 
 bindsym $mod+Ctrl+l exec --no-startup-id dmenu-lpass-nu
 
@@ -137,6 +157,8 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
+bindsym $mod+equal [class="Spotify"] scratchpad show
+bindsym $mod+bracketleft [class="Toggl Desktop"] scratchpad show
 
 #navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
@@ -158,16 +180,16 @@ set $ws9 9
 set $ws10 10
 
 # switch to workspace
-bindsym $mod+1 [workspace=$ws1] move workspace to output current; workspace --no-auto-back-and-forth $ws1; 
-bindsym $mod+2 [workspace=$ws2] move workspace to output current; workspace --no-auto-back-and-forth $ws2; 
-bindsym $mod+3 [workspace=$ws3] move workspace to output current; workspace --no-auto-back-and-forth $ws3; 
-bindsym $mod+4 [workspace=$ws4] move workspace to output current; workspace --no-auto-back-and-forth $ws4; 
-bindsym $mod+5 [workspace=$ws5] move workspace to output current; workspace --no-auto-back-and-forth $ws5; 
-bindsym $mod+6 [workspace=$ws6] move workspace to output current; workspace --no-auto-back-and-forth $ws6; 
-bindsym $mod+7 [workspace=$ws7] move workspace to output current; workspace --no-auto-back-and-forth $ws7; 
-bindsym $mod+8 [workspace=$ws8] move workspace to output current; workspace --no-auto-back-and-forth $ws8; 
-bindsym $mod+9 [workspace=$ws9] move workspace to output current; workspace --no-auto-back-and-forth $ws9; 
-bindsym $mod+0 [workspace=$ws10] move workspace to output current; workspace --no-auto-back-and-forth $ws10; 
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -181,11 +203,11 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-bindsym $mod+w focus output LVDS1
+bindsym $mod+w focus output eDP1
 bindsym $mod+e focus output HDMI1
 
-bindsym $mod+Shift+w move container to output LVDS1
-bindsym $mod+Shift+e move container to output HDMI1
+bindsym $mod+Shift+w move workspace to output eDP1
+bindsym $mod+Shift+e move workspace to output HDMI1
 
 # Move to workspace with focused container
 # bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -232,12 +254,36 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 
+
 for_window [class="Screenshot Monitor"] floating enable
 for_window [class="Solaar"] floating enable
 for_window [class="Toggl Desktop"] floating enable
+for_window [class="Toggl Desktop"] move scratchpad
+for_window [class="Toggl Desktop"] scratchpad show
 
+for_window [class="Spotify"] floating enable
+for_window [class="Spotify"] resize set width 1400
+for_window [class="Spotify"] resize set height 1000
+for_window [class="Spotify"] move position center
+for_window [class="Spotify"] move scratchpad
+for_window [class="Spotify"] scratchpad show
 
+for_window [title="win0"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Arandr"] floating enable
+
+for_window [title="^Android Emulator -"] floating enable
+
+for_window [class="Pycher"] floating enable
+for_window [class="Pycher"] resize set width 500
+for_window [class="Pycher"] move position center
+
+for_window [class="TelegramDesktop"] resize set width 470
 for_window [class="TelegramDesktop"] border pixel 3
+
+for_window [class="Google-chrome"] border pixel 3
+
+
 
 # switch to workspace with urgent window automatically
 # for_window [urgent=latest] focus
@@ -255,7 +301,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Ctrl+0 mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym l exec --no-startup-id ~/.au.conf/scripts/lock-screen, mode "default"
     bindsym s exec --no-startup-id i3exit suspend, mode "default"
     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
     bindsym e exec --no-startup-id i3exit logout, mode "default"
@@ -297,25 +343,27 @@ mode "resize" {
 
 # Autostart applications
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; picom -b
-exec --no-startup-id manjaro-hello
+exec --no-startup-id nitrogen --restore; sleep 1; picom --experimental-backends -b
+#exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
-exec --no-startup-id redshift-gtk
 
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
-exec --no-startup-id clipit
-exec --no-startup-id solaar -w hide
-exec --no-startup-id blueman-applet
+# exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
-# exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 150 -locker blurlock
+# exec --no-startup-id xautolock -time 150 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 
+exec --no-startup-id redshift-gtk
+exec --no-startup-id solaar -w hide
+exec_always --no-startup-id xscreensaver -no-splash
+exec --no-startup-id blueman-applet
+exec --no-startup-id python Projects/OGSNotificator/ogs_tray_indicator/ogs_tray_indicator.py
+
 exec --no-startup-id ~/.au.conf/scripts/toggleKeyboardLayout
+# exec --no-startup-id noisetorch -i
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -323,7 +371,7 @@ exec --no-startup-id ~/.au.conf/scripts/toggleKeyboardLayout
 # Change the variable name at the place you want to match the color
 # of your terminal like this:
 # [example]
-# If you want your bar to have the same background color as your 
+# If you want your bar to have the same background color as your
 # terminal background change the line 362 from:
 # background #14191D
 # to:
@@ -352,7 +400,8 @@ set_from_resource $term_color15    color15
 bar {
 	i3bar_command i3bar
 	status_command i3status
-	position bottom
+	position top
+  modifier none
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 	tray_output primary
@@ -386,7 +435,7 @@ bindsym $mod+m bar mode toggle
   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
   client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+  client.placeholder      #000000 #0c0c0c #ffffff #000000
 
   client.background       #2B2C2B
 
@@ -406,7 +455,7 @@ gaps outer 0
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 

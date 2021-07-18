@@ -1,0 +1,10 @@
+#! /bin/bash
+
+layout_script=$(ls ~/.screenlayout | dmenu)
+
+if [[ ! -z $layout_script ]]; then
+  bash ~/.screenlayout/$layout_script
+fi
+
+nitrogen --restore
+

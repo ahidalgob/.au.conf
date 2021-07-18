@@ -1,14 +1,20 @@
 [user]
-	email = ahidalgo94@gmail.com
-	name = ahidalgob
+	email = ahidalgo@mahisoft.com
+	name = Augusto Hidalgo
 [core]
-    editor = vim
+    editor = nvim
 [alias]
 	lg = log --graph --abbrev-commit --decorate --date-order --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
 [push]
 	default = upstream
+[difftool]
+    prompt = true
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[diff]
+    tool = nvimdiff
 [merge]
 	conflictstyle = diff3
-	tool = vimdiff
-[diff]
-	tool = vimdiff
+	tool = nvimdiff
+[pull]
+	ff = only

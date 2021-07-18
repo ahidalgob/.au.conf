@@ -53,6 +53,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'arcticicestudio/nord-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'tomasiser/vim-code-dark'
+Plug 'morhetz/gruvbox'
 " Plug 'christianchiarulli/onedark.vim'
 
 
@@ -272,9 +273,9 @@ let g:airline#extensions#tabline#enabled = 1
 
 
 " color are nord0_gui and nord12_gui
-autocmd ColorScheme nord highlight Todo guifg=#2E3440 guibg=#D08770
+autocmd ColorScheme gruvbox highlight Todo guifg=#2E3440 guibg=#D08770
 
-colorscheme nord
+colorscheme gruvbox
 hi Comment cterm=italic
 
 " 'python' : ['mypy', 'flake8']

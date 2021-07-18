@@ -1,0 +1,10 @@
+#! /bin/bash
+
+if pgrep -x picom > /dev/null; then
+  pkill picom;
+  xscreensaver-command -lock
+  #picom --experimental-backends -b
+else
+  xscreensaver-command -lock
+fi
+
