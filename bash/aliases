@@ -1,39 +1,21 @@
-alias valias='v ~/.au.conf/bash/aliases'
-
-alias mcd='cd Projects/Mesada/mesada-venebank-service'
-alias mset='. virtualenv/bin/activate'
-
-alias vxmonad='cd ~/.xmonad/my-xmonad/; nvim xmonad.hs'
-alias vnvim='cd ~/.config/nvim/; nvim'
+## git
 
 alias gst='git status'
+alias gfa='git fetch -p --all'
 alias gch='git checkout'
+alias gcmt='git commit'
 alias glg='git lg'
 alias glga='git lg --all'
+alias gpull='git pull origin $(git rev-parse --abbrev-ref HEAD)'
+alias gpush='git push origin $(git rev-parse --abbrev-ref HEAD)'
+
 
 alias v='nvim'
 
+alias cc='cd $(fd -I --type directory --hidden --exclude .git --exclude .gradle --exclude .nvm  | fzf --layout=reverse); ls'
+alias vv='v $(fd -I --type file --hidden | fzf --layout=reverse)'
+alias nn='nohup alacritty --working-directory $(pwd) </dev/null &>/dev/null &'
 
-alias tmux='tmux -2'
-
-# small alias so ranger exits to current directory
-alias ranger='mkdir -p $HOME/tmp; ranger --choosedir=$HOME/tmp/.rangerdir; LASTDIR=`cat $HOME/tmp/.rangerdir`; cd "$LASTDIR"'
-
-mybeep() {
-  ( \speaker-test --frequency 900 --test sine > /dev/null )&
-  pid=$!
-  \sleep 0.5s
-  \kill -9 $pid
-}
-
-
-
-# cp aliases {{{1
-alias logintimus='echo 210812AA'
-alias loginopentrains='echo campinas43; echo z8NPSGKm'
-alias loginkattis='echo augusto-hidalgo-5255; echo dx2bkTXC'
-alias loginargentina='echo traitors; echo sangrecolombiana'
-alias logincoj='echo ahidalgo; echo 5125320aA*'
 
 alias CP='CPF'
 function CPF {
@@ -48,9 +30,7 @@ function CPF {
                 cp ~/Projects/CPAlgorithms/template.cpp ./"$FILE".cpp
                 echo "$FILE.cpp created :)"
             fi
-#           subl "$FILE.cpp"
         done
     fi
 }
-
 
