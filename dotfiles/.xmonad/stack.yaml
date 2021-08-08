@@ -1,9 +1,0 @@
-resolver: lts-14.25
-
-packages:
-- my-xmonad
-- xmonad
-- xmonad-contrib
-
-extra-deps:
-- unix-2.7.2.2
