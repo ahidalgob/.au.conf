@@ -3,3 +3,4 @@
 */stack.yaml.lock
 **/nvim/plugged
 **/nvim/autoload/plug.vim
+**/nvim/.netrwhist
