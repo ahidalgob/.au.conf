@@ -1,0 +1,7 @@
+clear Mod1
+clear Mod4
+keycode 23 = Hyper_L
+keycode 51 = Meta_L
+
+add Mod1 = Control_L Control_R
+add Mod4 = Super_L Super_R

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sleep 0.1
+NEWWINDOW=""
+CURRENT=$(xdotool getwindowfocus getwindowname)
+
+if [[ ! $CURRENT  == *-\ Google\ Chrome ]];
+then
+  NEWWINDOW="--new-window"
+fi
+
+google-chrome-stable $NEWWINDOW --profile-directory='Profile 1' "$@"
