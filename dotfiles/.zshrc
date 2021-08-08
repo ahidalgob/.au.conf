@@ -2,7 +2,6 @@
 
 
 
-
 # # Source manjaro-zsh-configuration
 # if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
 #   source /usr/share/zsh/manjaro-zsh-config
@@ -226,7 +225,6 @@ esac
 
 setopt interactivecomments
 
-
 ## git
 
 alias gst='git status'
@@ -241,28 +239,9 @@ alias gpush='git push origin $(git rev-parse --abbrev-ref HEAD)'
 
 alias v='nvim'
 
-alias cc='cd $(fd -I --type directory --hidden --exclude .git --exclude .gradle --exclude .nvm  | fzf --layout=reverse); ls'
-alias vv='v $(fd -I --type file --hidden | fzf --layout=reverse)'
+alias cc='cd $(fd -d 7 -I --type directory --hidden --exclude .git --exclude .gradle --exclude .nvm --exclude .npm --exclude node_modules --exclude build-cache --exclude .cache | fzf --layout=reverse); ls'
+alias vv='v $(fd -d 7 -I --type file --hidden --exclude .git --exclude .gradle --exclude .nvm --exclude .npm --exclude node_modules --exclude build-cache --exclude .cache | fzf --layout=reverse)'
 alias nn='nohup alacritty --working-directory $(pwd) </dev/null &>/dev/null &'
-
-
-alias CP='CPF'
-function CPF {
-    if [ -z "$1" ]; then
-        echo "D:"
-    else
-        for arg in "$@"; do
-            FILE="${arg%%.*}"
-            if [ -e "$FILE".cpp ]; then
-                echo "$FILE.cpp already exists!"
-            else
-                cp ~/Projects/CPAlgorithms/template.cpp ./"$FILE".cpp
-                echo "$FILE.cpp created :)"
-            fi
-        done
-    fi
-}
-
 
 # Set up Node Version Manager
 source /usr/share/nvm/init-nvm.sh
