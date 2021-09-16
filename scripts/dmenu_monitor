@@ -6,5 +6,4 @@ if [[ ! -z $layout_script ]]; then
   bash ~/.screenlayout/$layout_script
 fi
 
-nitrogen --restore
-
+# nitrogen --restore

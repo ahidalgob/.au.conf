@@ -177,11 +177,11 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-bindsym $mod+w focus output eDP1
-bindsym $mod+e focus output HDMI1
+bindsym $mod+w focus output LVDS-1
+bindsym $mod+e focus output HDMI-1
 
-bindsym $mod+Shift+w move workspace to output eDP1
-bindsym $mod+Shift+e move workspace to output HDMI1
+bindsym $mod+Shift+w move workspace to output LVDS-1
+bindsym $mod+Shift+e move workspace to output HDMI-1
 
 
 # Open specific applications in floating mode
@@ -219,6 +219,7 @@ for_window [class="Pycher"] move position center
 
 
 for_window [class="Google-chrome"] border pixel 3
+for_window [class="TelegramDesktop"] border pixel 3
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

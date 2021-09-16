@@ -62,7 +62,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ahidalgob/vim-afterglow'
 Plug 'deviantfero/wpgtk.vim'
 Plug 'tomasiser/vim-code-dark'
-Plug 'arcticicestudio/nord-vim'
+Plug 'morhetz/gruvbox'
 
 Plug 'chrisbra/Colorizer'
 
@@ -98,15 +98,12 @@ set splitright
 
 " Appearance {{{2
 
-let g:afterglow_no_terminal_background = 1
-set termguicolors
-" colorscheme afterglow
-
 " color are nord0_gui and nord12_gui
-autocmd ColorScheme * highlight Todo guifg=#2E3440 guibg=#D08770
-colorscheme nord
+autocmd ColorScheme gruvbox highlight Todo guifg=#2E3440 guibg=#D08770
 
-" TODO
+colorscheme gruvbox
+set bg=dark
+hi Comment cterm=italic
 
 set colorcolumn=80
 syntax enable

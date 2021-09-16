@@ -1,32 +1,40 @@
 #!/bin/bash
 
-LENOVO_KEYBOARD_ID="$(xinput -list | grep "AT Translated Set 2 keyboard" | cut -d"=" -f 2 | cut -f 1)"
-KINESIS_KEYBOARD_ID="$(xinput -list | grep "slave  key" | grep "Kinesis Freestyle Edge RGB Keyboard  " | cut -d"=" -f 2 | cut -f 1)"
-
-if [ -z "$(setxkbmap -query | grep variant)" ]; then
-  VARIANT="-variant intl";
-  dunstify "layout: us intl" -t 300
-else
-  VARIANT="";
-  dunstify "layout: us" -t 300
-fi
-
-# reset everything because
-setxkbmap -option
-setxkbmap us $VARIANT -option caps:swapescape
-
-
-xmodmap -e "remove mod4 = Hyper_L"
-xmodmap -e "keycode 23 = Hyper_R"
-xmodmap -e "keycode 51 = Hyper_L"
-xmodmap -e "keycode 94 = "
-xmodmap -e "keycode any = Tab ISO_Left_Tab Tab ISO_Left_Tab"
-xmodmap -e "keycode any = backslash bar backslash bar notsign brokenbar"
-
-xmodmap -e "add mod4 = Hyper_R Hyper_L"
-
-killall -q xcape
-xcape -e "Hyper_R=Tab;Hyper_L=backslash"
-
+setxkbmap us,us -variant ,intl -option caps:swapescape,grp:shifts_toggle
 xset -b
 xset r rate 300 60
+
+
+## ID in case you need it (?) ##
+#KINESIS_KEYBOARD_ID="$(xinput -list | grep "slave  key" | grep "Kinesis Freestyle Edge RGB Keyboard  " | cut -d"=" -f 2 | cut -f 1)"
+
+
+#if [ -z "$(setxkbmap -query | grep variant)" ]; then
+#  VARIANT="-variant intl";
+#  dunstify "layout: us intl" -t 300
+#else
+#  VARIANT="";
+#  dunstify "layout: us" -t 300
+#fi
+
+## reset everything because
+#setxkbmap -option
+#setxkbmap us $VARIANT -option caps:swapescape
+#
+#xmodmap -e "remove mod4 = Hyper_L"
+#xmodmap -e "keycode 23 = Hyper_R"
+#xmodmap -e "keycode 51 = Hyper_L"
+#xmodmap -e "keycode 94 = "
+#xmodmap -e "keycode any = Tab ISO_Left_Tab Tab ISO_Left_Tab"
+#xmodmap -e "keycode any = backslash bar backslash bar notsign brokenbar"
+#
+#xmodmap -e "add mod4 = Hyper_R Hyper_L"
+#
+#killall -q xcape
+#xcape -e "Hyper_R=Tab;Hyper_L=backslash"
+#
+#xset -b
+#xset r rate 300 60
+
+
+

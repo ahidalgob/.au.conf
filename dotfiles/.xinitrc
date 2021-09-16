@@ -63,6 +63,5 @@ get_session(){
 	echo "dbus-launch ${dbus_args[*]}"
 }
 
-~/.screenlayout/with-hdmi.sh
 
 exec $(get_session "$1")
